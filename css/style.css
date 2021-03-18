@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header .header-left{
+    position: relative;
+}
+
+header .header-left a{
+    position: absolute;
+    right: 5%;
+    color: #888;
+}
+
+header .header-center a{
+    display: contents;
+}
+
+header .header-center img{
+    width: 15%;
+}
+
+header .header-right a{
+    color: #888;
+    font-size: 25px;
+    padding: 0 16px;
+    border-right: 1px solid rgb(221, 221, 221);
+}
+
+nav .container-fluid{
+    background-color: #fbae40;
+}
