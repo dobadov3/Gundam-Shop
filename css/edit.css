@@ -1,3 +1,15 @@
 .text-white{
     color: white !important;
 }
+
+.text-black{
+    color: black !important;
+}
+
+.d-contents{
+    display: contents !important;
+}
+
+.bg-black{
+    background-color: black !important;
+}
