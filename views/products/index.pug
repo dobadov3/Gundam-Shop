@@ -1,0 +1,211 @@
+extends ../layouts/layout
+block contents 
+    .container
+        .row.py-3
+            .col-6
+                nav(aria-label='breadcrumb')
+                    ol.breadcrumb
+                        li.breadcrumb-item
+                            a(href='#') Home
+                        li.breadcrumb-item
+                            a(href='#') Library
+                        li.breadcrumb-item.active(aria-current='page') Data
+            .col-6
+                select.form-select.w-50.ms-auto(aria-label='Default select example')
+                    option Th&#x1EE9; t&#x1EF1; theo m&#x1EE9;c &dstrok;&#x1ED9; ph&#x1ED5; bi&#x1EBF;n
+                    option(value='1') Th&#x1EE9; t&#x1EF1; theo &dstrok;&#x1ED9; &dstrok;&aacute;nh gi&aacute;
+                    option(value='2', selected='') M&#x1EDB;i nh&#x1EA5;t
+                    option(value='3') Gi&aacute;: Th&#x1EA5;p &dstrok;&#x1EBF;n cao
+                    option(value='4') Gi&aacute;: Cao &dstrok;&#x1EBF;n th&#x1EA5;p
+        .row
+            .col-2
+                h5 Danh m&#x1EE5;c s&#x1EA3;n ph&#x1EA9;m
+                ul.list-group.list-group-flush
+                    li.list-group-item.has-sub
+                        .row
+                            .col-10
+                                a(href='#') Gundam
+                            .col-2
+                                a.btn-detail(href='#')
+                                    i.fas.fa-plus
+                    li.list-group-item
+                        .row
+                            .col-10
+                                a(href='#') Tools
+                            .col-2
+                                a.btn-detail(href='#')
+                                    i.fas.fa-plus
+                    li.list-group-item
+                        a(href='#') Dragon Ball
+                    li.list-group-item
+                        a(href='#') LBX
+                    li.list-group-item
+                        a(href='#') Kamen Raider
+                    li.list-group-item
+                        a(href='#') Star Wars
+                    li.list-group-item
+                        a(href='#') One Piece
+                    li.list-group-item
+                        a(href='#') Kotobukiya
+                    li.list-group-item
+                        a(href='#') Zoids
+                    li.list-group-item
+                        a(href='#') Figures
+                    li.list-group-item
+                        a(href='#') Frame Arms Girl
+                    li.list-group-item
+                        .row
+                            .col-10
+                                a(href='#') Paints
+                            .col-2
+                                a.btn-detail(href='#')
+                                    i.fas.fa-plus
+                    li.list-group-item
+                        a(href='#') S&#x1EA3;n ph&#x1EA9;m kh&aacute;c
+            .col-10
+                .container-fluid
+                    .row
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart
+                        .col-3.my-3
+                            .card.text-center
+                                img.card-img-top(src='https://azgundam.com/wp-content/uploads/2021/02/RG-MSN-02-ZEONG-AZGUNDAM-6-247x296.jpg?b3ddb4&b3ddb4', alt='...')
+                                .card-body
+                                    h5.card-title.product-name Product name
+                                    .product-price.d-flex.justify-content-around
+                                        p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+                                        p.text-price 459.000&#x20AB;
+                                    a.btn.btn-primary.btn-cart(href='#') Cart

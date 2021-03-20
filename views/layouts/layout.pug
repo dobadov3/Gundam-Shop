@@ -1,0 +1,159 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title Gundam Shop
+  // Bootstrap
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl', crossorigin='anonymous')
+  link(rel='stylesheet', href='css/style.css')
+  link(rel='stylesheet', href='css/edit.css')
+body 
+  // Header
+  header
+    .container.d-flex
+      .col-4.header-left.d-flex.align-items-center.mt-2
+        input.form-control(type='text', placeholder='Search')
+        a(href='#')
+          i.fas.fa-search
+      .col-4.header-center.d-flex.justify-content-center
+        a(href='#')
+          img.img-fluid(src='img/logo.jpg', alt='')
+      .col-4.d-flex.justify-content-end.align-items-center.header-right
+        a(href='#')
+          i.fas.fa-heart
+        a(href='#')
+          i.fas.fa-user
+        a(href='#', style='border: none;')
+          i.fas.fa-shopping-cart
+    // Navbar
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.bg-black
+      .container
+        a.navbar-brand.d-lg-none.d-md-block(href='#') AAToys
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse.justify-content-center
+          ul.navbar-nav
+            li.nav-item.dropdown.gundam-menu
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
+                | Gundam
+              ul.dropdown-menu.gundam-sub(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href='#') SD - SUPPER DEFORMED
+                li
+                  a.dropdown-item(href='#') HG - HIGH GRADE 1/144
+                    span.badge.bg-danger.ms-2 Hot
+                li
+                  a.dropdown-item(href='#') RG - REAL GRADE 1/144
+                    span.badge.bg-danger.ms-2 Hot
+                li
+                  a.dropdown-item(href='#') MG - MASTER GRADE 1/100
+                    span.badge.bg-danger.ms-2 Hot
+                li
+                  a.dropdown-item(href='#') RE/100
+                li
+                  a.dropdown-item(href='#') PREMIUM BANDAI
+                li
+                  a.dropdown-item(href='#') PG - PERFECT GRADE 1/60
+                li
+                  a.dropdown-item(href='#') MEGASIZE 1/48
+                li
+                  a.dropdown-item(href='#') HAROPLA
+                li
+                  a.dropdown-item(href='#') HIRM - HI RESOLUTION MODEL
+                li
+                  a.dropdown-item(href='#') CONVERGE
+                li
+                  a.dropdown-item(href='#') WEAPON + SUPPORT UNIT
+                li
+                  a.dropdown-item(href='#') GI&Aacute; &Dstrok;&#x1EE0; M&Ocirc; H&Igrave;NH - ACTION BASE
+            li.nav-item.dropdown.tools-menu
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
+                | Tools
+              ul.dropdown-menu.tools-sub(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href='#') D&#x1EE4;NG C&#x1EE4; C&#x1A0; B&#x1EA2;N
+                li
+                  a.dropdown-item(href='#') GUNDAM MARKER
+            li.nav-item.dropdown.paints-menu
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
+                | Paints
+              ul.dropdown-menu.paints-sub(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href='#') TAMIYA
+                li
+                  a.dropdown-item(href='#') GAIA
+                li
+                  a.dropdown-item(href='#') MR.HOBBY
+                li
+                  a.dropdown-item(href='#') AIRBRUSH KITS
+                li
+                  a.dropdown-item(href='#') PH&#x1EE4; KI&#x1EC6;N S&#x1A0;N
+            li.nav-item
+              a.nav-link.text-white.figures(href='#')
+                | Figures
+            li.nav-item.dropdown.other-menu
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
+                | M&ocirc; h&igrave;nh kh&aacute;c
+              ul.dropdown-menu.other-sub(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href='#') DRAGON BALL
+                li
+                  a.dropdown-item(href='#') LBX
+                li
+                  a.dropdown-item(href='#') KAMEN RAIDER
+                li
+                  a.dropdown-item(href='#') KOTOBUKIYA
+                li
+                  a.dropdown-item(href='#') ONE PIECE
+                li
+                  a.dropdown-item(href='#') STAR WARS
+                li
+                  a.dropdown-item(href='#') ZOIDS
+    // End Navbar
+  // End header
+  // Main
+  main
+    block contents
+  // End Main
+  // Footer
+  footer
+    .container
+      .row.mb-3
+        .col-lg-3.col-md-3.mt-5.footer-left
+          img.img-fluid.img-footer(src='/img/logo.jpg', alt='')
+          .icon-social.d-flex
+            a(href='#')
+              i.fab.fa-facebook-f
+            a(href='#')
+              i.fab.fa-twitter
+            a(href='#')
+              i.fab.fa-instagram
+        .col-lg-6.col-md-5.mt-5.footer-center
+          .h2.text-center About Us
+          |             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae consequatur quas ea modi animi distinctio eius sapiente, ducimus veniam fugit, repellendus iste doloribus doloremque cumque nihil in necessitatibus expedita officia!
+        .col-lg-3.col-md-4.mt-5.footer-right
+          ul
+            li
+              .row
+                .col-2.d-flex.align-items-center.justify-content-center
+                  i.fas.fa-map-marker-alt.icon-contact
+                .col-10
+                  span 246/71 Hoa Hung Str
+                  br
+                  span 10 District, Ho Chi Minh city
+            li
+              .row
+                .col-2.d-flex.align-items-center.justify-content-center
+                  i.fas.fa-headphones-alt.icon-contact
+                .col-10
+                  span 0944609933
+                  br
+                  span dobadvo3@gmail.com
+  // End Footer
+  // Bootstrap CDN
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js', integrity='sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0', crossorigin='anonymous')
+  // Fontawsome
+  script(src='https://kit.fontawesome.com/b7d286cedf.js', crossorigin='anonymous')
+  // Main js
+  script(src='js/main.js')

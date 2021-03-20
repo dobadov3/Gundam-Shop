@@ -7,6 +7,16 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+    transition: color 0.2s;
+}
+
+a:hover{
+    color: #ba933e;
+}
+
 header{
     background-color: black !important;
 }
@@ -25,8 +35,12 @@ header a:hover{
     color: #888;
 }
 
+header i{
+    transition: color 0.3s;
+}
+
 header i:hover{
-    color: #ba933e  ;
+    color: #ba933e;
 }
 
 header .header-center a{
@@ -56,10 +70,18 @@ nav .nav-item{
     margin: 0 16px;
 }
 
+.gundam-menu a.nav-link,
+.tools-menu a.nav-link,
+.paints-menu a.nav-link,
+.other-menu a.nav-link{
+    transition: color 0.5s;
+}
+
 .gundam-menu:hover a.nav-link,
 .tools-menu:hover a.nav-link,
 .paints-menu:hover a.nav-link,
-.other-menu:hover a.nav-link{
+.other-menu:hover a.nav-link,
+a.figures:hover{
     color: #ba933e !important;
 }
 
@@ -68,4 +90,81 @@ nav .nav-item{
 .paints-menu:hover .paints-sub,
 .other-menu:hover .other-sub{
     display: block;
+}
+
+a.card-link{
+    text-decoration: none;
+}
+
+.card .product-name{
+    color: black;
+    font-weight: bold;
+}
+
+.card .text-price{
+    color: red;
+    font-weight: bold;
+}
+
+.card .purchase-cost{
+    color: orange
+}
+
+.card .btn-cart{
+    width: 40%;
+    background-color: red;
+    outline: none;
+    border: none;
+}
+
+.card .btn-cart:hover{
+    background-color: #9e1f05;
+}
+
+footer{
+    background-color: black;
+}
+
+footer .footer-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .img-footer{
+    width: 50%;
+}
+
+footer .icon-social a{
+    padding: 16px;
+}
+
+footer .icon-social a:hover i{
+    color: #ba933e !important;
+}
+
+footer .icon-social i{
+    color: white !important;
+    font-size: 25px !important;
+    transition: color 0.5s;;
+}
+
+footer .footer-center{
+    color: white;
+}
+
+footer .footer-right{
+    color: white;
+}
+
+footer .footer-right ul{
+    list-style: none;
+}
+
+footer .footer-right li{
+    padding: 16px;
+}
+
+footer .footer-right i{
+    font-size: 30px;
 }
