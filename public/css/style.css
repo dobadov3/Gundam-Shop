@@ -168,3 +168,9 @@ footer .footer-right li{
 footer .footer-right i{
     font-size: 30px;
 }
+
+@media (max-width: 1200px){
+    .card .btn-cart{
+        width: 60%;
+    }
+}
