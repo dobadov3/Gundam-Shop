@@ -1,3 +1,7 @@
-module.exports.get = function(req, res){
-    res.render('./home/index');
+var data = require('../layout.data');
+
+module.exports.get = async function(req, res){
+    res.render('./home/index', {
+        data: data.data
+    });
 };

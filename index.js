@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/gundam');
 
 var homeRoute = require('./routes/home.route');
 var productsRoute = require('./routes/products.route');

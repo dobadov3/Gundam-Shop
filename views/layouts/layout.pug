@@ -35,81 +35,31 @@ body
         #navbarSupportedContent.collapse.navbar-collapse.justify-content-center
           ul.navbar-nav
             li.nav-item.dropdown.gundam-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
-                | Gundam
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/"+data[0][0].id, role='button', data-bs-toggle='dropdown', aria-expanded='false')= data[0][0].name
               ul.dropdown-menu.gundam-sub(aria-labelledby='navbarDropdown')
-                li
-                  a.dropdown-item(href='#') SD - SUPPER DEFORMED
-                li
-                  a.dropdown-item(href='#') HG - HIGH GRADE 1/144
-                    span.badge.bg-danger.ms-2 Hot
-                li
-                  a.dropdown-item(href='#') RG - REAL GRADE 1/144
-                    span.badge.bg-danger.ms-2 Hot
-                li
-                  a.dropdown-item(href='#') MG - MASTER GRADE 1/100
-                    span.badge.bg-danger.ms-2 Hot
-                li
-                  a.dropdown-item(href='#') RE/100
-                li
-                  a.dropdown-item(href='#') PREMIUM BANDAI
-                li
-                  a.dropdown-item(href='#') PG - PERFECT GRADE 1/60
-                li
-                  a.dropdown-item(href='#') MEGASIZE 1/48
-                li
-                  a.dropdown-item(href='#') HAROPLA
-                li
-                  a.dropdown-item(href='#') HIRM - HI RESOLUTION MODEL
-                li
-                  a.dropdown-item(href='#') CONVERGE
-                li
-                  a.dropdown-item(href='#') WEAPON + SUPPORT UNIT
-                li
-                  a.dropdown-item(href='#') GI&Aacute; &Dstrok;&#x1EE0; M&Ocirc; H&Igrave;NH - ACTION BASE
+                each gundam in data[1]
+                  li  
+                    a.dropdown-item(href="/products/"+gundam.id)= gundam.name      
             li.nav-item.dropdown.tools-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
-                | Tools
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/"+data[0][1].id, role='button', data-bs-toggle='dropdown', aria-expanded='false')= data[0][1].name
               ul.dropdown-menu.tools-sub(aria-labelledby='navbarDropdown')
-                li
-                  a.dropdown-item(href='#') D&#x1EE4;NG C&#x1EE4; C&#x1A0; B&#x1EA2;N
-                li
-                  a.dropdown-item(href='#') GUNDAM MARKER
+                each tools in data[2] 
+                  li
+                    a.dropdown-item(href="/products/"+tools.id)= tools.name
             li.nav-item.dropdown.paints-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
-                | Paints
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/"+data[0][2].id, role='button', data-bs-toggle='dropdown', aria-expanded='false')= data[0][2].name
               ul.dropdown-menu.paints-sub(aria-labelledby='navbarDropdown')
-                li
-                  a.dropdown-item(href='#') TAMIYA
-                li
-                  a.dropdown-item(href='#') GAIA
-                li
-                  a.dropdown-item(href='#') MR.HOBBY
-                li
-                  a.dropdown-item(href='#') AIRBRUSH KITS
-                li
-                  a.dropdown-item(href='#') PH&#x1EE4; KI&#x1EC6;N S&#x1A0;N
+                each paints in data[3]
+                  li
+                    a.dropdown-item(href="/products/"+paints.id)= paints.name
             li.nav-item
-              a.nav-link.text-white.figures(href='#')
-                | Figures
+              a.nav-link.text-white.figures(href="/products/"+data[0][3].id)= data[0][3].name
             li.nav-item.dropdown.other-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
-                | M&ocirc; h&igrave;nh kh&aacute;c
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/"+data[0][4].id, role='button', data-bs-toggle='dropdown', aria-expanded='false')= data[0][4].name
               ul.dropdown-menu.other-sub(aria-labelledby='navbarDropdown')
-                li
-                  a.dropdown-item(href='#') DRAGON BALL
-                li
-                  a.dropdown-item(href='#') LBX
-                li
-                  a.dropdown-item(href='#') KAMEN RAIDER
-                li
-                  a.dropdown-item(href='#') KOTOBUKIYA
-                li
-                  a.dropdown-item(href='#') ONE PIECE
-                li
-                  a.dropdown-item(href='#') STAR WARS
-                li
-                  a.dropdown-item(href='#') ZOIDS
+                each other in data[4] 
+                  li
+                    a.dropdown-item(href="/products/"+other.id)= other.name
     // End Navbar
   // End header
   // Main
