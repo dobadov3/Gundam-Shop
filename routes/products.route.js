@@ -4,5 +4,6 @@ var router = express.Router();
 
 router.get('/', controller.get);
 
+router.get('/:cateID', controller.getByCategory);
 
 module.exports = router;

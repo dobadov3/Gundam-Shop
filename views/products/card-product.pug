@@ -1,0 +1,9 @@
+.card.text-center
+    a(href="products/detail/"+product.id) 
+        img.card-img-top.img-fluid(src=product.image[0], alt='...')
+    .card-body
+        h5.card-title.product-name= product.name
+        .product-price.d-flex.justify-content-around
+            p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
+            p.text-price= product.price
+        a.btn.btn-primary.btn-cart(href='#') Cart

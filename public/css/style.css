@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
 body{
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+}
+
+main{
+    min-height: 100%;
 }
 
 a{
@@ -17,6 +26,7 @@ a:hover{
     color: #ba933e;
 }
 
+/* Header */
 header{
     background-color: black !important;
 }
@@ -92,8 +102,26 @@ a.figures:hover{
     display: block;
 }
 
+.has-sub a{
+    text-transform: uppercase;
+}
+
+/* Products Card */
 a.card-link{
     text-decoration: none;
+}
+
+.card{
+}
+
+.card img{
+    min-height: 50%;
+}
+
+.card .card-body{
+}
+
+.card h5.card-title{
 }
 
 .card .product-name{
@@ -101,9 +129,13 @@ a.card-link{
     font-weight: bold;
 }
 
+.card .product-price{
+}
+
 .card .text-price{
     color: red;
     font-weight: bold;
+    margin: 8px;
 }
 
 .card .purchase-cost{
@@ -121,6 +153,7 @@ a.card-link{
     background-color: #9e1f05;
 }
 
+/* Footer */
 footer{
     background-color: black;
 }
@@ -168,6 +201,32 @@ footer .footer-right li{
 footer .footer-right i{
     font-size: 30px;
 }
+
+/* Paggination */
+li.page-item{
+    border-radius: 100% !important;
+}
+
+a.page-link{
+    border-radius: 100% !important;
+    margin: 0 16px;
+    color: black;
+    transition: all 0.5s;
+}
+
+a.page-link:hover{
+    background-color: #ba933e;
+    color: white;
+}
+
+/* Product Category */
+
+ul.gundam-cate a,
+ul.tools-cate a,
+ul.paints-cate a{
+   text-transform: uppercase;
+}
+
 
 @media (max-width: 1200px){
     .card .btn-cart{

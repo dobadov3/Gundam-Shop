@@ -22,11 +22,6 @@ async function Data(){
     var data = [category, detail_gundam, detail_tools, detail_paints, detail_other]
 
     module.exports.data = data
-    module.exports.category = category
-    module.exports.detail_gundam = detail_gundam
-    module.exports.detail_tools = detail_tools
-    module.exports.detail_paints = detail_paints
-    module.exports.detail_other = detail_other
 }
 
 Data()
