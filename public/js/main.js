@@ -11,4 +11,10 @@ $(document).ready(function() {
     detailFunction(".btn-detail-gundam", ".gundam-cate");
     detailFunction(".btn-detail-tools", ".tools-cate");
     detailFunction(".btn-detail-paints", ".paints-cate");
+
+    $(".slick-products").slick({
+        infinite: true,
+        slidesToShow: 4, 
+        slidesToScroll: 1
+    })
 })

@@ -112,6 +112,7 @@ a.card-link{
 }
 
 .card{
+    
 }
 
 .card img{
@@ -151,6 +152,26 @@ a.card-link{
 
 .card .btn-cart:hover{
     background-color: #9e1f05;
+}
+
+/* Block action */
+
+.block-action{
+    color: black !important;
+    display: flex;
+    border: 1px solid #CCC;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.5rem;
+}
+
+.block-action i{
+    font-size: 1.5rem;
+}
+
+.block-action span{
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 /* Footer */

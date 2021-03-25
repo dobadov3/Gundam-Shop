@@ -1,2 +1,42 @@
 extends ../layouts/layout
 block contents 
+    .container 
+        .row.my-3
+            .col-lg-2
+                .block-action 
+                    i.fad.fa-gift
+                    span Đang giảm giá
+            .col-lg-10 
+                .block-line
+                    hr
+        .row.mb-3
+            each product in products
+                .col-lg-3 
+                    include ../products/card-product
+        
+        .row.my-3
+            .col-lg-2
+                .block-action 
+                    i.fal.fa-badge-dollar
+                    span Bán chạy nhất
+            .col-lg-10 
+                .block-line
+                    hr
+        .row.mb-3
+            each product in products
+                .col-lg-3 
+                    include ../products/card-product
+
+        .row.my-3
+            .col-lg-2
+                .block-action 
+                    i.fal.fa-sparkles
+                    span Hàng mới về
+            .col-lg-10 
+                .block-line
+                    hr
+        .row.mb-3
+            each product in products
+                .col-lg-3 
+                    include ../products/card-product
+        
