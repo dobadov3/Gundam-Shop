@@ -6,4 +6,6 @@ router.get('/', controller.get);
 
 router.get('/:cateID', controller.getByCategory);
 
+router.get('/detail/:cateID', controller.getDetail);
+
 module.exports = router;

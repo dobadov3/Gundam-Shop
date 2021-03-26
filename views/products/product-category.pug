@@ -4,7 +4,7 @@ ul.list-group.list-group-flush
             .col-10
                 a(href='/products/'+data[0][0].id)= data[0][0].name
             .col-2
-                a.btn-detail-gundam(href='#')
+                a.btn-detail-gundam(href='#/')
                     i.fal.fa-plus
         ul.list-group.list-group-flush.gundam-cate.d-none
             each detail_gundam in data[1]
@@ -15,7 +15,7 @@ ul.list-group.list-group-flush
             .col-10
                 a(href='/products/'+data[0][1].id)= data[0][1].name
             .col-2
-                a.btn-detail-tools(href='#')
+                a.btn-detail-tools(href='#/')
                     i.fal.fa-plus
         ul.list-group.list-group-flush.tools-cate.d-none
             each detail_tools in data[2]
@@ -26,7 +26,7 @@ ul.list-group.list-group-flush
             .col-10
                 a(href='/products/'+data[0][2].id)= data[0][2].name
             .col-2
-                a.btn-detail-paints(href='#')
+                a.btn-detail-paints(href='#/')
                     i.fal.fa-plus
         ul.list-group.list-group-flush.paints-cate.d-none
             each detail_paints in data[3]

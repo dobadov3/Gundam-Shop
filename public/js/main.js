@@ -17,4 +17,4 @@ $(document).ready(function() {
         slidesToShow: 4, 
         slidesToScroll: 1
     })
-})
+});
