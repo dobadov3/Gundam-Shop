@@ -12,9 +12,16 @@ $(document).ready(function() {
     detailFunction(".btn-detail-tools", ".tools-cate");
     detailFunction(".btn-detail-paints", ".paints-cate");
 
-    $(".slick-products").slick({
-        infinite: true,
-        slidesToShow: 4, 
-        slidesToScroll: 1
-    })
+});
+
+function searchFunction(){
+    alert("Hello")
+}
+
+var input = document.getElementById("input-search")[0];
+input.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("icon-search").click();
+  }
 });

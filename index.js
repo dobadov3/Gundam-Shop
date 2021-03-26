@@ -13,6 +13,9 @@ var wishlistRoute = require('./routes/wishlist.route');
 app.set('view engine', 'pug');
 app.set('views', './views'); 
 
+app.get('/', (req, res) => {
+    res.redirect('/home')
+});
 app.use('/home', homeRoute);
 app.use('/products', productsRoute);
 app.use('/wishlist', wishlistRoute);
