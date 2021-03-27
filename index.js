@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/gundam');
-
+mongoose.connect('mongodb://localhost/gundam', {useNewUrlParser: true});
+  
 app.use(express.static('public'));
 
 var homeRoute = require('./routes/home.route');

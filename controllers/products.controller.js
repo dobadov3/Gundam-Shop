@@ -1,5 +1,6 @@
 var data = require('../layout.data');
 var Product = require('../models/products.model');
+var mongoose = require('mongoose');
 
 module.exports.get = async function(req, res){
     var products = await Product.find();
@@ -32,9 +33,15 @@ module.exports.getByCategory = async function(req, res){
 };
 
 module.exports.getDetail = async function(req, res){
-    var products = await Product.find(); 
+    var idProduct = req.params.id;
+    await Product.find({kind: mongoose.Types.ObjectId('60580f43748f1d277053d41d')}, (err, result)=>{
+        console.log(result)
+        console.log(err)
+    });
+
+    // console.log(product)
+
     res.render('./products/detail_products', {
-        data: data.data,
-        products: products
+        data: data.data
     })
 }

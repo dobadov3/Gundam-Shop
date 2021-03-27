@@ -19,7 +19,7 @@
   "homepage": "https://github.com/dobadov3/Gundam-Shop#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.12.1",
+    "mongoose": "^5.12.2",
     "nodemon": "^2.0.7",
     "pug": "^3.0.2",
     "slick-carousel": "^1.8.1"
