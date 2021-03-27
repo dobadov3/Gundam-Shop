@@ -204,6 +204,17 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+/* Box Sale */
+.box-sale-percent{
+    color: white;
+    background-color: red;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px;
+    left: 0;
+    top: 9%;
+}
+
 /* Footer */
 footer{
     background-color: black;

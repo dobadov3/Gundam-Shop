@@ -6,6 +6,8 @@ router.get('/', controller.get);
 
 router.get('/:cateID', controller.getByCategory);
 
-router.get('/detail/:id', controller.getDetail);
+router.get('/detail/:code', controller.getDetail);
+
+router.get('/cate/:cateName', controller.getCategory)
 
 module.exports = router;

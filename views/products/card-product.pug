@@ -1,9 +1,12 @@
-.card.text-center
-    a.card-top(href="/products/detail/"+product.id) 
+.card.text-center.position-relative
+    a.card-top(href="/products/detail/"+product.code) 
         img.card-img-top.img-fluid(src=product.image[0], alt='...')
+    if (product.sale !== 0)
+        .box-sale-percent.position-absolute= "-" + product.sale + "%"
     .card-body
         h5.card-title.product-name= product.name
         .product-price.d-flex.justify-content-around
-            p.text-price.text-decoration-line-through.purchase-cost 499.000&#x20AB;
-            p.text-price= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+            if (product.sale !== 0)
+                p.text-price.text-decoration-line-through.purchase-cost= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+            p.text-price= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
         a.btn.btn-primary.btn-cart(href='#') Cart

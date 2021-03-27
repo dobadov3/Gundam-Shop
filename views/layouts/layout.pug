@@ -26,7 +26,7 @@ body
           i.far.fa-heart
         a(href='#')
           i.far.fa-user
-        a(href='#', style='border: none;')
+        a(href='/cart', style='border: none;')
           i.fal.fa-shopping-cart
     // Navbar
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.bg-black
@@ -37,19 +37,19 @@ body
         #navbarSupportedContent.collapse.navbar-collapse.justify-content-center
           ul.navbar-nav
             li.nav-item.dropdown.gundam-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/"+data[0][0].id, aria-expanded='false')= data[0][0].name
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][0].name, aria-expanded='false')= data[0][0].name
               ul.dropdown-menu.gundam-sub.has-sub(aria-labelledby='navbarDropdown')
                 each gundam in data[1]
                   li  
                     a.dropdown-item(href="/products/"+gundam.id)= gundam.name      
             li.nav-item.dropdown.tools-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/"+data[0][1].id, aria-expanded='false')= data[0][1].name
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][1].name, aria-expanded='false')= data[0][1].name
               ul.dropdown-menu.tools-sub.has-sub(aria-labelledby='navbarDropdown')
                 each tools in data[2] 
                   li
                     a.dropdown-item(href="/products/"+tools.id)= tools.name
             li.nav-item.dropdown.paints-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/"+data[0][2].id, aria-expanded='false')= data[0][2].name
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][2].name, aria-expanded='false')= data[0][2].name
               ul.dropdown-menu.paints-sub.has-sub(aria-labelledby='navbarDropdown')
                 each paints in data[3]
                   li
@@ -57,11 +57,11 @@ body
             li.nav-item
               a.nav-link.text-white.figures(href="/products/"+data[0][3].id)= data[0][3].name
             li.nav-item.dropdown.other-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/"+data[0][4].id, aria-expanded='false')= data[0][4].name
+              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][4].name, aria-expanded='false')= data[0][4].name
               ul.dropdown-menu.other-sub.has-sub(aria-labelledby='navbarDropdown')
                 each other in data[4] 
                   li
-                    a.dropdown-item(href="/products/"+other.id)= other.name
+                    a.dropdown-item(href="/products/cate/"+other.name)= other.name
     // End Navbar
   // End header
   // Main

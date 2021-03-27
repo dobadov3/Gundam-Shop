@@ -4,18 +4,29 @@ block contents
         .row    
             .col-lg-6
                 .row 
-                    .col-12.d-flex-justify-content-center
-                        img.img-fluid(src="https://azgundam.com/wp-content/uploads/2020/06/RG-33-FORCE-IMPULSE-GUNDAM-AZGUNDAM-653x400.jpg")
+                    .col-12.d-flex-justify-content-center.position-relative
+                        a(href="#") 
+                            img.img-fluid(src=product.image[0])
+                        if (product.sale !== 0)
+                            .box-sale-percent.position-absolute= "-" + product.sale + "%"
                 .row.mt-3
                     .col-lg-3.col-md-3.col-sm-3
-                        img.img-fluid(src="https://azgundam.com/wp-content/uploads/2020/06/RG-33-FORCE-IMPULSE-GUNDAM-AZGUNDAM-247x296.jpg?b3ddb4&b3ddb4", alt="")
+                        a(href="#") 
+                            img.img-fluid.h-25(src=product.image[0], alt="")
                     .col-lg-3.col-md-3.col-sm-3
-                        img.img-fluid(src="https://azgundam.com/wp-content/uploads/2020/06/RG-33-FORCE-IMPULSE-GUNDAM-AZGUNDAM-247x296.jpg?b3ddb4&b3ddb4", alt="")
+                        a(href="#") 
+                            img.img-fluid.h-25(src=product.image[1], alt="")
                     .col-lg-3.col-md-3.col-sm-3
-                        img.img-fluid(src="https://azgundam.com/wp-content/uploads/2020/06/RG-33-FORCE-IMPULSE-GUNDAM-AZGUNDAM-247x296.jpg?b3ddb4&b3ddb4", alt="")
+                        a(href="#") 
+                            img.img-fluid.h-25(src=product.image[2], alt="")
                     .col-lg-3.col-md-3.col-sm-3
-                        img.img-fluid(src="https://azgundam.com/wp-content/uploads/2020/06/RG-33-FORCE-IMPULSE-GUNDAM-AZGUNDAM-247x296.jpg?b3ddb4&b3ddb4", alt="")
-            .col-lg-6
-                h2 RG 33 Force Impulse Gundam
+                        a(href="#") 
+                            img.img-fluid.h-25(src=product.image[3], alt="")
+            .col-lg-6.mt-5
+                h1.fw-bold= product.name
+                .d-flex
+                    if (product.sale !== 0)
+                        h2.fw-bold.text-orange.me-5.text-decoration-line-through= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                    h2.fw-bold.text-danger= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
                 input(type="number", value="1", min="1")
                 a.btn.btn-danger Mua ngay
