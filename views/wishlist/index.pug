@@ -1,2 +1,11 @@
 extends ../layouts/layout
 block contents
+    .container.wish-list
+        h1 My Wishlist 
+        table.table
+            tr 
+                th(colspan=2)
+                th Product name
+                th Price
+                th(colspan=2)  Stock status 
+            include ./wishlist-item

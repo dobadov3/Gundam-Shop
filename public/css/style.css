@@ -215,6 +215,42 @@ input[type=number]::-webkit-outer-spin-button {
     top: 9%;
 }
 
+/* WishList */
+
+.wish-list td:first{
+    padding: 0;
+    text-align: center;
+    position: relative;
+}
+
+.wish-list a:first{
+    
+}
+
+i.fa-times-circle{
+    font-size: 30px;
+}
+
+.img-wishlist{
+    height: 7% !important;
+}
+
+/* Cart */
+
+.delivery-address{
+    border-left: 1px solid #dee2e6;
+}
+
+table.table-delivery-address tr th,
+table.table-delivery-address tr td{
+    padding: 16px 0;
+}
+
+td i.fa-tags{
+    font-size: 20px;
+    margin-right: 8px;
+}
+
 /* Footer */
 footer{
     background-color: black;
