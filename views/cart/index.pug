@@ -9,10 +9,9 @@ block contents
                         th Giá
                         th Số lượng
                         th Thành tiền
-                    include ./cart-item.pug
-                    include ./cart-item.pug
-                    include ./cart-item.pug
-                button(type="button", class="btn btn-outline-danger") 
+                    each product in products
+                        include ./cart-item.pug
+                a(class="btn btn-outline-danger", href="#") 
                     i(class="fal fa-chevron-double-left me-2")
                     span Quay lại cửa hàng
             .col-lg-4.col-md-4.delivery-address 
@@ -24,10 +23,10 @@ block contents
                         td.text-end Giao đến địa chỉ 246/71 Hòa Hưng 
                     tr 
                         td Tổng cộng 
-                        td.text-end 2.868.500₫
+                        td.text-end= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
                     tr
                         td(colspan=2) 
-                            .btn.btn-danger.w-100 Thanh toán
+                            a.btn.btn-danger.w-100(href="#") Thanh toán
                     tr 
                         td(colspan=2)
                             i(class="fal fa-tags")
@@ -37,4 +36,4 @@ block contents
                             input.form-control.w-100(type="text", placeholder="Mã ưu đãi")    
                     tr
                         td.border-bottom-0(colspan=2)
-                            button.btn.btn-dark.w-100 Áp dụng
+                            a.btn.btn-dark.w-100(href="#") Áp dụng

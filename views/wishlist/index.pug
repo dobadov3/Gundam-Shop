@@ -8,4 +8,5 @@ block contents
                 th Product name
                 th Price
                 th(colspan=2)  Stock status 
-            include ./wishlist-item
+            each product in products
+                include ./wishlist-item

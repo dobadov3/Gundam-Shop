@@ -4,9 +4,13 @@ tr.positon-relative
             i(class="fal fa-times-circle")
     td
         a(href="") 
-            img.img-fluid.img-wishlist(src="https://azgundam.com/wp-content/uploads/2021/01/SD-CS-Hello-Kitty-Zaku-II-AZGUNDAM-5-510x510.jpg", alt="")
-    td HG BF 007 Sengoku Astray
-    td 469.000₫
-    td In Stock
-    td 
-        button.btn.btn-danger Mua ngay 
+            img.img-fluid.img-wishlist(src=product.image[0], alt="")
+    td= product.name
+    td= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})	
+    if (product.status)
+        td In Stock
+    else
+        td Out Stock
+    if (product.status)
+        td 
+            button.btn.btn-danger Mua ngay 
