@@ -9,4 +9,4 @@
             if (product.sale !== 0)
                 p.text-price.text-decoration-line-through.purchase-cost= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
             p.text-price= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-        a.btn.btn-primary.btn-cart(href='#') Cart
+        a.btn.btn-primary.btn-cart(href='?add-to-cart='+product._id) Mua hàng

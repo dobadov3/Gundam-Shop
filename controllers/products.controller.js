@@ -81,4 +81,8 @@ module.exports.getDetail = async function(req, res){
         data: data.data,
         product
     })
-}
+};
+
+module.exports.addToCart = async function(req, res){
+    res.redirect('')
+};

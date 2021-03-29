@@ -7,8 +7,6 @@ module.exports.get = async function(req, res){
 
   var products = await Product.find({_id: {$in: session.wishlist}})
 
-  console.log(products)
-
   res.render('./wishlist/index', {
       data: data.data, 
       products

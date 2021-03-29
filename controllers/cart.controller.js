@@ -26,8 +26,6 @@ module.exports.get = async function(req, res){
         finalPrice+=product.total
     })
     
-    console.log(products)
-    // console.log(session)
     res.render('./cart/index', {
         data: data.data,
         products,
