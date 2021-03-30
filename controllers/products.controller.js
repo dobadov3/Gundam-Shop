@@ -2,6 +2,7 @@ var data = require('../layout.data');
 var Product = require('../models/products.model');
 var Category = require('../models/category.model');
 var DetailCategory = require('../models/detail_category.model');
+var Session = require('../models/session.model');
 
 module.exports.get = function(req, res){
     
@@ -86,3 +87,19 @@ module.exports.getDetail = async function(req, res){
 module.exports.addToCart = async function(req, res){
     res.redirect('')
 };
+
+module.exports.addToCart = async function(req, res){
+    var productID = req.params.productID;
+    var sessionID = req.signedCookies.sessionId;
+    var countProduct = 0
+    
+    var session = await Session.findOne({sessionID: sessionID});
+    
+    var cart = {idProduct: productID, count: countProduct+1}
+
+    session.cart.push(cart);
+
+    session.save();
+
+    res.redirect('back');
+}
