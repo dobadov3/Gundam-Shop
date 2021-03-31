@@ -84,22 +84,46 @@ module.exports.getDetail = async function(req, res){
     })
 };
 
-module.exports.addToCart = async function(req, res){
-    res.redirect('')
-};
+function checkCart(cart, idProduct){
+    var check = false;
+    cart.forEach(c => {
+        if (c.idProduct === idProduct){
+            check = true;
+        }
+    });
+    return check;
+}
 
 module.exports.addToCart = async function(req, res){
     var productID = req.params.productID;
     var sessionID = req.signedCookies.sessionId;
-    var countProduct = 0
+    var countProduct = 0;
+    var position = 0;
     
     var session = await Session.findOne({sessionID: sessionID});
     
+    
+    session.cart.forEach((c, index) => {
+        if (c.idProduct === productID){
+            position = index;
+            countProduct = c.count + 1
+        }
+    });
+    
     var cart = {idProduct: productID, count: countProduct+1}
 
-    session.cart.push(cart);
-
-    session.save();
+    if (checkCart(session.cart, productID)){        
+        session.cart[position].count = countProduct
+        console.log(session.cart[position])
+        session.save((err, result) =>{
+            if(err){
+                console.log(err);
+            }
+        });
+    }else{
+        session.cart.push(cart);
+        session.save();
+    }
 
     res.redirect('back');
 }

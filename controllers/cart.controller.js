@@ -16,8 +16,6 @@ module.exports.get = async function(req, res){
 
     var products = await Product.find({_id: {$in: productID}})
 
-    console.log(products)
-
     for (let i =0; i<products.length; i++){
         products[i].countCart = countCart[i];
         products[i].total = products[i].price * countCart[i]
