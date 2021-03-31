@@ -3,6 +3,8 @@
         img.card-img-top.img-fluid(src=product.image[0], alt='...')
     if (product.sale !== 0)
         .box-sale-percent.position-absolute= "-" + product.sale + "%"
+    a(href="/products/add-to-wishlist/" + product._id, class="icon-favourite")
+        i(class="fal fa-heart-circle text-black")
     .card-body
         h5.card-title.product-name= product.name
         .product-price.d-flex.justify-content-around

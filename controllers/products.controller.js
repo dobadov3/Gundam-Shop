@@ -22,8 +22,6 @@ module.exports.getByCategory = async function(req, res){
 
     var count = await (await Product.find({id_detail_category: cateID})).length;
 
-    
-    
     res.render('./products/index', {
         data: data.data,
         products: products,
@@ -48,13 +46,9 @@ module.exports.getCategory = async function(req, res){
         return cate._id;
     });
 
-    console.log(list_id_detail)
-
     var products = await Product.find({id_detail_category: {"$in": list_id_detail}})
                                 .skip((page * limit) - limit)
                                 .limit(limit);
-
-    console.log(products)
 
     products.forEach(product => {
         product.priceSale = product.price - (product.price*product.sale)/100;
@@ -114,16 +108,31 @@ module.exports.addToCart = async function(req, res){
 
     if (checkCart(session.cart, productID)){        
         session.cart[position].count = countProduct
-        console.log(session.cart[position])
-        session.save((err, result) =>{
-            if(err){
-                console.log(err);
-            }
-        });
     }else{
         session.cart.push(cart);
-        session.save();
     }
 
+    session.markModified("cart");
+
+    await session.save((err, result) => {
+        console.log(err)
+        console.log(result)
+    });
+
     res.redirect('back');
-}
+};
+
+module.exports.addToWishList = async function(req, res){
+    var productID = req.params.productID;
+    var sessionID = req.signedCookies.sessionId;
+
+    var session = await Session.findOne({sessionID: sessionID});
+
+    if(!checkCart(session.wishlist, productID)){
+        session.wishlist.push(productID);
+    }
+
+    session.save();
+
+    res.redirect('back');
+};

@@ -115,6 +115,28 @@ a.card-link{
     
 }
 
+.card .icon-favourite{
+    font-size: 30px;
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.icon-favourite i{ 
+    color: black !important;
+}
+
+a.icon-favourite:hover i{
+    color: red !important;
+}
+
+.card:hover a.icon-favourite{
+    right: 10px;
+    opacity: 1;
+}
+
 .card img{
     min-height: 50%;
 }

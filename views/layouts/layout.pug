@@ -55,7 +55,7 @@ body
                   li
                     a.dropdown-item(href="/products/"+paints.id)= paints.name
             li.nav-item
-              a.nav-link.text-white.figures(href="/products/"+data[0][3].id)= data[0][3].name
+              a.nav-link.text-white.figures(href="/products/cate/"+data[0][3].name)= data[0][3].name
             li.nav-item.dropdown.other-menu
               a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][4].name, aria-expanded='false')= data[0][4].name
               ul.dropdown-menu.other-sub.has-sub(aria-labelledby='navbarDropdown')
