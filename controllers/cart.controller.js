@@ -23,6 +23,9 @@ module.exports.get = async function(req, res){
 
     var finalPrice=0;
 
+    var wishListLength = session.wishlist.length;
+    var cartLength = session.cart.length;
+
     products.forEach(product=>{
         finalPrice+=product.total
     })
@@ -30,6 +33,8 @@ module.exports.get = async function(req, res){
     res.render('./cart/index', {
         data: data.data,
         products,
-        finalPrice
+        finalPrice,
+        wishListLength,
+        cartLength
     });
 }

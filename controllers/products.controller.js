@@ -10,6 +10,7 @@ module.exports.get = function(req, res){
 
 module.exports.getByCategory = async function(req, res){
     var cateID = req.params.cateID;
+    var sessionId = req.signedCookies.sessionId;
     var page = req.query.page || 1;
     var limit = 8;
     var products = await Product.find({id_detail_category: cateID})
@@ -20,6 +21,11 @@ module.exports.getByCategory = async function(req, res){
         product.priceSale = product.price - (product.price*product.sale)/100;
     })
 
+    var session = await Session.findOne({sessionID: sessionId});
+
+    var wishListLength = session.wishlist.length;
+    var cartLength = session.cart.length;
+
     var count = await (await Product.find({id_detail_category: cateID})).length;
 
     res.render('./products/index', {
@@ -29,7 +35,9 @@ module.exports.getByCategory = async function(req, res){
         limit: parseInt(limit),
         items: (products.length)/limit,
         countItems: parseInt(count),
-        cateID
+        cateID,
+        wishListLength,
+        cartLength
     });
 };
 
@@ -37,6 +45,12 @@ module.exports.getCategory = async function(req, res){
     var page = req.query.page || 1;
     var cateName = req.params.cateName;
     var limit = 8;
+    var sessionId = req.signedCookies.sessionId;
+
+    var session = await Session.findOne({sessionID: sessionId});
+
+    var wishListLength = session.wishlist.length;
+    var cartLength = session.cart.length;
 
     var category = await Category.findOne({name: cateName});
 
@@ -62,19 +76,29 @@ module.exports.getCategory = async function(req, res){
         page: parseInt(page),
         limit: parseInt(limit),
         items: (products.length)/limit,
-        countItems: parseInt(count)
+        countItems: parseInt(count),
+        wishListLength,
+        cartLength
     });
 };
 
 module.exports.getDetail = async function(req, res){
     var code = req.params.code;
     var product = await Product.findOne({code: code});
+    var sessionId = req.signedCookies.sessionId;
+
+    var session = await Session.findOne({sessionID: sessionId});
+
+    var wishListLength = session.wishlist.length;
+    var cartLength = session.cart.length;
 
     product.priceSale = product.price - (product.price*product.sale)/100;
 
     res.render('./products/detail_products', {
         data: data.data,
-        product
+        product,
+        wishListLength,
+        cartLength
     })
 };
 
@@ -135,3 +159,23 @@ module.exports.addToWishList = async function(req, res){
 
     res.redirect('back');
 };
+
+module.exports.search = async function(req, res){
+    var productName = req.query.product.toLowerCase();
+
+    var results = await Product.find();
+
+    var products = results.filter(product => {
+        return product.name.toLowerCase().indexOf(productName) !== -1;
+    });
+
+    products.forEach(product => {
+        product.priceSale = product.price - (product.price*product.sale)/100;
+    })
+
+    res.render('./products/index', {
+        data: data.data,
+        products,
+        paggination: false
+    })
+}

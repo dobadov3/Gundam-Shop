@@ -35,10 +35,18 @@ header .header-left{
     position: relative;
 }
 
-header .header-left a{
+header .header-left form{
+    width: 100%;
+}
+
+header .header-left button{
     position: absolute;
+    z-index: 1;
     right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
     color: #888;
+    border: none;
 }
 
 header a:hover{
@@ -104,6 +112,13 @@ nav .nav-item{
 .other-menu:hover a.nav-link,
 a.figures:hover{
     color: #ba933e !important;
+}
+
+.gundam-sub,
+.tools-sub,
+.paints-sub,
+.other-sub{
+    box-shadow: 1px 1px 4px rgba(0,0,0,.3);
 }
 
 .gundam-menu:hover .gundam-sub,
@@ -192,6 +207,16 @@ a.icon-favourite:hover i{
 
 .card .btn-cart:hover{
     background-color: #9e1f05;
+}
+
+/* Product Category Side bar */
+a.cate-name{
+    transition: 0.2s;
+}
+
+li.product-category:hover a.cate-name{
+    font-weight: bold;
+    font-size: 18px;
 }
 
 /* Block action */

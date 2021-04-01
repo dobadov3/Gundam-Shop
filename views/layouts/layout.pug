@@ -15,9 +15,10 @@ body
   header
     .container.d-flex
       .col-4.header-left.d-flex.align-items-center.mt-2
-        input.form-control#input-search(type='text', placeholder='Search', keyup="keyupFunction")
-        a(href='#')
-          i.fas.fa-search#icon-search(onclick="searchFunction()")
+        form(action="/products/search", method="GET")
+          input.form-control#input-search(type='text', placeholder='Search', keyup="keyupFunction", name="product")
+          button
+            i.fas.fa-search#icon-search
       .col-4.header-center.d-flex.justify-content-center
         a(href='/home')
           img.img-fluid(src='/img/logo.jpg', alt='')
