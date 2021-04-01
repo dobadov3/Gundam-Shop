@@ -1,5 +1,6 @@
 var Category = require('./models/category.model');
 var DetailCategory = require('./models/detail_category.model');
+var Session = require('./models/session.model');
 
 var category;
 var detail_gundam;

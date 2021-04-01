@@ -68,6 +68,17 @@ header .header-right a{
     
 }
 
+header .header-right i{
+    position: relative;
+}
+
+header .header-right span.badge{
+    font-size: 10px;
+    right: -10px;
+    top: -5px;
+    position: absolute;
+}
+
 header nav{
     background-color: black !important;
 }
@@ -112,7 +123,14 @@ a.card-link{
 }
 
 .card{
-    
+    border: none !important;
+    transition: 0.5s;
+    height: 100%;
+}
+
+.product-wrapper:hover .card{
+    box-shadow: 1px 1px 4px rgba(0,0,0,.5);
+    transform: translateY(-15px);
 }
 
 .card .icon-favourite{

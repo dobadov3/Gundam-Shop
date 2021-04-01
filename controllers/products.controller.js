@@ -11,7 +11,7 @@ module.exports.get = function(req, res){
 module.exports.getByCategory = async function(req, res){
     var cateID = req.params.cateID;
     var page = req.query.page || 1;
-    var limit = 4;
+    var limit = 8;
     var products = await Product.find({id_detail_category: cateID})
                                 .skip((page * limit) - limit)
                                 .limit(limit);
@@ -36,7 +36,7 @@ module.exports.getByCategory = async function(req, res){
 module.exports.getCategory = async function(req, res){
     var page = req.query.page || 1;
     var cateName = req.params.cateName;
-    var limit = 4;
+    var limit = 8;
 
     var category = await Category.findOne({name: cateName});
 
@@ -115,8 +115,7 @@ module.exports.addToCart = async function(req, res){
     session.markModified("cart");
 
     await session.save((err, result) => {
-        console.log(err)
-        console.log(result)
+        
     });
 
     res.redirect('back');

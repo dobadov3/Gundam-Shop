@@ -24,10 +24,14 @@ body
       .col-4.d-flex.justify-content-end.align-items-center.header-right
         a(href='/wishlist')
           i.far.fa-heart
+            if (wishListLength !== 0)          
+              span(class="badge bg-danger")= wishListLength
         a(href='#')
           i.far.fa-user
         a(href='/cart', style='border: none;')
           i.fal.fa-shopping-cart
+            if (cartLength !== 0)
+              span(class="badge bg-danger")= cartLength
     // Navbar
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.bg-black
       .container

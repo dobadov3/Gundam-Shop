@@ -25,7 +25,8 @@ block contents
                 .container-fluid
                     .row
                         each product in products
-                            .col-lg-3.col-md-6.my-3
+                            .col-lg-3.col-md-6.my-3.product-wrapper
                                 include card-product
                         if (products.length !== 0)
                             include paggination
+                            
