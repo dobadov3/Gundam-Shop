@@ -4,11 +4,12 @@
     if (product.sale !== 0)
         .box-sale-percent.position-absolute= "-" + product.sale + "%"
     a(href="/products/add-to-wishlist/" + product._id, class="icon-favourite")
-        i(class="fal fa-heart-circle text-black")
+        i(class="fal fa-heart text-black")
+    a(href="/products/add-to-cart/" + product._id, class="icon-addToCart")
+        i(class="fal fa-shopping-cart")
     .card-body
         h5.card-title.product-name= product.name
-        .product-price.d-flex.justify-content-around
+        .price-wrapper
             if (product.sale !== 0)
                 p.text-price.text-decoration-line-through.purchase-cost= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
             p.text-price= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-        a.btn.btn-primary.btn-cart(href='/products/add-to-cart/'+product._id) Mua hàng

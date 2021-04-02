@@ -46,6 +46,7 @@ header .header-left button{
     top: 50%;
     transform: translateY(-50%);
     color: #888;
+    background-color: transparent;
     border: none;
 }
 
@@ -140,7 +141,10 @@ a.card-link{
 .card{
     border: none !important;
     transition: 0.5s;
-    height: 100%;
+}
+
+.card .card-body{ 
+    min-height: 150px !important;
 }
 
 .product-wrapper:hover .card{
@@ -149,23 +153,48 @@ a.card-link{
 }
 
 .card .icon-favourite{
-    font-size: 30px;
+    font-size: 20px;
     position: absolute;
-    right: -10px;
+    right: -20px;
     top: 10px;
     transition: 0.5s;
     opacity: 0;
+    background-color: white;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.5);
+    padding: 2px 6px;
+    border-radius: 5px;
 }
 
-.icon-favourite i{ 
+.card .icon-addToCart{
+    font-size: 20px;
+    position: absolute;
+    right: -30px;
+    top: 50px;
+    transition: 1s;
+    opacity: 0;
+    background-color: white;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.5);
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+
+.card .icon-favourite:hover,
+.card .icon-addToCart:hover{
+    background-color: black;
+}
+
+.icon-favourite i,
+.icon-addToCart i{ 
     color: black !important;
 }
 
-a.icon-favourite:hover i{
-    color: red !important;
+a.icon-favourite:hover i,
+a.icon-addToCart:hover i{
+    color: white !important;
 }
 
-.card:hover a.icon-favourite{
+.card:hover a.icon-favourite,
+.card:hover a.icon-addToCart{
     right: 10px;
     opacity: 1;
 }
@@ -174,39 +203,27 @@ a.icon-favourite:hover i{
     min-height: 50%;
 }
 
-.card .card-body{
-}
-
-.card h5.card-title{
-}
-
 .card .product-name{
     color: black;
-    font-weight: bold;
-}
-
-.card .product-price{
+    font-size: 16px;
 }
 
 .card .text-price{
-    color: red;
+    color: black;
     font-weight: bold;
     margin: 8px;
 }
 
 .card .purchase-cost{
-    color: orange
+    color: #CCC;
+    font-weight: 300;
 }
 
-.card .btn-cart{
-    width: 50%;
-    background-color: red;
-    outline: none;
-    border: none;
-}
-
-.card .btn-cart:hover{
-    background-color: #9e1f05;
+.price-wrapper{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Product Category Side bar */
