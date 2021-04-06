@@ -17,7 +17,7 @@ module.exports.get = async function(req, res){
 
     res.render('./home/index', {
         data: data.data,
-        products: products.slice(0, 4),
+        products: products.slice(8, 14),
         wishListLength,
         cartLength
     });

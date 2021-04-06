@@ -19,13 +19,16 @@ var cartRoute = require('./routes/cart.route');
 var sessionMiddleware = require('./middlewares/session.middleware')
 
 app.set('view engine', 'pug');
-app.set('views', './views'); 
+app.set('views', './views');
+
+app.use(sessionMiddleware);
 
 app.get('/', (req, res) => {
     res.redirect('/home')
 });
 
-app.use(sessionMiddleware);
+
+
 app.use('/home', homeRoute);
 app.use('/products', productsRoute);
 app.use('/wishlist', wishlistRoute);

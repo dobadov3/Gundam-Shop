@@ -26,9 +26,15 @@ a:hover{
     color: #ba933e;
 }
 
+h1.inform-null{
+    text-align: center;
+    margin-top: 25%;
+}
+
 /* Header */
 header{
     background-color: black !important;
+
 }
 
 header .header-left{
@@ -143,6 +149,36 @@ a.card-link{
     transition: 0.5s;
 }
 
+.card .card-body{
+    position: relative;
+}
+
+.card-body .quick-view{
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    position: absolute;
+    font-weight: 300;
+    top: -15%;
+    left: 0;
+    border: none;
+    transform: translateY(50%);
+    opacity: 0;
+    transition: 0.8s;
+    z-index: 9999;
+}
+
+.quick-view:hover{
+    background-color: rgb(213 14 14);
+}
+
+.card:hover .quick-view{
+    transform: translateY(0);
+    opacity: 1;
+}
+
 .card .card-body{ 
     min-height: 150px !important;
 }
@@ -226,6 +262,23 @@ a.icon-addToCart:hover i{
     transform: translateX(-50%);
 }
 
+/* Product Detail */
+.main-img{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-img{
+    width: 100%;
+}
+
+.sub-img{
+    height: 100%;
+    overflow:hidden;
+}
+
 /* Product Category Side bar */
 a.cate-name{
     transition: 0.2s;
@@ -303,10 +356,6 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 0;
     text-align: center;
     position: relative;
-}
-
-.wish-list a:first{
-    
 }
 
 i.fa-times-circle{

@@ -4,24 +4,24 @@ block contents
         .row    
             .col-lg-6
                 .row 
-                    .col-12.d-flex-justify-content-center.position-relative
-                        a(href="#") 
-                            img.w-100.img-fluid(src=product.image[0])
+                    .col-12.position-relative
+                        .main-img
+                            img.img-fluid(src=product.image[0])
                         if (product.sale !== 0)
                             .box-sale-percent.position-absolute= "-" + product.sale + "%"
                 .row.mt-3
                     .col-lg-3.col-md-3.col-sm-3
-                        a(href="#") 
-                            img.img-fluid.h-50(src=product.image[0], alt="")
+                        .sub-img 
+                            img.img-fluid(src=product.image[0], alt="")
                     .col-lg-3.col-md-3.col-sm-3
-                        a(href="#") 
-                            img.img-fluid.h-50(src=product.image[1], alt="")
+                        .sub-img 
+                            img.img-fluid(src=product.image[1], alt="")
                     .col-lg-3.col-md-3.col-sm-3
-                        a(href="#") 
-                            img.img-fluid.h-50(src=product.image[2], alt="")
+                        .sub-img 
+                            img.img-fluid(src=product.image[2], alt="")
                     .col-lg-3.col-md-3.col-sm-3
-                        a(href="#") 
-                            img.img-fluid.h-50(src=product.image[3], alt="")
+                        .sub-img 
+                            img.img-fluid(src=product.image[3], alt="")
             .col-lg-6.mt-5
                 h1.fw-bold= product.name
                 .d-flex
@@ -30,3 +30,6 @@ block contents
                     h2.fw-bold.text-danger= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
                 input(type="number", value="1", min="1")
                 a.btn.btn-danger Mua ngay
+            hr.mt-5
+            h3 Mô tả
+            

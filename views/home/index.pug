@@ -1,42 +1,24 @@
 extends ../layouts/layout
 block contents 
     .container 
-        .row.my-5
-            .col-lg-2
-                .block-action 
-                    i.fad.fa-gift
-                    span Đang giảm giá
-            .col-lg-10 
-                .block-line
-                    hr
-        .row.mb-3
+        p.h1.text-center.fw-bold.mt-5 Sale Products
+        p.h6.text-center.mb-5 Top sales in week
+        .row.mb-5
             each product in products
-                .col-lg-3.product-wrapper
+                .col-lg-2.product-wrapper
                     include ../products/card-product
         
-        .row.my-5
-            .col-lg-2
-                .block-action 
-                    i.fal.fa-badge-dollar
-                    span Bán chạy nhất
-            .col-lg-10 
-                .block-line
-                    hr
-        .row.mb-3
+        p.h1.text-center.fw-bold.mt-5 Best Seller Products
+        p.h6.text-center.mb-5 Best seller in week
+        .row.mb-5
             each product in products
-                .col-lg-3.product-wrapper
+                .col-lg-2.product-wrapper
                     include ../products/card-product
 
-        .row.my-5
-            .col-lg-2
-                .block-action 
-                    i.fal.fa-sparkles
-                    span Hàng mới về
-            .col-lg-10 
-                .block-line
-                    hr
-        .row.mb-3
+        p.h1.text-center.fw-bold.mt-5 New Products
+        p.h6.text-center.mb-5 New products in week
+        .row.mb-5
             each product in products
-                .col-lg-3.product-wrapper 
+                .col-lg-2.product-wrapper 
                     include ../products/card-product
         
