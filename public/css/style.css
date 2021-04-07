@@ -37,6 +37,10 @@ header{
 
 }
 
+header a.dropdown-item:focus{
+    background-color: #AAA;
+}
+
 header .header-left{
     position: relative;
 }
@@ -279,6 +283,11 @@ a.icon-addToCart:hover i{
     overflow:hidden;
 }
 
+.description li{
+    font-size: 20px;
+    margin-left: 80px;
+}
+
 /* Product Category Side bar */
 a.cate-name{
     transition: 0.2s;
@@ -363,7 +372,7 @@ i.fa-times-circle{
 }
 
 .img-wishlist{
-    height: 7% !important;
+    width: 50px !important;
 }
 
 /* Cart */
@@ -375,6 +384,10 @@ i.fa-times-circle{
 table.table-delivery-address tr th,
 table.table-delivery-address tr td{
     padding: 16px 0;
+}
+
+.img-wishlist{
+    width: 50px;
 }
 
 td i.fa-tags{

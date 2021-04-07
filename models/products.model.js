@@ -7,10 +7,11 @@ var productSchema = new mongoose.Schema({
     price: Number,
     count: Number,
     status: Boolean,
-    description: String,
+    description: Array,
     image: Array,
     code: String, 
-    sale: Number
+    sale: Number,
+    weight: Number
 });
 
 var Product = mongoose.model('Product', productSchema, 'products');

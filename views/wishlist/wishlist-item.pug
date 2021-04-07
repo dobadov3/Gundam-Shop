@@ -3,8 +3,9 @@ tr.positon-relative
         a(href="#")
             i(class="fal fa-times-circle")
     td
-        a(href="") 
-            img.img-fluid.img-wishlist(src=product.image[0], alt="")
+        .img-wishlist
+            a(href="/products/detail/"+product.code) 
+                img.img-fluid(src=product.image[0], alt="")
     td= product.name
     td= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})	
     if (product.status)
