@@ -54,24 +54,23 @@ block contents
             .row 
                 .col-lg-2.col-md-2
                     h3 Thông tin bổ sung
-                .col-lg-6.col-md-6 
-                    p.fw-bold Trọng lượng
-
-                .col-lg-4.col-md-4
-                    p= product.weight + "kg"
+                .col-lg-10.col-md-10 
+                    .row 
+                        .col-lg-8.col-md-8
+                            p.fw-bold Trọng lượng
+                        .col-lg-4.col-md-4
+                            p= product.weight + "kg"
+                    .row 
+                        .col-lg-8.col-md-8
+                            p.fw-bold Kích thước
+                        .col-lg-4.col-md-4
+                            p= "30x30x22"
         hr.mt-5
         h3 Sản phẩm tương tự
         .row.justify-content-between.mt-3
-            .col-lg-2.col-md-2.product-wrapper
-                include ./card-product
-            .col-lg-2.col-md-2.product-wrapper
-                include ./card-product
-            .col-lg-2.col-md-2.product-wrapper
-                include ./card-product
-            .col-lg-2.col-md-2.product-wrapper
-                include ./card-product
-            .col-lg-2.col-md-2.product-wrapper
-                include ./card-product
+            each product in relateProducts
+                .col-lg-2.col-md-2.product-wrapper
+                    include ./card-product
 
         hr.mt-5
     include ../layouts/sub-footer

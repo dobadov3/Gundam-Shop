@@ -1,85 +1,33 @@
-.sub-footer.my-5
+.sub-footer.my-5.d-sm-none.d-lg-block
     .container
         .row
             .col-lg-4.col-md-3
-                h2 SẢN PHẨM MỚi
-                .row 
-                    .col-lg-2.col-md-2
-                        a(href="/products/detail/" + product.code) 
-                            img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-10.col-md-10
-                        a(href="/products/detail/" + product.code) 
-                            p.mb-0.fw-bold= product.name
-                        .product-price
-                            p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                       
-                .row 
-                    .col-lg-2.col-md-2
-                        a(href="/products/detail/" + product.code) 
+                h2 SẢN PHẨM MỚI
+                each product in data[5]
+                    .row 
+                        .col-lg-2.col-md-2
+                            a(href="/products/detail/" + product.code) 
                                 img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-10.col-md-10
-                        a(href="/products/detail/" + product.code) 
-                            p.mb-0.fw-bold= product.name
-                        .product-price
-                            p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                       
-                .row 
-                    .col-lg-2.col-md-2
-                        a(href="/products/detail/" + product.code) 
-                            img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-10.col-md-10
-                        a(href="/products/detail/" + product.code) 
-                            p.mb-0.fw-bold= product.name
-                        .product-price
-                            p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                       
-                .row 
-                    .col-lg-2.col-md-2
-                        a(href="/products/detail/" + product.code) 
-                            img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-10.col-md-10
-                        a(href="/products/detail/" + product.code) 
-                            p.mb-0.fw-bold= product.name
-                        .product-price
-                            p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                       
+                        .col-lg-10.col-md-10
+                            a(href="/products/detail/" + product.code) 
+                                p.mb-0.fw-bold= product.name
+                            .product-price
+                                p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                                            
             .col-lg-4.col-md-3
                 h2 SẢN PHẨM BÁN CHẠY
-                .row 
-                    .col-lg-2.col-md-2
-                        a(href="/products/detail/" + product.code) 
-                            img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-10.col-md-10
-                        a(href="/products/detail/" + product.code) 
-                            p.mb-0.fw-bold= product.name
-                        .product-price
-                            p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                       
-                .row 
-                    .col-lg-2.col-md-2
-                        a(href="/products/detail/" + product.code) 
-                            img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-10.col-md-10
-                        a(href="/products/detail/" + product.code) 
-                            p.mb-0.fw-bold= product.name
-                        .product-price
-                            p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                       
-                .row 
-                    .col-lg-2.col-md-2
-                        a(href="/products/detail/" + product.code) 
-                            img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-10.col-md-10
-                        a(href="/products/detail/" + product.code) 
-                            p.mb-0.fw-bold= product.name
-                        .product-price
-                            p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                       
-                .row 
-                    .col-lg-2.col-md-2
-                        a(href="/products/detail/" + product.code) 
-                            img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-10.col-md-10
-                        a(href="/products/detail/" + product.code) 
-                            p.mb-0.fw-bold= product.name
-                        .product-price
-                            p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                       
+                each product in data[6]
+                    .row 
+                        .col-lg-2.col-md-2
+                            a(href="/products/detail/" + product.code) 
+                                img.img-fluid(src=product.image[0], alt="")
+                        .col-lg-10.col-md-10
+                            a(href="/products/detail/" + product.code) 
+                                p.mb-0.fw-bold= product.name
+                            .product-price
+                                p= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})                                          
                     
             .col-lg-4.col-md-3
-                h2.mb-3 VÌ SAO BẠN NÊN CHỌN AZGUNDAM
+                h2.mb-3 VÌ SAO BẠN NÊN CHỌN AATOYS
                 .row.my-2 
                     .col-lg-2.col-md-2
                         i(class="fal fa-truck", style="font-size: 30px;")

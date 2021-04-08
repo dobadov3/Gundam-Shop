@@ -1,5 +1,6 @@
 var Category = require('./models/category.model');
 var DetailCategory = require('./models/detail_category.model');
+var Product = require('./models/products.model');
 var Session = require('./models/session.model');
 
 var category;
@@ -20,7 +21,13 @@ async function Data(){
     detail_paints = await DetailCategory.find({id_category: paints.id});
     detail_other = await DetailCategory.find({id_category: other.id});
 
-    var data = [category, detail_gundam, detail_tools, detail_paints, detail_other]
+    var newProducts = await Product.find();
+
+    newProducts = newProducts.slice(newProducts.length - 5, newProducts.length - 1);
+    
+    var bestSeller = await Product.find().limit(4);
+    
+    var data = [category, detail_gundam, detail_tools, detail_paints, detail_other, newProducts, bestSeller]
 
     module.exports.data = data
 }

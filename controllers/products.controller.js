@@ -94,11 +94,18 @@ module.exports.getDetail = async function(req, res){
 
     product.priceSale = product.price - (product.price*product.sale)/100;
 
+    var relateProducts = await Product.find({id_detail_category: product.id_detail_category}).limit(6);
+
+    relateProducts.forEach(product => {
+        product.priceSale = product.price - (product.price*product.sale)/100;
+    })
+
     res.render('./products/detail_products', {
         data: data.data,
         product,
         wishListLength,
-        cartLength
+        cartLength,
+        relateProducts
     })
 };
 
