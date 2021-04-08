@@ -28,8 +28,18 @@ block contents
                     if (product.sale !== 0)
                         h2.fw-bold.text-orange.me-5.text-decoration-line-through= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
                     h2.fw-bold.text-danger= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-                input(type="number", value="1", min="1")
-                a.btn.btn-danger Mua ngay
+                ul 
+                    li
+                        p.fw-300= "Mã: " + product.code
+                    if (product.status)
+                        li
+                            p.fw-300= "Tình trạng: Còn hàng" 
+                    else
+                        li
+                            p.fw-300= "Tình trạng: Hết hàng" 
+                form
+                    input(type="number", value="1", min="1")
+                    a.btn.btn-danger Mua ngay
         hr.mt-5
         .description
             .row 
@@ -49,6 +59,23 @@ block contents
 
                 .col-lg-4.col-md-4
                     p= product.weight + "kg"
+        hr.mt-5
+        h3 Sản phẩm tương tự
+        .row.justify-content-between.mt-3
+            .col-lg-2.col-md-2.product-wrapper
+                include ./card-product
+            .col-lg-2.col-md-2.product-wrapper
+                include ./card-product
+            .col-lg-2.col-md-2.product-wrapper
+                include ./card-product
+            .col-lg-2.col-md-2.product-wrapper
+                include ./card-product
+            .col-lg-2.col-md-2.product-wrapper
+                include ./card-product
+
+        hr.mt-5
+    include ../layouts/sub-footer
+                
 
                     
                 

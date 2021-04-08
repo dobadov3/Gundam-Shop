@@ -444,6 +444,13 @@ footer .footer-right i{
     font-size: 30px;
 }
 
+/* Sub-footer */
+.sub-footer{
+    background-color: rgba(240, 240, 240, 0.692);
+    padding: 10px 0 10px 0;
+    
+}
+
 /* Paggination */
 li.page-item{
     border-radius: 100% !important;
