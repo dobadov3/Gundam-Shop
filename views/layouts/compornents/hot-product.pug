@@ -1,0 +1,35 @@
+.item.item-carousel
+  .products
+    .product
+      .product-image
+        .image
+          a(href='detail.html')
+            img(src='/assets/images/products/p6.jpg', alt='')
+            img.hover-image(src='/assets/images/products/p6_hover.jpg', alt='')
+        // /.image
+        .tag.hot
+          span hot
+      // /.product-image
+      .product-info.text-left
+        h3.name
+          a(href='detail.html') Floral Print Buttoned
+        .rating.rateit-small
+        .description
+        .product-price
+          span.price  $450.99 
+          span.price-before-discount $ 800
+        // /.product-price
+      // /.product-info
+      .cart.clearfix.animate-effect
+        .action
+          ul.list-unstyled
+            li.add-cart-button.btn-group
+              a.btn.btn-primary.icon(href='/products/add-to-cart/'+product._id)
+                i.fa.fa-shopping-cart
+            li.lnk.wishlist
+              a.add-to-cart(href='/products/add-to-wishlist/'+product._id, title='Wishlist')
+                i.icon.fa.fa-heart
+        // /.action
+      // /.cart
+    // /.product
+  // /.products

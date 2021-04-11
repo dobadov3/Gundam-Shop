@@ -12,7 +12,7 @@ module.exports.getByCategory = async function(req, res){
     var cateID = req.params.cateID;
     var sessionId = req.signedCookies.sessionId;
     var page = req.query.page || 1;
-    var limit = 8;
+    var limit = 12;
     var products = await Product.find({id_detail_category: cateID})
                                 .skip((page * limit) - limit)
                                 .limit(limit);

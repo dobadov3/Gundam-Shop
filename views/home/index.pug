@@ -1,24 +1,30 @@
 extends ../layouts/layout
 block contents 
     .container 
-        p.h1.text-center.fw-bold.mt-5 Sale Products
-        p.h6.text-center.mb-5 Top sales in week
-        .row.mb-5
-            each product in products
-                .col-lg-2.product-wrapper
-                    include ../products/card-product
-        
-        p.h1.text-center.fw-bold.mt-5 Best Seller Products
-        p.h6.text-center.mb-5 Best seller in week
-        .row.mb-5
-            each product in products
-                .col-lg-2.product-wrapper
-                    include ../products/card-product
-
-        p.h1.text-center.fw-bold.mt-5 New Products
-        p.h6.text-center.mb-5 New products in week
-        .row.mb-5
-            each product in products
-                .col-lg-2.product-wrapper 
-                    include ../products/card-product
-    include ../layouts/sub-footer
+        .row 
+            .col-lg-2
+                include ../layouts/compornents/side-categories
+                -var specialProducts_1= data[8]
+                -var specialProducts_2= data[8]
+                -var specialProducts_3= data[8]
+                include ../layouts/compornents/special-offer
+                -var saleProducts = data[6]
+                include ../layouts/compornents/hot-deal
+                include ../layouts/compornents/member-description
+            .col-lg-10
+                include ../layouts/compornents/slider
+                -var title = "Sản phẩm mới"
+                include ../layouts/compornents/feature-products
+                    block products 
+                        each product in data[5]
+                            include ../layouts/compornents/product
+                -title = "Sản phẩm bán chạy"
+                include ../layouts/compornents/feature-products
+                    block products 
+                        each product in data[6]
+                            include ../layouts/compornents/product
+                -title= "Đang giảm giá"
+                include ../layouts/compornents/feature-products
+                    block products 
+                        each product in data[7]
+                            include ../layouts/compornents/product

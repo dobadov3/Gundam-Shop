@@ -23,11 +23,15 @@ async function Data(){
 
     var newProducts = await Product.find();
 
-    newProducts = newProducts.slice(newProducts.length - 5, newProducts.length - 1);
+    newProducts = newProducts.slice(newProducts.length - 11, newProducts.length - 1);
     
-    var bestSeller = await Product.find().limit(4);
+    var bestSeller = await Product.find();
     
-    var data = [category, detail_gundam, detail_tools, detail_paints, detail_other, newProducts, bestSeller]
+    var saleProducts = await Product.find();
+
+    var specialProducts = await Product.find().limit(3);
+
+    var data = [category, detail_gundam, detail_tools, detail_paints, detail_other, newProducts, bestSeller, saleProducts, specialProducts]
 
     module.exports.data = data
 }

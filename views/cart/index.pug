@@ -1,47 +1,7 @@
 extends ../layouts/layout
 block contents
     .container.mt-5
-        if (products.length === 0)
-            h1.inform-null Bạn chưa thêm gì vào giỏ hàng!
+        if (cartLength === 0)
+            h1.text-center Bạn chưa có sản phẩm nào trong giỏ hàng
         else
-            .row 
-                .col-lg-8.col-md-8
-                    form(method="POST")
-                        table.table 
-                            tr
-                                th(colspan=3) Sản phẩm
-                                th Giá
-                                th Số lượng
-                                th Thành tiền
-                            each product in products
-                                include ./cart-item.pug
-                        a(class="btn btn-outline-danger", href="#") 
-                            i(class="fal fa-chevron-double-left me-2")
-                            span Quay lại cửa hàng
-                        button(class="btn btn-outline-primary ms-3") 
-                            i(class="fal fa-edit me-2")
-                            span Cập nhật giỏ hàng
-                .col-lg-4.col-md-4.delivery-address 
-                    table.table.table-delivery-address 
-                        tr 
-                            th(colspan=2) Thanh toán
-                        tr 
-                            td Giao hàng 
-                            td.text-end Giao đến địa chỉ 246/71 Hòa Hưng 
-                        tr 
-                            td Tổng cộng 
-                            td.text-end= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-                        tr
-                            td(colspan=2) 
-                                a.btn.btn-danger.w-100(href="#") Thanh toán
-                        tr 
-                            td(colspan=2)
-                                i(class="fal fa-tags")
-                                span Phiếu ưu đãi       
-                        tr 
-                            td(colspan=2)
-                                input.form-control.w-100(type="text", placeholder="Mã ưu đãi")    
-                        tr
-                            td.border-bottom-0(colspan=2)
-                                a.btn.btn-dark.w-100(href="#") Áp dụng
-    include ../layouts/sub-footer
+            include ./cart

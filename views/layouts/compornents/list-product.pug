@@ -1,0 +1,190 @@
+.clearfix.filters-container.m-t-10
+  .row
+    .col.col-sm-6.col-md-3.col-lg-3.col-xs-6
+      .filter-tabs
+        ul#filter-tabs.nav.nav-tabs.nav-tab-box.nav-tab-fa-icon
+          li.active
+            a(data-toggle='tab', href='#grid-container')
+              i.icon.fa.fa-th-large
+              | Grid
+          li
+            a(data-toggle='tab', href='#list-container')
+              i.icon.fa.fa-bars
+              | List
+      // /.filter-tabs
+    // /.col
+    .col.col-sm-12.col-md-5.col-lg-5.hidden-sm
+      .col.col-sm-6.col-md-6.no-padding
+        .lbl-cnt
+          span.lbl Sort by
+          .fld.inline
+            .dropdown.dropdown-small.dropdown-med.dropdown-white.inline
+              button.btn.dropdown-toggle(data-toggle='dropdown', type='button')
+                | Position 
+                span.caret
+              ul.dropdown-menu(role='menu')
+                li(role='presentation')
+                  a(href='#') position
+                li(role='presentation')
+                  a(href='#') Price:Lowest first
+                li(role='presentation')
+                  a(href='#') Price:HIghest first
+                li(role='presentation')
+                  a(href='#') Product Name:A to Z
+          // /.fld
+        // /.lbl-cnt
+      // /.col
+      .col.col-sm-6.col-md-6.no-padding.hidden-sm.hidden-md
+        .lbl-cnt
+          span.lbl Show
+          .fld.inline
+            .dropdown.dropdown-small.dropdown-med.dropdown-white.inline
+              button.btn.dropdown-toggle(data-toggle='dropdown', type='button')
+                | 1 
+                span.caret
+              ul.dropdown-menu(role='menu')
+                li(role='presentation')
+                  a(href='#') 1
+                li(role='presentation')
+                  a(href='#') 2
+                li(role='presentation')
+                  a(href='#') 3
+                li(role='presentation')
+                  a(href='#') 4
+                li(role='presentation')
+                  a(href='#') 5
+                li(role='presentation')
+                  a(href='#') 6
+                li(role='presentation')
+                  a(href='#') 7
+                li(role='presentation')
+                  a(href='#') 8
+                li(role='presentation')
+                  a(href='#') 9
+                li(role='presentation')
+                  a(href='#') 10
+          // /.fld
+        // /.lbl-cnt
+      // /.col
+    // /.col
+    .col.col-sm-6.col-md-4.col-xs-6.col-lg-4.text-right
+      .pagination-container
+        ul.list-inline.list-unstyled
+          li.prev
+            a(href='#')
+              i.fa.fa-angle-left
+          li
+            a(href='#') 1
+          li.active
+            a(href='#') 2
+          li
+            a(href='#') 3
+          li
+            a(href='#') 4
+          li.next
+            a(href='#')
+              i.fa.fa-angle-right
+        // /.list-inline
+      // /.pagination-container
+    // /.col
+  // /.row
+.search-result-container
+  #myTabContent.tab-content.category-list
+    // Grid Container
+    #grid-container.tab-pane.active
+      .category-product
+        .row
+          each product in products
+            .col-sm-6.col-md-4.col-lg-2
+              // Item
+              .item
+                .products
+                  .product
+                    .product-image
+                      .image
+                        a(href='/products/detail/'+product.code)
+                          img(src=product.image[0], alt='')
+                          img.hover-image(src=product.image[1], alt='')
+                      // /.image
+                      .tag.new
+                        span new
+                    // /.product-image
+                    .product-info.text-left
+                      h3.name
+                        a(href='/products/detail/'+product.code)= product.name
+                      .rating.rateit-small
+                      .description
+                      .product-price
+                        span.price= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                        if (product.sale > 0)    
+                          span.price-before-discount= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})    
+                      // /.product-price
+                    // /.product-info
+                    .cart.clearfix.animate-effect
+                      .action
+                        ul.list-unstyled
+                          li.add-cart-button.btn-group
+                            a.btn.btn-primary.icon(href='/products/add-to-cart/'+product._id)
+                              i.fa.fa-shopping-cart
+                          li.lnk.wishlist
+                            a.add-to-cart(href='/products/add-to-wishlist/'+product._id, title='Wishlist')
+                              i.icon.fa.fa-heart
+                      // /.action
+                    // /.cart
+                  // /.product
+                // /.products
+    // List Container
+    #list-container.tab-pane
+      .category-product
+        each product in products
+          .category-product-inner
+            .products
+              .product-list.product
+                .row.product-list-row
+                  .col.col-sm-3.col-lg-3
+                    .product-image
+                      .image
+                        img(src=product.image[0], alt='')
+                    // /.product-image
+                  // /.col
+                  .col.col-sm-9.col-lg-9
+                    .product-info
+                      h3.name
+                        a(href='/products/detail/'+product.code)= product.name
+                      .rating.rateit-small
+                      .product-price
+                        span.price= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                        span.price-before-discount= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                      // /.product-price
+                      .description.m-t-10= product.description[0]
+                      .cart.clearfix.animate-effect
+                        .action
+                          ul.list-unstyled
+                            li.add-cart-button.btn-group
+                              a.btn.btn-primary.icon(href='/products/add-to-cart/'+product._id)
+                                i.fa.fa-shopping-cart
+                              button.btn.btn-primary.cart-btn(type='button') Thêm vào giỏ hàng
+                            li.lnk.wishlist
+                              a.add-to-cart(href='/products/add-to-wishlist/'+product._id, title='Wishlist')
+                                i.icon.fa.fa-heart                      
+                .tag.new
+                  span new
+  // Paggination
+  .clearfix.filters-container.bottom-row
+    .text-right
+      .pagination-container
+        ul.list-inline.list-unstyled
+          li.prev
+            a(href='#')
+              i.fa.fa-angle-left
+          li
+            a(href='#') 1
+          li.active
+            a(href='#') 2
+          li
+            a(href='#') 3
+          li
+            a(href='#') 4
+          li.next
+            a(href='#')
+              i.fa.fa-angle-right

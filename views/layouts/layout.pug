@@ -1,124 +1,330 @@
 doctype html
 head
-  meta(charset='UTF-8')
-  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  // Meta
+  meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  title Gundam Shop
-  // Bootstrap
-  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl', crossorigin='anonymous')
-  link(href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css", rel="stylesheet")
-  link(rel="stylesheet",type="text/css", href="/css/jquery.nice-number.css")
-  link(rel='stylesheet',type="text/css", href='/css/style.css')
-  link(rel='stylesheet',type="text/css", href='/css/edit.css')
+  meta(name='description', content='')
+  meta(name='author', content='')
+  meta(name='keywords', content='MediaCenter, Template, eCommerce')
+  meta(name='robots', content='all')
+  title AATOYS
+  // Bootstrap Core CSS
+  link(rel='stylesheet', href='/assets/css/bootstrap.min.css')
+  // Customizable CSS
+  link(rel='stylesheet', href='/assets/css/main.css')
+  link(rel='stylesheet', href='/assets/css/blue.css')
+  link(rel='stylesheet', href='/assets/css/owl.carousel.css')
+  link(rel='stylesheet', href='/assets/css/owl.transitions.css')
+  link(rel='stylesheet', href='/assets/css/animate.min.css')
+  link(rel='stylesheet', href='/assets/css/rateit.css')
+  link(rel='stylesheet', href='/assets/css/bootstrap-select.min.css')
+  // Icons/Glyphs
+  link(rel='stylesheet', href='/assets/css/font-awesome.css')
+  // Fonts
+  link(href='https://fonts.googleapis.com/css?family=Barlow:200,300,300i,400,400i,500,500i,600,700,800', rel='stylesheet')
+  link(href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel='stylesheet', type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800', rel='stylesheet', type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
 body 
   // Header
-  header
-    .container.d-flex
-      .col-4.header-left.d-flex.align-items-center.mt-2
-        form(action="/products/search", method="GET")
-          input.form-control#input-search(type='text', placeholder='Search', keyup="keyupFunction", name="product")
-          button
-            i.fas.fa-search#icon-search
-      .col-4.header-center.d-flex.justify-content-center
-        a(href='/home')
-          img.img-fluid(src='/img/logo.jpg', alt='')
-      .col-4.d-flex.justify-content-end.align-items-center.header-right
-        a(href='/wishlist')
-          i.far.fa-heart
-            if (wishListLength !== 0)          
-              span(class="badge bg-danger")= wishListLength
-        a(href='#')
-          i.far.fa-user
-        a(href='/cart', style='border: none;')
-          i.fal.fa-shopping-cart
-            if (cartLength !== 0)
-              span(class="badge bg-danger")= cartLength
-    // Navbar
-    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.bg-black
+  header.header-style-1
+    // TOP MENU
+    .top-bar.animate-dropdown
       .container
-        a.navbar-brand.d-lg-none.d-md-block(href='#') AAToys
-        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse.justify-content-center
-          ul.navbar-nav
-            li.nav-item.dropdown.gundam-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][0].name, aria-expanded='false')= data[0][0].name
-              ul.dropdown-menu.gundam-sub.has-sub(aria-labelledby='navbarDropdown')
-                each gundam in data[1]
-                  li  
-                    a.dropdown-item(href="/products/"+gundam.id)= gundam.name      
-            li.nav-item.dropdown.tools-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][1].name, aria-expanded='false')= data[0][1].name
-              ul.dropdown-menu.tools-sub.has-sub(aria-labelledby='navbarDropdown')
-                each tools in data[2] 
-                  li
-                    a.dropdown-item(href="/products/"+tools.id)= tools.name
-            li.nav-item.dropdown.paints-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][2].name, aria-expanded='false')= data[0][2].name
-              ul.dropdown-menu.paints-sub.has-sub(aria-labelledby='navbarDropdown')
-                each paints in data[3]
-                  li
-                    a.dropdown-item(href="/products/"+paints.id)= paints.name
-            li.nav-item
-              a.nav-link.text-white.figures(href="/products/cate/"+data[0][3].name)= data[0][3].name
-            li.nav-item.dropdown.other-menu
-              a#navbarDropdown.nav-link.dropdown-toggle.text-white(href="/products/cate/"+data[0][4].name, aria-expanded='false')= data[0][4].name
-              ul.dropdown-menu.other-sub.has-sub(aria-labelledby='navbarDropdown')
-                each other in data[4] 
-                  li
-                    a.dropdown-item(href="/products/cate/"+other.name)= other.name
-    // End Navbar
-  // End header
-  // Main
+        .header-top-inner
+          .cnt-account
+            ul.list-unstyled
+              li.myaccount
+                a(href='#')
+                  span My Account
+              li.wishlist
+                a(href='/wishlist')
+                  span Wishlist
+              li.header_cart.hidden-xs
+                a(href='/cart')
+                  span My Cart
+              li.login
+                a(href='#')
+                  span Login
+          .clearfix
+    
+    //MAIN HEADER
+    .main-header
+      .container
+        .row
+          // LOGO
+          .col-xs-12.col-sm-12.col-md-3.logo-holder
+            .logo
+              a(href='#')
+                img(src='/assets/images/logo.png', alt='logo')
+          // SEARCH AREA
+          .col-lg-7.col-md-6.col-sm-8.col-xs-12.top-search-holder
+            .search-area
+              form
+                .control-group
+                  ul.categories-filter.animate-dropdown
+                    li.dropdown
+                      a.dropdown-toggle(data-toggle='dropdown', href='category.html')
+                        | Lo&#x1EA1;i s&#x1EA3;n ph&#x1EA9;m 
+                        b.caret
+                      ul.dropdown-menu(role='menu')
+                        li(role='presentation')
+                          a(role='menuitem', tabindex='-1', href='category.html') - T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
+                        li(role='presentation')
+                          a(role='menuitem', tabindex='-1', href='category.html') - M&atilde; s&#x1EA3;n ph&#x1EA9;m
+                  form(action='POST')
+                    input.search-field(placeholder='Tìm kiếm...')
+                    button.search-button(href='#', style='border: none; outline: none;')
+          .col-lg-2.col-md-3.col-sm-4.col-xs-12.animate-dropdown.top-cart-row
+            // SHOPPING CART DROPDOWN
+            .dropdown.dropdown-cart
+              a.dropdown-toggle.lnk-cart(href='#', data-toggle='dropdown')
+                .items-cart-inner
+                  .basket
+                    // Count Items
+                    .basket-item-count
+                      span.count= cartLength || 0
+                    .total-price-basket
+                      span.lbl Giỏ hàng
+                      // Total Price
+                      span.value= total-cart || 0
+              ul.dropdown-menu
+                li
+                  .cart-item.product-summary
+                    // List Products in cart
+                    .row
+                      .col-xs-4
+                        .image
+                          a(href='#')
+                            img(src='/assets/images/products/p4.jpg', alt='')
+                      .col-xs-7
+                        // Product's name
+                        h3.name
+                          a(href='#') Simple Product
+                        // Product's price
+                        .price $600.00
+                      .col-xs-1.action
+                        a(href='#')
+                          i.fa.fa-trash
+                  .clearfix
+                  hr
+                  .clearfix.cart-total
+                    .pull-right
+                      span.text T&#x1ED5;ng c&#x1ED9;ng :
+                      // Total Price
+                      span.price $600.00
+                    .clearfix
+                    a.btn.btn-upper.btn-primary.btn-block.m-t-20(href='checkout.html') Thanh to&aacute;n
+              // /.dropdown-menu
+            // /.dropdown-cart
+    
+    // NAVBAR
+    .header-nav.animate-dropdown
+      .container
+        .yamm.navbar.navbar-default(role='navigation')
+          .navbar-header
+            button.navbar-toggle.collapsed(data-target='#mc-horizontal-menu-collapse', data-toggle='collapse', type='button')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          .nav-bg-class
+            #mc-horizontal-menu-collapse.navbar-collapse.collapse
+              .nav-outer
+                ul.nav.navbar-nav
+                  li.active.dropdown
+                    a(href='/home') Home
+                  li.dropdown
+                    a.dropdown-toggle(href='products/cate/'+ data[0][0].name, data-hover='dropdown', data-toggle='dropdown')= data[0][0].name
+                    ul.dropdown-menu.pages
+                      li
+                        .yamm-content
+                          .row
+                            .col-xs-12.col-menu
+                              ul.links
+                                each gundam in data[1]
+                                  li
+                                    a(href='/products/'+gundam._id)= gundam.name
+                  li.dropdown
+                    a.dropdown-toggle(href='products/cate/'+ data[0][1].name, data-hover='dropdown', data-toggle='dropdown')= data[0][1].name
+                    ul.dropdown-menu.pages
+                      li
+                        .yamm-content
+                          .row
+                            .col-xs-12.col-menu
+                              ul.links
+                                each tools in data[2]
+                                  li
+                                    a(href='/products/'+tools._id)= tools.name
+                  li.dropdown
+                    a.dropdown-toggle(href='products/cate/'+ data[0][2].name, data-hover='dropdown', data-toggle='dropdown')= data[0][2].name
+                    ul.dropdown-menu.pages
+                      li
+                        .yamm-content
+                          .row
+                            .col-xs-12.col-menu
+                              ul.links
+                                each paints in data[3]
+                                  li
+                                    a(href='/products/'+paints._id)= paints.name
+                  li.dropdown
+                    a.dropdown-toggle(href='products/cate/'+ data[0][3].name, data-hover='dropdown', data-toggle='dropdown')= data[0][3].name
+                  li.dropdown
+                    a.dropdown-toggle(href='products/cate/'+ data[0][4].name, data-hover='dropdown', data-toggle='dropdown')= data[0][4].name
+                    ul.dropdown-menu.pages
+                      li
+                        .yamm-content
+                          .row
+                            .col-xs-12.col-menu
+                              ul.links
+                                each other in data[4]
+                                  li
+                                    a(href='/products/'+other._id)= other.name
+                .clearfix
+
   main
     block contents
-  // End Main
-  // Footer
-  footer
+  
+  .row.our-features-box
     .container
-      .row.mb-3
-        .col-lg-3.col-md-3.mt-5.footer-left
-          img.img-fluid.img-footer(src='/img/logo.jpg', alt='')
-          .icon-social.d-flex
-            a(href='#')
-              i.fab.fa-facebook-f
-            a(href='#')
-              i.fab.fa-twitter
-            a(href='#')
-              i.fab.fa-instagram
-        .col-lg-6.col-md-5.mt-5.footer-center
-          .h2.text-center About Us
-          |             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae consequatur quas ea modi animi distinctio eius sapiente, ducimus veniam fugit, repellendus iste doloribus doloremque cumque nihil in necessitatibus expedita officia!
-        .col-lg-3.col-md-4.mt-5.footer-right
-          ul
-            li
-              .row
-                .col-2.d-flex.align-items-center.justify-content-center
-                  i.fas.fa-map-marker-alt.icon-contact
-                .col-10
-                  span 246/71 Hoa Hung Str
-                  br
-                  span 10 District, Ho Chi Minh city
-            li
-              .row
-                .col-2.d-flex.align-items-center.justify-content-center
-                  i.fas.fa-headphones-alt.icon-contact
-                .col-10
-                  span 0944609933
-                  br
-                  span dobadvo3@gmail.com
-  // End Footer
-  // Bootstrap CDN
-  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js', integrity='sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0', crossorigin='anonymous')
-  // Fontawsome
-  script(src='https://kit.fontawesome.com/b7d286cedf.js', crossorigin='anonymous')
-  // JQuery
-  script(src='https://code.jquery.com/jquery-3.6.0.min.js')
-  // Main js
-  script(src='/js/main.js')
-  //Nice Number JQuery
-  script(src="/js/jquery.nice-number.js")
-  script.
-    $(function(){
-    $('input[type="number"]').niceNumber();
-    });
+      ul
+        li
+          .feature-box
+            .icon-truck
+            .content-blocks Giao h&agrave;ng to&agrave;n qu&#x1ED1;c
+        li
+          .feature-box
+            .icon-support
+            .content-blocks +84944609933
+        li
+          .feature-box
+            .icon-money
+            .content-blocks Ho&agrave;n ti&#x1EC1;n khi c&oacute; l&#x1ED7;i
+        li
+          .feature-box
+            .icon-return
+            .content &Dstrok;&#x1B0;&#x1EE3;c ho&agrave;n tr&#x1EA3; trong 30 ng&agrave;y
+  footer#footer.footer.color-bg
+    .footer-bottom
+      .container
+        .row
+          .col-xs-12.col-sm-6.col-md-3
+            .address-block
+              .module-body
+                ul.toggle-footer
+                  li.media
+                    .pull-left
+                      span.icon.fa-stack.fa-lg
+                        i.fa.fa-map-marker.fa-stack-1x.fa-inverse
+                    .media-body
+                      p(style='margin-top: 10px;') 246/71 H&ograve;a H&#x1B0;ng, ph&#x1B0;&#x1EDD;ng 13, qu&#x1EAD;n 10, H&#x1ED3; Ch&iacute; Minh
+                  li.media
+                    .pull-left
+                      span.icon.fa-stack.fa-lg
+                        i.fa.fa-mobile.fa-stack-1x.fa-inverse
+                    .media-body
+                      p(style='margin-top: 10px;') +84944609933 ho&#x1EB7;c +84123456789
+                  li.media
+                    .pull-left
+                      span.icon.fa-stack.fa-lg
+                        i.fa.fa-envelope.fa-stack-1x.fa-inverse
+                    .media-body
+                      span
+                        a(href='#') dobadov3@gmail.com
+          // /.module-body
+          // /.col
+          .col-xs-12.col-sm-6.col-md-3
+            .module-heading
+              h4.module-title Customer Service
+            // /.module-heading
+            .module-body
+              ul.list-unstyled
+                li.first
+                  a(href='#', title='Contact us') My Account
+                li
+                  a(href='#', title='About us') Order History
+                li
+                  a(href='#', title='faq') FAQ
+                li
+                  a(href='#', title='Popular Searches') Specials
+                li.last
+                  a(href='#', title='Where is my order?') Help Center
+            // /.module-body
+          // /.col
+          .col-xs-12.col-sm-6.col-md-3
+            .module-heading
+              h4.module-title Corporation
+            // /.module-heading
+            .module-body
+              ul.list-unstyled
+                li.first
+                  a(title='Your Account', href='#') About us
+                li
+                  a(title='Information', href='#') Customer Service
+                li
+                  a(title='Addresses', href='#') Company
+                li
+                  a(title='Addresses', href='#') Investor Relations
+                li.last
+                  a(title='Orders History', href='#') Advanced Search
+            // /.module-body
+          // /.col
+          .col-xs-12.col-sm-6.col-md-3
+            .module-heading
+              h4.module-title Why Choose Us
+            // /.module-heading
+            .module-body
+              ul.list-unstyled
+                li.first
+                  a(href='#', title='About us') Shopping Guide
+                li
+                  a(href='#', title='Blog') Blog
+                li
+                  a(href='#', title='Company') Company
+                li
+                  a(href='#', title='Investor Relations') Investor Relations
+                li.last
+                  a(href='contact-us.html', title='Suppliers') Contact Us
+            // /.module-body
+    .copyright-bar
+      .container
+        .col-xs-12.col-sm-4.no-padding.social
+          ul.link
+            li.fb.pull-left
+              a(target='_blank', rel='nofollow', href='#', title='Facebook')
+            li.tw.pull-left
+              a(target='_blank', rel='nofollow', href='#', title='Twitter')
+            li.googleplus.pull-left
+              a(target='_blank', rel='nofollow', href='#', title='GooglePlus')
+            li.youtube.pull-left
+              a(target='_blank', rel='nofollow', href='#', title='Youtube')
+        .col-xs-12.col-sm-4.no-padding.copyright
+          a(target='_blank', href='https://www.templateshub.net')
+        .col-xs-12.col-sm-4.no-padding
+          .clearfix.payment-methods
+            ul
+              li
+                img(src='/assets/images/payments/1.png', alt='')
+              li
+                img(src='/assets/images/payments/2.png', alt='')
+              li
+                img(src='/assets/images/payments/3.png', alt='')
+              li
+                img(src='/assets/images/payments/4.png', alt='')
+              li
+                img(src='/assets/images/payments/5.png', alt='')
+          // /.payment-methods
+
+// JavaScripts placed at the end of the document so the pages load faster
+script(src='/assets/js/jquery-1.11.1.min.js')
+script(src='/assets/js/bootstrap.min.js')
+script(src='/assets/js/bootstrap-hover-dropdown.min.js')
+script(src='/assets/js/owl.carousel.min.js')
+script(src='/assets/js/echo.min.js')
+script(src='/assets/js/jquery.easing-1.3.min.js')
+script(src='/assets/js/bootstrap-slider.min.js')
+script(src='/assets/js/jquery.rateit.min.js')
+script(src='/assets/js/lightbox.min.js')
+script(src='/assets/js/bootstrap-select.min.js')
+script(src='/assets/js/wow.min.js')
+script(src='/assets/js/scripts.js')

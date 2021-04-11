@@ -1,79 +1,11 @@
 extends ../layouts/layout
 block contents 
-    .container.mt-5 
-        .row    
-            .col-lg-6
-                .row 
-                    .col-12.position-relative
-                        .main-img
-                            img.img-fluid(src=product.image[0])
-                        if (product.sale !== 0)
-                            .box-sale-percent.position-absolute= "-" + product.sale + "%"
-                .row.mt-3
-                    .col-lg-3.col-md-3.col-sm-3
-                        .sub-img 
-                            img.img-fluid(src=product.image[0], alt="")
-                    .col-lg-3.col-md-3.col-sm-3
-                        .sub-img 
-                            img.img-fluid(src=product.image[1], alt="")
-                    .col-lg-3.col-md-3.col-sm-3
-                        .sub-img 
-                            img.img-fluid(src=product.image[2], alt="")
-                    .col-lg-3.col-md-3.col-sm-3
-                        .sub-img 
-                            img.img-fluid(src=product.image[3], alt="")
-            .col-lg-6.mt-5
-                h1.fw-bold= product.name
-                .d-flex
-                    if (product.sale !== 0)
-                        h2.fw-bold.text-orange.me-5.text-decoration-line-through= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-                    h2.fw-bold.text-danger= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-                ul 
-                    li
-                        p.fw-300= "Mã: " + product.code
-                    if (product.status)
-                        li
-                            p.fw-300= "Tình trạng: Còn hàng" 
-                    else
-                        li
-                            p.fw-300= "Tình trạng: Hết hàng" 
-                form
-                    input(type="number", value="1", min="1")
-                    a.btn.btn-danger Mua ngay
-        hr.mt-5
-        .description
-            .row 
-                .col-lg-2.col-md-2
-                    h3 Mô tả
-                .col-lg-10.col-md-10
-                    ul 
-                        each description in product.description 
-                            li= description
-        hr.mt-5
-        .description
-            .row 
-                .col-lg-2.col-md-2
-                    h3 Thông tin bổ sung
-                .col-lg-10.col-md-10 
-                    .row 
-                        .col-lg-8.col-md-8
-                            p.fw-bold Trọng lượng
-                        .col-lg-4.col-md-4
-                            p= product.weight + "kg"
-                    .row 
-                        .col-lg-8.col-md-8
-                            p.fw-bold Kích thước
-                        .col-lg-4.col-md-4
-                            p= "30x30x22"
-        hr.mt-5
-        h3 Sản phẩm tương tự
-        .row.justify-content-between.mt-3
-            each product in relateProducts
-                .col-lg-2.col-md-2.product-wrapper
-                    include ./card-product
-
-        hr.mt-5
-    include ../layouts/sub-footer
+    .container(style="margin-top: 50px") 
+        include ../layouts/compornents/detail-product
+        -var title= "Sản phẩm liên quan"
+        include ../layouts/compornents/feature-products
+            block products
+                include ../layouts/compornents/hot-product
                 
 
                     

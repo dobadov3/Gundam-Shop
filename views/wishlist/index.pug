@@ -4,13 +4,5 @@ block contents
         if (products.length === 0)
             h1.inform-null Bạn chưa yêu thích sản phẩm nào!
         else
-            h1 My Wishlist 
-            table.table
-                tr 
-                    th(colspan=2)
-                    th Product name
-                    th Price
-                    th(colspan=2)  Stock status 
-                each product in products
-                    include ./wishlist-item
+            include ./wishlist
     
