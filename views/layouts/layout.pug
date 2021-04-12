@@ -44,7 +44,7 @@ body
                 a(href='/cart')
                   span My Cart
               li.login
-                a(href='#')
+                a(href='/authentication')
                   span Login
           .clearfix
     
@@ -56,11 +56,11 @@ body
           .col-xs-12.col-sm-12.col-md-3.logo-holder
             .logo
               a(href='#')
-                img(src='/assets/images/logo.png', alt='logo')
+                img.img-responsive(src='/assets/images/logo.png', alt='logo')
           // SEARCH AREA
           .col-lg-7.col-md-6.col-sm-8.col-xs-12.top-search-holder
             .search-area
-              form
+              form(action='/products/search', method='GET')
                 .control-group
                   ul.categories-filter.animate-dropdown
                     li.dropdown
@@ -72,9 +72,9 @@ body
                           a(role='menuitem', tabindex='-1', href='category.html') - T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
                         li(role='presentation')
                           a(role='menuitem', tabindex='-1', href='category.html') - M&atilde; s&#x1EA3;n ph&#x1EA9;m
-                  form(action='POST')
-                    input.search-field(placeholder='Tìm kiếm...')
-                    button.search-button(href='#', style='border: none; outline: none;')
+                  
+                  input.search-field(placeholder='Tìm kiếm...', name='product')
+                  button.search-button(style='border: none; outline: none;')
           .col-lg-2.col-md-3.col-sm-4.col-xs-12.animate-dropdown.top-cart-row
             // SHOPPING CART DROPDOWN
             .dropdown.dropdown-cart

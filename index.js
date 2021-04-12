@@ -15,6 +15,7 @@ var homeRoute = require('./routes/home.route');
 var productsRoute = require('./routes/products.route');
 var wishlistRoute = require('./routes/wishlist.route');
 var cartRoute = require('./routes/cart.route');
+var authenticationRoute = require('./routes/authentication.route');
 
 var sessionMiddleware = require('./middlewares/session.middleware')
 
@@ -33,5 +34,6 @@ app.use('/home', homeRoute);
 app.use('/products', productsRoute);
 app.use('/wishlist', wishlistRoute);
 app.use('/cart', cartRoute);
+app.use('/authentication', authenticationRoute);
 
 app.listen(port);

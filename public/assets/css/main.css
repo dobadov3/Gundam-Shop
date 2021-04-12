@@ -1244,7 +1244,8 @@ header{
   padding:18px 13px;
   width: 67%;
   font-family: 'Barlow', sans-serif;
-  font-size:14px
+  font-size:14px;
+  outline: none;
 }
 .main-header .top-search-holder .search-area .categories-filter {
   border-right: 1px solid #E0E0E0;
@@ -4728,7 +4729,7 @@ font-family: FontAwesome;
 }
 .body-content .sign-in-page .sign-in .social-sign-in .facebook-sign-in {
   background-color: #3d5c98;
-  margin-right: 10px;
+  margin-right: 10px !important;
 }
 .blog-page .blog-post {
     background-color: #fff;
