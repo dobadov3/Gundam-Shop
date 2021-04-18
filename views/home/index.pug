@@ -1,8 +1,8 @@
 extends ../layouts/layout
 block contents 
-    .container 
+    .container(style="margin-top: 50px;")
         .row 
-            .col-lg-2.col-md-4.visible-lg.visible-md
+            .col-lg-2.visible-lg-block.visible-md-none    
                 include ../layouts/compornents/side-categories
                 -var specialProducts_1= data[8]
                 -var specialProducts_2= data[8]
@@ -11,7 +11,7 @@ block contents
                 -var saleProducts = data[6]
                 include ../layouts/compornents/hot-deal
                 include ../layouts/compornents/member-description
-            .col-lg-10.col-md-8.col-sm-12
+            .col-lg-10.col-md-12.col-sm-12
                 include ../layouts/compornents/slider
                 -var title = "Sản phẩm mới"
                 include ../layouts/compornents/feature-products

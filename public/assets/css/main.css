@@ -75,6 +75,14 @@ img[src="assets/images/blank.gif"] {
   background: url("../images/ajax.gif") no-repeat scroll center center #ffffff;
 }
 
+.text-white{
+  color: white !important;
+}
+
+.text-shadow{
+  text-shadow: 1px 1px 4px rgba(0,0,0,.08);
+}
+
 .btn-upper {
   text-transform: uppercase;
 }
