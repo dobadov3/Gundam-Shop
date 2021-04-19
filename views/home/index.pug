@@ -1,30 +1,30 @@
 extends ../layouts/layout
 block contents 
-    .container(style="margin-top: 50px;")
-        .row 
-            .col-lg-2.visible-lg-block.visible-md-none    
-                include ../layouts/compornents/side-categories
-                -var specialProducts_1= data[8]
-                -var specialProducts_2= data[8]
-                -var specialProducts_3= data[8]
-                include ../layouts/compornents/special-offer
-                -var saleProducts = data[6]
-                include ../layouts/compornents/hot-deal
-                include ../layouts/compornents/member-description
-            .col-lg-10.col-md-12.col-sm-12
-                include ../layouts/compornents/slider
-                -var title = "Sản phẩm mới"
-                include ../layouts/compornents/feature-products
-                    block products 
-                        each product in data[5]
-                            include ../layouts/compornents/product
-                -title = "Sản phẩm bán chạy"
-                include ../layouts/compornents/feature-products
-                    block products 
-                        each product in data[6]
-                            include ../layouts/compornents/product
-                -title= "Đang giảm giá"
-                include ../layouts/compornents/feature-products
-                    block products 
-                        each product in data[7]
-                            include ../layouts/compornents/product
+    #top-banner-and-menu.body-content.outer-top-vs
+        .container
+            .row
+                .col-xs-12.col-sm-12.col-md-3.sidebar.visible-lg.visible-md.visible-sm
+                    include ../layouts/compornents/side-categories
+                    include ../layouts/compornents/hot-deal
+                    -var title = "Special Offer"
+                    include ../layouts/compornents/special-offer
+                    -var title = "Special Deals"
+                    include ../layouts/compornents/special-offer
+                    include ../layouts/compornents/member-description
+                .col-xs-12.col-sm-12.col-md-9.homebanner-holder
+                    include ../layouts/compornents/slider
+                    -var title= "Sản phẩm mới"
+                    include ../layouts/compornents/feature-products
+                        block products
+                            each product in data[5]
+                                include ../layouts/compornents/new-product
+                    -var title= "Giảm giá"
+                    include ../layouts/compornents/feature-products
+                        block products
+                            each product in data[7]
+                                include ../layouts/compornents/sale-product
+                    -var title= "Bán chạy nhất"
+                    include ../layouts/compornents/feature-products
+                        block products
+                            each product in data[6]
+                                include ../layouts/compornents/product

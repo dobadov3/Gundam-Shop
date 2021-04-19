@@ -3,21 +3,21 @@
     .product
       .product-image
         .image
-          a(href='detail.html')
-            img(src='assets/images/products/p3.jpg', alt='')
-            img.hover-image(src='assets/images/products/p3_hover.jpg', alt='')
+          a(href='/products/detail/'+ product.code)
+            img(src=product.image[0], alt='')
+            img.hover-image(src=product.image[1], alt='')
         // /.image
         .tag.sale
           span sale
       // /.product-image
       .product-info.text-left
         h3.name
-          a(href='detail.html') Floral Print Buttoned
+          a(href='detail.html')= product.name
         .rating.rateit-small
         .description
         .product-price
-          span.price  $450.99 
-          span.price-before-discount $ 800
+          span.price= product.price
+          span.price-before-discount= product.price
         // /.product-price
       // /.product-info
       .cart.clearfix.animate-effect

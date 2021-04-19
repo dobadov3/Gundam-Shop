@@ -1,84 +1,58 @@
-.sidebar
-  .sidebar-widget.outer-bottom-small
-    h3.section-title S&#x1EA3;n ph&#x1EA9;m &dstrok;&#x1EB7;c bi&#x1EC7;t
-    .sidebar-widget-body.outer-top-xs
-      .owl-carousel.sidebar-carousel.special-offer.custom-carousel.owl-theme.outer-top-xs
-        .item
-          each product in specialProducts_1
-            .products.special-product
-              .product
-                .product-micro
-                  .row.product-micro-row
-                    .col.col-xs-5
-                      .product-image
-                        .image
-                          a(href='/products/detail/'+product.code)
-                            img(src=product.image[0], alt='')
-                        // /.image
-                      // /.product-image
-                    // /.col
-                    .col.col-xs-7
-                      .product-info
-                        h3.name
-                          a(href='/products/detail/'+product.code)= product.name
-                        .rating.rateit-small
+.sidebar-widget.outer-bottom-small
+  h3.section-title= title
+  .sidebar-widget-body.outer-top-xs
+    .owl-carousel.sidebar-carousel.special-offer.custom-carousel.owl-theme.outer-top-xs
+      .item
+        .products.special-product
+          each product in data[8]
+            .product
+              .product-micro
+                .row.product-micro-row
+                  .col.col-xs-5
+                    .product-image
+                      .image
+                        a(href='/products/cate/' + product.code)
+                          img(src=product.image[0], alt='')
+                  .col.col-xs-7
+                    .product-info
+                      h3.name
+                        a(href='/products/cate/' + product.code)= product.name
+                      .rating.rateit-small
                         .product-price
-                          span.price= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-                        // /.product-price
-                    // /.col
-                  // /.product-micro-row
-                // /.product-micro
-              
-        .item
-          each product in specialProducts_2
-            .products.special-product
-              .product
-                .product-micro
-                  .row.product-micro-row
-                    .col.col-xs-5
-                      .product-image
-                        .image
-                          a(href='/products/detail/'+product.code)
-                            img(src=product.image[0], alt='')
-                        // /.image
-                      // /.product-image
-                    // /.col
-                    .col.col-xs-7
-                      .product-info
-                        h3.name
-                          a(href='/products/detail/'+product.code)= product.name
-                        .rating.rateit-small
+                          span.price= product.price
+      .item
+        .products.special-product
+          each product in data[8]
+            .product
+              .product-micro
+                .row.product-micro-row
+                  .col.col-xs-5
+                    .product-image
+                      .image
+                        a(href='/products/cate/' + product.code)
+                          img(src=product.image[0], alt='')
+                  .col.col-xs-7
+                    .product-info
+                      h3.name
+                        a(href='/products/cate/' + product.code)= product.name
+                      .rating.rateit-small
                         .product-price
-                          span.price= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-                        // /.product-price
-                    // /.col
-                  // /.product-micro-row
-                // /.product-micro
-              
-        .item
-          each product in specialProducts_3
-            .products.special-product
-              .product
-                .product-micro
-                  .row.product-micro-row
-                    .col.col-xs-5
-                      .product-image
-                        .image
-                          a(href='/products/detail/'+product.code)
-                            img(src=product.image[0], alt='')
-                        // /.image
-                      // /.product-image
-                    // /.col
-                    .col.col-xs-7
-                      .product-info
-                        h3.name
-                          a(href='/products/detail/'+product.code)= product.name
-                        .rating.rateit-small
+                          span.price= product.price
+      .item
+        .products.special-product
+          each product in data[8]
+            .product
+              .product-micro
+                .row.product-micro-row
+                  .col.col-xs-5
+                    .product-image
+                      .image
+                        a(href='/products/cate/' + product.code)
+                          img(src=product.image[0], alt='')
+                  .col.col-xs-7
+                    .product-info
+                      h3.name
+                        a(href='/products/cate/' + product.code)= product.name
+                      .rating.rateit-small
                         .product-price
-                          span.price= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-                        // /.product-price
-                    // /.col
-                  // /.product-micro-row
-                // /.product-micro
-              
-          
+                          span.price= product.price

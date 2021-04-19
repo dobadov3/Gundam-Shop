@@ -1,330 +1,356 @@
 doctype html
-head
-  // Meta
-  meta(charset='utf-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  meta(name='description', content='')
-  meta(name='author', content='')
-  meta(name='keywords', content='MediaCenter, Template, eCommerce')
-  meta(name='robots', content='all')
-  title AATOYS
-  // Bootstrap Core CSS
-  link(rel='stylesheet', href='/assets/css/bootstrap.min.css')
-  // Customizable CSS
-  link(rel='stylesheet', href='/assets/css/main.css')
-  link(rel='stylesheet', href='/assets/css/blue.css')
-  link(rel='stylesheet', href='/assets/css/owl.carousel.css')
-  link(rel='stylesheet', href='/assets/css/owl.transitions.css')
-  link(rel='stylesheet', href='/assets/css/animate.min.css')
-  link(rel='stylesheet', href='/assets/css/rateit.css')
-  link(rel='stylesheet', href='/assets/css/bootstrap-select.min.css')
-  // Icons/Glyphs
-  link(rel='stylesheet', href='/assets/css/font-awesome.css')
-  // Fonts
-  link(href='https://fonts.googleapis.com/css?family=Barlow:200,300,300i,400,400i,500,500i,600,700,800', rel='stylesheet')
-  link(href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel='stylesheet', type='text/css')
-  link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800', rel='stylesheet', type='text/css')
-  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
-body 
-  // Header
-  header.header-style-1
-    // TOP MENU
-    .top-bar.animate-dropdown
-      .container
-        .header-top-inner
-          .cnt-account
-            ul.list-unstyled
-              li.myaccount
-                a(href='#')
-                  span My Account
-              li.wishlist
-                a(href='/wishlist')
-                  span Wishlist
-              li.header_cart.hidden-xs
-                a(href='/cart')
-                  span My Cart
-              li.login
-                a(href='/authentication')
-                  span Login
-          .clearfix
-    
-    //MAIN HEADER
-    .main-header
-      .container
-        .row
-          // LOGO
-          .col-xs-12.col-sm-12.col-md-3.logo-holder
-            .logo
-              a(href='#')
-                img.img-responsive(src='/assets/images/logo.png', alt='logo')
-          // SEARCH AREA
-          .col-lg-7.col-md-6.col-sm-8.col-xs-12.top-search-holder
-            .search-area
-              form(action='/products/search', method='GET')
-                .control-group
-                  ul.categories-filter.animate-dropdown
-                    li.dropdown
-                      a.dropdown-toggle(data-toggle='dropdown', href='category.html')
-                        | Lo&#x1EA1;i s&#x1EA3;n ph&#x1EA9;m 
-                        b.caret
-                      ul.dropdown-menu(role='menu')
-                        li(role='presentation')
-                          a(role='menuitem', tabindex='-1', href='category.html') - T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
-                        li(role='presentation')
-                          a(role='menuitem', tabindex='-1', href='category.html') - M&atilde; s&#x1EA3;n ph&#x1EA9;m
-                  
-                  input.search-field(placeholder='Tìm kiếm...', name='product')
-                  button.search-button(style='border: none; outline: none;')
-          .col-lg-2.col-md-3.col-sm-4.col-xs-12.animate-dropdown.top-cart-row
-            // SHOPPING CART DROPDOWN
-            .dropdown.dropdown-cart
-              a.dropdown-toggle.lnk-cart(href='#', data-toggle='dropdown')
-                .items-cart-inner
-                  .basket
-                    // Count Items
-                    .basket-item-count
-                      span.count= cartLength || 0
-                    .total-price-basket
-                      span.lbl Giỏ hàng
-                      // Total Price
-                      span.value= total-cart || 0
-              ul.dropdown-menu
-                li
-                  .cart-item.product-summary
-                    // List Products in cart
-                    .row
-                      .col-xs-4
-                        .image
+html
+  head
+    // Meta
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    meta(name='keywords', content='MediaCenter, Template, eCommerce')
+    meta(name='robots', content='all')
+    title Marazzo premium HTML5 &amp; CSS3 Template
+    // Bootstrap Core CSS
+    link(rel='stylesheet', href='/assets/css/bootstrap.min.css')
+    // Customizable CSS
+    link(rel='stylesheet', href='/assets/css/main.css')
+    link(rel='stylesheet', href='/assets/css/blue.css')
+    link(rel='stylesheet', href='/assets/css/owl.carousel.css')
+    link(rel='stylesheet', href='/assets/css/owl.transitions.css')
+    link(rel='stylesheet', href='/assets/css/animate.min.css')
+    link(rel='stylesheet', href='/assets/css/rateit.css')
+    link(rel='stylesheet', href='/assets/css/bootstrap-select.min.css')
+    // Icons/Glyphs
+    link(rel='stylesheet', href='/assets/css/font-awesome.css')
+    // Fonts
+    link(href='https://fonts.googleapis.com/css?family=Barlow:200,300,300i,400,400i,500,500i,600,700,800', rel='stylesheet')
+    link(href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+  body.cnt-home
+    header.header-style-1
+      // ============================================== TOP MENU ==============================================
+      .top-bar.animate-dropdown
+        .container
+          .header-top-inner
+            .cnt-account
+              ul.list-unstyled
+                li.myaccount
+                  a(href='#')
+                    span My Account
+                li.wishlist
+                  a(href='/wishlist')
+                    span Wishlist
+                li.header_cart.hidden-xs
+                  a(href='/cart')
+                    span My Cart
+                li.login
+                  a(href='/authentication')
+                    span Login
+            .clearfix
+      // ============================================== TOP MENU : END ==============================================
+      .main-header
+        .container
+          .row
+            .col-xs-12.col-sm-12.col-md-3.logo-holder
+              // ============================================================= LOGO =============================================================
+              .logo
+                a(href='/home')
+                  img(src='/assets/images/logo.png', alt='logo')
+              // /.logo
+              // ============================================================= LOGO : END =============================================================
+            // /.logo-holder
+            .col-lg-7.col-md-6.col-sm-8.col-xs-12.top-search-holder
+              // /.contact-row
+              // ============================================================= SEARCH AREA =============================================================
+              .search-area
+                form
+                  .control-group
+                    ul.categories-filter.animate-dropdown
+                      li.dropdown
+                        a.dropdown-toggle(data-toggle='dropdown', href='category.html')
+                          | Categories 
+                          b.caret
+                        ul.dropdown-menu(role='menu')
+                          li.menu-header Product
+                          li(role='presentation')
+                            a(role='menuitem', tabindex='-1', href='category.html') - Theo tên sản phẩm
+                          li(role='presentation')
+                            a(role='menuitem', tabindex='-1', href='category.html') - Theo loại sản phẩm
+                    input.search-field(placeholder='Tìm kiếm...')
+                    a.search-button(href='#')
+              // /.search-area
+              // ============================================================= SEARCH AREA : END =============================================================
+            // /.top-search-holder
+            .col-lg-2.col-md-3.col-sm-4.col-xs-12.animate-dropdown.top-cart-row
+              // ============================================================= SHOPPING CART DROPDOWN =============================================================
+              .dropdown.dropdown-cart
+                a.dropdown-toggle.lnk-cart(href='#', data-toggle='dropdown')
+                  .items-cart-inner
+                    .basket
+                      .basket-item-count
+                        span.count 2
+                      .total-price-basket
+                        span.lbl Giỏ hàng
+                        span.value $4580
+                ul.dropdown-menu
+                  li
+                    .cart-item.product-summary
+                      .row
+                        .col-xs-4
+                          .image
+                            a(href='detail.html')
+                              img(src='/assets/images/products/p4.jpg', alt='')
+                        .col-xs-7
+                          h3.name
+                            a(href='index8a95.html?page-detail') Simple Product
+                          .price $600.00
+                        .col-xs-1.action
                           a(href='#')
-                            img(src='/assets/images/products/p4.jpg', alt='')
-                      .col-xs-7
-                        // Product's name
-                        h3.name
-                          a(href='#') Simple Product
-                        // Product's price
-                        .price $600.00
-                      .col-xs-1.action
-                        a(href='#')
-                          i.fa.fa-trash
-                  .clearfix
-                  hr
-                  .clearfix.cart-total
-                    .pull-right
-                      span.text T&#x1ED5;ng c&#x1ED9;ng :
-                      // Total Price
-                      span.price $600.00
+                            i.fa.fa-trash
+                  li.m-t-5
+                    .cart-item.product-summary
+                      .row
+                        .col-xs-4
+                          .image
+                            a(href='detail.html')
+                              img(src='/assets/images/products/p4.jpg', alt='')
+                        .col-xs-7
+                          h3.name
+                            a(href='index8a95.html?page-detail') Simple Product
+                          .price $600.00
+                        .col-xs-1.action
+                          a(href='#')
+                            i.fa.fa-trash
+                    // /.cart-item
                     .clearfix
-                    a.btn.btn-upper.btn-primary.btn-block.m-t-20(href='checkout.html') Thanh to&aacute;n
-              // /.dropdown-menu
-            // /.dropdown-cart
-    
-    // NAVBAR
-    .header-nav.animate-dropdown
+                    hr
+                    .clearfix.cart-total
+                      .pull-right
+                        span.text Tạm tính :
+                        span.price $600.00
+                      .clearfix
+                      a.btn.btn-upper.btn-primary.btn-block.m-t-20(href='checkout.html') Thanh toán
+                    // /.cart-total
+                // /.dropdown-menu
+              // /.dropdown-cart
+              // ============================================================= SHOPPING CART DROPDOWN : END=============================================================
+            // /.top-cart-row
+          // /.row
+        // /.container
+      // /.main-header
+      // ============================================== NAVBAR ==============================================
+      .header-nav.animate-dropdown
+        .container
+          .yamm.navbar.navbar-default(role='navigation')
+            .navbar-header
+              button.navbar-toggle.collapsed(data-target='#mc-horizontal-menu-collapse', data-toggle='collapse', type='button')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            .nav-bg-class
+              #mc-horizontal-menu-collapse.navbar-collapse.collapse
+                .nav-outer
+                  ul.nav.navbar-nav
+                    li.active.dropdown
+                      a(href='/home') Home
+                    li.dropdown
+                      a.dropdown-toggle(href='#', data-hover='dropdown', data-toggle='dropdown')= data[0][0].name
+                      ul.dropdown-menu.pages
+                        li
+                          .yamm-content
+                            .row
+                              .col-xs-12.col-menu
+                                ul.links
+                                  each gundam in data[1]
+                                    li
+                                      a(href='/products/'+ gundam._id)= gundam.name
+                    li.dropdown
+                      a.dropdown-toggle(href='#', data-hover='dropdown', data-toggle='dropdown')= data[0][1].name
+                      ul.dropdown-menu.pages
+                        li
+                          .yamm-content
+                            .row
+                              .col-xs-12.col-menu
+                                ul.links
+                                  each gundam in data[2]
+                                    li
+                                      a(href='/products/'+ gundam._id)= gundam.name
+                    li.dropdown
+                      a.dropdown-toggle(href='#', data-hover='dropdown', data-toggle='dropdown')= data[0][2].name
+                      ul.dropdown-menu.pages
+                        li
+                          .yamm-content
+                            .row
+                              .col-xs-12.col-menu
+                                ul.links
+                                  each gundam in data[3]
+                                    li
+                                      a(href='/products/'+ gundam._id)= gundam.name
+                    li.dropdown.hidden-sm
+                      a(href='category.html')= data[0][3].name
+                    li.dropdown
+                      a.dropdown-toggle(href='#', data-hover='dropdown', data-toggle='dropdown')= data[0][4].name
+                      ul.dropdown-menu.pages
+                        li
+                          .yamm-content
+                            .row
+                              .col-xs-12.col-menu
+                                ul.links
+                                  each gundam in data[4]
+                                    li
+                                      a(href='/products/'+ gundam._id)= gundam.name
+                  .clearfix
+      // ============================================== NAVBAR : END ==============================================
+    main
+      block contents
+    .row.our-features-box(style="margin-top: 50px")
       .container
-        .yamm.navbar.navbar-default(role='navigation')
-          .navbar-header
-            button.navbar-toggle.collapsed(data-target='#mc-horizontal-menu-collapse', data-toggle='collapse', type='button')
-              span.sr-only Toggle navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-          .nav-bg-class
-            #mc-horizontal-menu-collapse.navbar-collapse.collapse
-              .nav-outer
-                ul.nav.navbar-nav
-                  li.active.dropdown
-                    a(href='/home') Home
-                  li.dropdown
-                    a.dropdown-toggle(href='products/cate/'+ data[0][0].name, data-hover='dropdown', data-toggle='dropdown')= data[0][0].name
-                    ul.dropdown-menu.pages
-                      li
-                        .yamm-content
-                          .row
-                            .col-xs-12.col-menu
-                              ul.links
-                                each gundam in data[1]
-                                  li
-                                    a(href='/products/'+gundam._id)= gundam.name
-                  li.dropdown
-                    a.dropdown-toggle(href='products/cate/'+ data[0][1].name, data-hover='dropdown', data-toggle='dropdown')= data[0][1].name
-                    ul.dropdown-menu.pages
-                      li
-                        .yamm-content
-                          .row
-                            .col-xs-12.col-menu
-                              ul.links
-                                each tools in data[2]
-                                  li
-                                    a(href='/products/'+tools._id)= tools.name
-                  li.dropdown
-                    a.dropdown-toggle(href='products/cate/'+ data[0][2].name, data-hover='dropdown', data-toggle='dropdown')= data[0][2].name
-                    ul.dropdown-menu.pages
-                      li
-                        .yamm-content
-                          .row
-                            .col-xs-12.col-menu
-                              ul.links
-                                each paints in data[3]
-                                  li
-                                    a(href='/products/'+paints._id)= paints.name
-                  li.dropdown
-                    a.dropdown-toggle(href='products/cate/'+ data[0][3].name, data-hover='dropdown', data-toggle='dropdown')= data[0][3].name
-                  li.dropdown
-                    a.dropdown-toggle(href='products/cate/'+ data[0][4].name, data-hover='dropdown', data-toggle='dropdown')= data[0][4].name
-                    ul.dropdown-menu.pages
-                      li
-                        .yamm-content
-                          .row
-                            .col-xs-12.col-menu
-                              ul.links
-                                each other in data[4]
-                                  li
-                                    a(href='/products/'+other._id)= other.name
-                .clearfix
-
-  main
-    block contents
-  
-  .row.our-features-box
-    .container
-      ul
-        li
-          .feature-box
-            .icon-truck
-            .content-blocks Giao h&agrave;ng to&agrave;n qu&#x1ED1;c
-        li
-          .feature-box
-            .icon-support
-            .content-blocks +84944609933
-        li
-          .feature-box
-            .icon-money
-            .content-blocks Ho&agrave;n ti&#x1EC1;n khi c&oacute; l&#x1ED7;i
-        li
-          .feature-box
-            .icon-return
-            .content &Dstrok;&#x1B0;&#x1EE3;c ho&agrave;n tr&#x1EA3; trong 30 ng&agrave;y
-  footer#footer.footer.color-bg
-    .footer-bottom
-      .container
-        .row
-          .col-xs-12.col-sm-6.col-md-3
-            .address-block
+        ul
+          li
+            .feature-box
+              .icon-truck
+              .content-blocks We ship worldwide
+          li
+            .feature-box
+              .icon-support
+              .content-blocks
+                | call
+                | +1 800 789 0000
+          li
+            .feature-box
+              .icon-money
+              .content-blocks Money Back Guarantee
+          li
+            .feature-box
+              .icon-return
+              .content 30 days return
+    footer#footer.footer.color-bg
+      .footer-bottom
+        .container
+          .row
+            .col-xs-12.col-sm-6.col-md-3
+              .address-block
+                // /.module-heading
+                .module-body
+                  ul.toggle-footer(style='')
+                    li.media
+                      .pull-left
+                        span.icon.fa-stack.fa-lg
+                          i.fa.fa-map-marker.fa-stack-1x.fa-inverse
+                      .media-body
+                        p ThemesGround, 789 Main rd, Anytown, CA 12345 USA
+                    li.media
+                      .pull-left
+                        span.icon.fa-stack.fa-lg
+                          i.fa.fa-mobile.fa-stack-1x.fa-inverse
+                      .media-body
+                        p  + (888) 123-4567 / + (888) 456-7890
+                    li.media
+                      .pull-left
+                        span.icon.fa-stack.fa-lg
+                          i.fa.fa-envelope.fa-stack-1x.fa-inverse
+                      .media-body
+                        span
+                          a(href='#') marazzo@themesground.com
+              // /.module-body
+            // /.col
+            .col-xs-12.col-sm-6.col-md-3
+              .module-heading
+                h4.module-title Customer Service
+              // /.module-heading
               .module-body
-                ul.toggle-footer
-                  li.media
-                    .pull-left
-                      span.icon.fa-stack.fa-lg
-                        i.fa.fa-map-marker.fa-stack-1x.fa-inverse
-                    .media-body
-                      p(style='margin-top: 10px;') 246/71 H&ograve;a H&#x1B0;ng, ph&#x1B0;&#x1EDD;ng 13, qu&#x1EAD;n 10, H&#x1ED3; Ch&iacute; Minh
-                  li.media
-                    .pull-left
-                      span.icon.fa-stack.fa-lg
-                        i.fa.fa-mobile.fa-stack-1x.fa-inverse
-                    .media-body
-                      p(style='margin-top: 10px;') +84944609933 ho&#x1EB7;c +84123456789
-                  li.media
-                    .pull-left
-                      span.icon.fa-stack.fa-lg
-                        i.fa.fa-envelope.fa-stack-1x.fa-inverse
-                    .media-body
-                      span
-                        a(href='#') dobadov3@gmail.com
-          // /.module-body
-          // /.col
-          .col-xs-12.col-sm-6.col-md-3
-            .module-heading
-              h4.module-title Customer Service
-            // /.module-heading
-            .module-body
-              ul.list-unstyled
-                li.first
-                  a(href='#', title='Contact us') My Account
+                ul.list-unstyled
+                  li.first
+                    a(href='#', title='Contact us') My Account
+                  li
+                    a(href='#', title='About us') Order History
+                  li
+                    a(href='#', title='faq') FAQ
+                  li
+                    a(href='#', title='Popular Searches') Specials
+                  li.last
+                    a(href='#', title='Where is my order?') Help Center
+              // /.module-body
+            // /.col
+            .col-xs-12.col-sm-6.col-md-3
+              .module-heading
+                h4.module-title Corporation
+              // /.module-heading
+              .module-body
+                ul.list-unstyled
+                  li.first
+                    a(title='Your Account', href='#') About us
+                  li
+                    a(title='Information', href='#') Customer Service
+                  li
+                    a(title='Addresses', href='#') Company
+                  li
+                    a(title='Addresses', href='#') Investor Relations
+                  li.last
+                    a(title='Orders History', href='#') Advanced Search
+              // /.module-body
+            // /.col
+            .col-xs-12.col-sm-6.col-md-3
+              .module-heading
+                h4.module-title Why Choose Us
+              // /.module-heading
+              .module-body
+                ul.list-unstyled
+                  li.first
+                    a(href='#', title='About us') Shopping Guide
+                  li
+                    a(href='#', title='Blog') Blog
+                  li
+                    a(href='#', title='Company') Company
+                  li
+                    a(href='#', title='Investor Relations') Investor Relations
+                  li.last
+                    a(href='contact-us.html', title='Suppliers') Contact Us
+              // /.module-body
+      .copyright-bar
+        .container
+          .col-xs-12.col-sm-4.no-padding.social
+            ul.link
+              li.fb.pull-left
+                a(target='_blank', rel='nofollow', href='#', title='Facebook')
+              li.tw.pull-left
+                a(target='_blank', rel='nofollow', href='#', title='Twitter')
+              li.googleplus.pull-left
+                a(target='_blank', rel='nofollow', href='#', title='GooglePlus')
+              li.rss.pull-left
+                a(target='_blank', rel='nofollow', href='#', title='RSS')
+              li.pintrest.pull-left
+                a(target='_blank', rel='nofollow', href='#', title='PInterest')
+              li.linkedin.pull-left
+                a(target='_blank', rel='nofollow', href='#', title='Linkedin')
+              li.youtube.pull-left
+                a(target='_blank', rel='nofollow', href='#', title='Youtube')
+          .col-xs-12.col-sm-4.no-padding.copyright
+            a(target='_blank', href='https://www.templateshub.net') Templates Hub
+          .col-xs-12.col-sm-4.no-padding
+            .clearfix.payment-methods
+              ul
                 li
-                  a(href='#', title='About us') Order History
+                  img(src='/assets/images/payments/1.png', alt='')
                 li
-                  a(href='#', title='faq') FAQ
+                  img(src='/assets/images/payments/2.png', alt='')
                 li
-                  a(href='#', title='Popular Searches') Specials
-                li.last
-                  a(href='#', title='Where is my order?') Help Center
-            // /.module-body
-          // /.col
-          .col-xs-12.col-sm-6.col-md-3
-            .module-heading
-              h4.module-title Corporation
-            // /.module-heading
-            .module-body
-              ul.list-unstyled
-                li.first
-                  a(title='Your Account', href='#') About us
+                  img(src='/assets/images/payments/3.png', alt='')
                 li
-                  a(title='Information', href='#') Customer Service
+                  img(src='/assets/images/payments/4.png', alt='')
                 li
-                  a(title='Addresses', href='#') Company
-                li
-                  a(title='Addresses', href='#') Investor Relations
-                li.last
-                  a(title='Orders History', href='#') Advanced Search
-            // /.module-body
-          // /.col
-          .col-xs-12.col-sm-6.col-md-3
-            .module-heading
-              h4.module-title Why Choose Us
-            // /.module-heading
-            .module-body
-              ul.list-unstyled
-                li.first
-                  a(href='#', title='About us') Shopping Guide
-                li
-                  a(href='#', title='Blog') Blog
-                li
-                  a(href='#', title='Company') Company
-                li
-                  a(href='#', title='Investor Relations') Investor Relations
-                li.last
-                  a(href='contact-us.html', title='Suppliers') Contact Us
-            // /.module-body
-    .copyright-bar
-      .container
-        .col-xs-12.col-sm-4.no-padding.social
-          ul.link
-            li.fb.pull-left
-              a(target='_blank', rel='nofollow', href='#', title='Facebook')
-            li.tw.pull-left
-              a(target='_blank', rel='nofollow', href='#', title='Twitter')
-            li.googleplus.pull-left
-              a(target='_blank', rel='nofollow', href='#', title='GooglePlus')
-            li.youtube.pull-left
-              a(target='_blank', rel='nofollow', href='#', title='Youtube')
-        .col-xs-12.col-sm-4.no-padding.copyright
-          a(target='_blank', href='https://www.templateshub.net')
-        .col-xs-12.col-sm-4.no-padding
-          .clearfix.payment-methods
-            ul
-              li
-                img(src='/assets/images/payments/1.png', alt='')
-              li
-                img(src='/assets/images/payments/2.png', alt='')
-              li
-                img(src='/assets/images/payments/3.png', alt='')
-              li
-                img(src='/assets/images/payments/4.png', alt='')
-              li
-                img(src='/assets/images/payments/5.png', alt='')
-          // /.payment-methods
-
-// JavaScripts placed at the end of the document so the pages load faster
-script(src='/assets/js/jquery-1.11.1.min.js')
-script(src='/assets/js/bootstrap.min.js')
-script(src='/assets/js/bootstrap-hover-dropdown.min.js')
-script(src='/assets/js/owl.carousel.min.js')
-script(src='/assets/js/echo.min.js')
-script(src='/assets/js/jquery.easing-1.3.min.js')
-script(src='/assets/js/bootstrap-slider.min.js')
-script(src='/assets/js/jquery.rateit.min.js')
-script(src='/assets/js/lightbox.min.js')
-script(src='/assets/js/bootstrap-select.min.js')
-script(src='/assets/js/wow.min.js')
-script(src='/assets/js/scripts.js')
+                  img(src='/assets/images/payments/5.png', alt='')
+            // /.payment-methods
+    script(src='/assets/js/jquery-1.11.1.min.js')
+    script(src='/assets/js/bootstrap.min.js')
+    script(src='/assets/js/bootstrap-hover-dropdown.min.js')
+    script(src='/assets/js/owl.carousel.min.js')
+    script(src='/assets/js/echo.min.js')
+    script(src='/assets/js/jquery.easing-1.3.min.js')
+    script(src='/assets/js/bootstrap-slider.min.js')
+    script(src='/assets/js/jquery.rateit.min.js')
+    script(src='/assets/js/lightbox.min.js')
+    script(src='/assets/js/bootstrap-select.min.js')
+    script(src='/assets/js/wow.min.js')
+    script(src='/assets/js/scripts.js')

@@ -1,21 +1,6 @@
 extends ../layouts/layout
 block contents 
-    .container(style="margin-top: 50px") 
-        .row.single-product 
-            .col-lg-2 
-                -var specialProducts_1= data[8]
-                -var specialProducts_2= data[8]
-                -var specialProducts_3= data[8]
-                include ../layouts/compornents/special-offer
-                -var saleProducts = data[6]
-                include ../layouts/compornents/hot-deal
-                include ../layouts/compornents/member-description
-            .col-lg-10
-                include ../layouts/compornents/detail-product
-                -var title= "Sản phẩm liên quan"
-                include ../layouts/compornents/feature-products
-                    block products
-                        include ../layouts/compornents/hot-product
+    
                 
 
                     
