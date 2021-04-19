@@ -7365,6 +7365,30 @@ li.dropdown.navbar-right.special-menu {
 	
 }
 
+@media(max-width: 992px){
+  .control-group{
+    position: relative;
+  }
+
+  button.search-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+@media(max-width: 765px){
+  .control-group{
+    position: relative;
+  }
+
+  button.search-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
 /*===================================================================================*/
 /*  Testimonials
 /*===================================================================================*/
