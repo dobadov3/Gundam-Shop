@@ -7,112 +7,46 @@
             .accordion
                 .accordion-group
                     .accordion-heading
-                        a.accordion-toggle.collapsed(href='#collapseOne', data-toggle='collapse')  Camera 
+                        a.accordion-toggle.collapsed(href='#collapseOne', data-toggle='collapse')= data[0][0].name 
                     // /.accordion-heading
                     #collapseOne.accordion-body.collapse(style='height: 0px;')
                         .accordion-inner
                             ul
-                                li
-                                                            a(href='#') gaming
-                                li
-                                    a(href='#') office
-                                li
-                                    a(href='#') kids
-                                li
-                                    a(href='#') for women
+                                each gundam in data[1]
+                                    li
+                                        a(href='/products/' + gundam._id)= gundam.name
                     // /.accordion-inner
                 // /.accordion-body
                 // /.accordion-group
                 .accordion-group
                     .accordion-heading
-                        a.accordion-toggle.collapsed(href='#collapseTwo', data-toggle='collapse')  Desktops 
+                        a.accordion-toggle.collapsed(href='#collapseTwo', data-toggle='collapse')= data[0][1].name 
                     // /.accordion-heading
                     #collapseTwo.accordion-body.collapse(style='height: 0px;')
                         .accordion-inner
                             ul
-                                li
-                                    a(href='#') gaming
-                                li
-                                    a(href='#') office
-                                li
-                                    a(href='#') kids
-                                li
-                                    a(href='#') for women
+                                each tool in data[2]
+                                    li
+                                        a(href='/products/' + tool._id)= tool.name
                         // /.accordion-inner
                     // /.accordion-body
                 // /.accordion-group
                 .accordion-group
                     .accordion-heading
-                        a.accordion-toggle.collapsed(href='#collapseThree', data-toggle='collapse')  Pants 
+                        a.accordion-toggle.collapsed(href='#collapseThree', data-toggle='collapse')= data[0][2].name 
                     // /.accordion-heading
                     #collapseThree.accordion-body.collapse(style='height: 0px;')
                         .accordion-inner
                             ul
-                                li
-                                    a(href='#') gaming
-                                li
-                                    a(href='#') office
-                                li
-                                    a(href='#') kids
-                                li
-                                    a(href='#') for women
+                                each pant in data[3]
+                                    li
+                                        a(href='/products/' + pant._id)= pant.name
                         // /.accordion-inner
                     // /.accordion-body
                 // /.accordion-group
-                .accordion-group
-                    .accordion-heading
-                        a.accordion-toggle.collapsed(href='#collapseFour', data-toggle='collapse')  Bags 
-                    // /.accordion-heading
-                    #collapseFour.accordion-body.collapse(style='height: 0px;')
-                        .accordion-inner
-                            ul
-                                li
-                                    a(href='#') gaming
-                                li
-                                    a(href='#') office
-                                li
-                                    a(href='#') kids
-                                li
-                                    a(href='#') for women
-                        // /.accordion-inner
-                // /.accordion-body
-                // /.accordion-group
-                .accordion-group
-                    .accordion-heading
-                        a.accordion-toggle.collapsed(href='#collapseFive', data-toggle='collapse')  Hats 
-                    // /.accordion-heading
-                    #collapseFive.accordion-body.collapse(style='height: 0px;')
-                        .accordion-inner
-                            ul
-                                li
-                                    a(href='#') gaming
-                                li
-                                    a(href='#') office
-                                li
-                                    a(href='#') kids
-                                li
-                                    a(href='#') for women
-                        // /.accordion-inner
-                    // /.accordion-body
-                // /.accordion-group
-                .accordion-group
-                    .accordion-heading
-                        a.accordion-toggle.collapsed(href='#collapseSix', data-toggle='collapse')  Accessories 
-                    // /.accordion-heading
-                    #collapseSix.accordion-body.collapse(style='height: 0px;')
-                        .accordion-inner
-                            ul
-                                li
-                                    a(href='#') gaming
-                                li
-                                    a(href='#') office
-                                li
-                                    a(href='#') kids
-                                li
-                                    a(href='#') for women
-                        // /.accordion-inner
-                    // /.accordion-body
-                // /.accordion-group
+                each other in data[4]
+                    a.other(href="/products/" + other._id)= other.name
+                    br
             // /.accordion
         // /.sidebar-widget-body
 // /.sidebar-widget

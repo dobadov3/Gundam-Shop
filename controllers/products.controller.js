@@ -13,6 +13,8 @@ module.exports.getByCategory = async function(req, res){
     var sessionId = req.signedCookies.sessionId;
     var page = req.query.page || 1;
     var limit = 12;
+
+    var totalProducts = await Product.find({id_detail_category: cateID});
     var products = await Product.find({id_detail_category: cateID})
                                 .skip((page * limit) - limit)
                                 .limit(limit);
@@ -26,6 +28,12 @@ module.exports.getByCategory = async function(req, res){
     var wishListLength = session.wishlist.length;
     var cartLength = session.cart.length;
 
+    var maxPage = Math.floor(totalProducts.length / limit)
+
+    if ((totalProducts.length % limit) !== 0){
+        ++maxPage;
+    }
+
     var count = await (await Product.find({id_detail_category: cateID})).length;
 
     res.render('./products/index', {
@@ -37,7 +45,8 @@ module.exports.getByCategory = async function(req, res){
         countItems: parseInt(count),
         cateID,
         wishListLength,
-        cartLength
+        cartLength, 
+        maxPage
     });
 };
 

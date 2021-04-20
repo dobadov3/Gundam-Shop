@@ -82,20 +82,33 @@ block contents
                             .col.col-sm-6.col-md-4.col-xs-6.col-lg-4.text-right
                                 .pagination-container
                                     ul.list-inline.list-unstyled
-                                        li.prev
-                                            a(href='#')
-                                                i.fa.fa-angle-left
+                                        if (page === 1)
+                                            li.prev.disabled
+                                                a(href='?page=' + (page - 1))
+                                                    i.fa.fa-angle-left
+                                        else 
+                                            li.prev
+                                                a(href='?page=' + (page - 1))
+                                                    i.fa.fa-angle-left
+                                        if (page !== 1)
+                                            li
+                                                a(href='?page=' + (page - 1))= page - 1
                                         li
-                                            a(href='#') 1
-                                        li.active
-                                            a(href='#') 2
-                                        li
-                                            a(href='#') 3
-                                        li
-                                            a(href='#') 4
-                                        li.next
-                                            a(href='#')
-                                                i.fa.fa-angle-right
+                                            a(href='?page=' + page)= page
+                                        if ((page + 1) <= maxPage)
+                                            li
+                                                a(href='?page=' + (page + 1))= page + 1
+                                        if ((page + 2) <= maxPage)
+                                            li
+                                                a(href='?page=' + (page + 2))= page + 2
+                                        if (page === maxPage)
+                                            li.next.disabled    
+                                                a(href='?page=' + (page + 1))
+                                                    i.fa.fa-angle-right
+                                        else
+                                            li.next
+                                                a(href='?page=' + (page + 1))
+                                                    i.fa.fa-angle-right
                                     // /.list-inline
                                 // /.pagination-container
                             // /.col
@@ -122,20 +135,33 @@ block contents
                             .text-right
                                 .pagination-container
                                     ul.list-inline.list-unstyled
-                                        li.prev
-                                            a(href='#')
-                                                i.fa.fa-angle-left
+                                        if (page === 1)
+                                            li.prev.disabled
+                                                a(href='?page=' + (page - 1))
+                                                    i.fa.fa-angle-left
+                                        else 
+                                            li.prev
+                                                a(href='?page=' + (page - 1))
+                                                    i.fa.fa-angle-left
+                                        if (page !== 1)
+                                            li
+                                                a(href='?page=' + (page - 1))= page - 1
                                         li
-                                            a(href='#') 1
-                                        li.active
-                                            a(href='#') 2
-                                        li
-                                            a(href='#') 3
-                                        li
-                                            a(href='#') 4
-                                        li.next
-                                            a(href='#')
-                                                i.fa.fa-angle-right
+                                            a(href='?page=' + page)= page
+                                        if ((page + 1) <= maxPage)
+                                            li
+                                                a(href='?page=' + (page + 1))= page + 1
+                                        if ((page + 2) <= maxPage)
+                                            li
+                                                a(href='?page=' + (page + 2))= page + 2
+                                        if (page === maxPage)
+                                            li.next.disabled    
+                                                a(href='?page=' + (page + 1))
+                                                    i.fa.fa-angle-right
+                                        else
+                                            li.next
+                                                a(href='?page=' + (page + 1))
+                                                    i.fa.fa-angle-right
                                 // /.list-inline
                             // /.pagination-container
                         // /.text-right

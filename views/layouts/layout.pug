@@ -63,7 +63,7 @@ html
               // /.contact-row
               // ============================================================= SEARCH AREA =============================================================
               .search-area
-                form
+                form(method="GET", action="/products/search")
                   .control-group
                     ul.categories-filter.animate-dropdown
                       li.dropdown
@@ -76,8 +76,8 @@ html
                             a(role='menuitem', tabindex='-1', href='category.html') - Theo tên sản phẩm
                           li(role='presentation')
                             a(role='menuitem', tabindex='-1', href='category.html') - Theo loại sản phẩm
-                    input.search-field(placeholder='Tìm kiếm...')
-                    a.search-button(href='#')
+                    input.search-field(placeholder='Tìm kiếm...', name="product")
+                    button.search-button(style="outline: none; border: none;")
               // /.search-area
               // ============================================================= SEARCH AREA : END =============================================================
             // /.top-search-holder
