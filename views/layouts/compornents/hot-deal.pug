@@ -20,15 +20,17 @@
                   a(href='detail.html')= product.name
                 .rating.rateit-small
                   .product-price
-                    span.price= product.price
-                    span.price-before-discount= product.price
+                    span.price= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                    if (product.sale > 0)
+                      span.price-before-discount= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
                   // /.product-price
             // /.product-info
             .cart.clearfix.animate-effect
                 .action
                   .add-cart-button.btn-group
-                    button.btn.btn-primary.icon(data-toggle='dropdown', type='button')
-                      i.fa.fa-shopping-cart
-                    button.btn.btn-primary.cart-btn(type='button') Giỏ hàng
+                    form(action="/products/add-to-cart/" + product._id)
+                      button.btn.btn-primary.icon(data-toggle='dropdown', type='submit', style="border-radius: 5px 0 0 5px;")
+                        i.fa.fa-shopping-cart
+                      button.btn.btn-primary.cart-btn(type='submit', style="border-radius: 0 5px 5px 0;") Giỏ hàng
                 // /.action
             // /.cart

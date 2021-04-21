@@ -3972,7 +3972,7 @@ font-family: FontAwesome;
 .single-product .favorite-button .btn-primary {background:#ddd; border-radius:999px; padding: 10px 14px;}
 
 .single-product .gallery-holder #owl-single-product .single-product-gallery-item {
-
+  overflow: hidden;
 }
 .single-product .gallery-holder .gallery-thumbs {
   margin: 15px 0 0;

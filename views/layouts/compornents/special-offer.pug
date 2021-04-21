@@ -19,7 +19,7 @@
                         a(href='/products/cate/' + product.code)= product.name
                       .rating.rateit-small
                         .product-price
-                          span.price= product.price
+                          span.price= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
       .item
         .products.special-product
           each product in data[8]
@@ -37,7 +37,7 @@
                         a(href='/products/cate/' + product.code)= product.name
                       .rating.rateit-small
                         .product-price
-                          span.price= product.price
+                          span.price= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
       .item
         .products.special-product
           each product in data[8]
@@ -55,4 +55,4 @@
                         a(href='/products/cate/' + product.code)= product.name
                       .rating.rateit-small
                         .product-price
-                          span.price= product.price
+                          span.price= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})

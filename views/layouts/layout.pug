@@ -88,10 +88,13 @@ html
                   .items-cart-inner
                     .basket
                       .basket-item-count
-                        span.count 2
+                        span.count= cartLength || 0
                       .total-price-basket
                         span.lbl Giỏ hàng
-                        span.value $4580
+                        if (finalPrice)
+                          span.value= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'}) 
+                        else 
+                          span.value 0
                 ul.dropdown-menu
                   li
                     .cart-item.product-summary
@@ -210,21 +213,21 @@ html
           li
             .feature-box
               .icon-truck
-              .content-blocks We ship worldwide
+              .content-blocks Giao hàng toàn quốc
           li
             .feature-box
               .icon-support
               .content-blocks
-                | call
-                | +1 800 789 0000
+                | Gọi
+                | +84944609933
           li
             .feature-box
               .icon-money
-              .content-blocks Money Back Guarantee
+              .content-blocks Hoàn tiền khi có lỗi
           li
             .feature-box
               .icon-return
-              .content 30 days return
+              .content Trả hàng trong 30 ngày
     footer#footer.footer.color-bg
       .footer-bottom
         .container
@@ -239,20 +242,20 @@ html
                         span.icon.fa-stack.fa-lg
                           i.fa.fa-map-marker.fa-stack-1x.fa-inverse
                       .media-body
-                        p ThemesGround, 789 Main rd, Anytown, CA 12345 USA
+                        p 246/71 Hòa Hưng p.13 quận 10
                     li.media
                       .pull-left
                         span.icon.fa-stack.fa-lg
                           i.fa.fa-mobile.fa-stack-1x.fa-inverse
                       .media-body
-                        p  + (888) 123-4567 / + (888) 456-7890
+                        p  +84944609933
                     li.media
                       .pull-left
                         span.icon.fa-stack.fa-lg
                           i.fa.fa-envelope.fa-stack-1x.fa-inverse
                       .media-body
                         span
-                          a(href='#') marazzo@themesground.com
+                          a(href='#') dobadov3@gmail.com
               // /.module-body
             // /.col
             .col-xs-12.col-sm-6.col-md-3
