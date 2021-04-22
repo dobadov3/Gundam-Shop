@@ -1,6 +1,7 @@
 var data = require('../layout.data');
 var Session = require('../models/session.model');
-var Product = require('../models/products.model')
+var Product = require('../models/products.model');
+var sessionMiddleware = require('../middlewares/session.middleware');
 
 module.exports.get = async function(req, res){
   var sessionID = req.signedCookies.sessionId;
@@ -14,7 +15,9 @@ module.exports.get = async function(req, res){
   res.render('./wishlist/index', {
       data: data.data, 
       products,
-      wishListLength,
-      cartLength
+      wishListLength: sessionMiddleware.wishListLength,
+      cartLength: sessionMiddleware.cartLength, 
+      cartItems: sessionMiddleware.cartItems,
+      finalPrice: sessionMiddleware.finalPrice
   });
 }

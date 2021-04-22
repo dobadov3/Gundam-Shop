@@ -3,6 +3,7 @@ var Product = require('../models/products.model');
 var Category = require('../models/category.model');
 var DetailCategory = require('../models/detail_category.model');
 var Session = require('../models/session.model');
+var sessionMiddleware = require('../middlewares/session.middleware');
 
 module.exports.get = function(req, res){
     
@@ -10,7 +11,6 @@ module.exports.get = function(req, res){
 
 module.exports.getByCategory = async function(req, res){
     var cateID = req.params.cateID;
-    var sessionId = req.signedCookies.sessionId;
     var page = req.query.page || 1;
     var limit = 12;
 
@@ -22,11 +22,6 @@ module.exports.getByCategory = async function(req, res){
     products.forEach(product => {
         product.priceSale = product.price - (product.price*product.sale)/100;
     })
-
-    var session = await Session.findOne({sessionID: sessionId});
-
-    var wishListLength = session.wishlist.length;
-    var cartLength = session.cart.length;
 
     var maxPage = Math.floor(totalProducts.length / limit)
 
@@ -44,8 +39,10 @@ module.exports.getByCategory = async function(req, res){
         items: (products.length)/limit,
         countItems: parseInt(count),
         cateID,
-        wishListLength,
-        cartLength, 
+        wishListLength: sessionMiddleware.wishListLength,
+        cartLength: sessionMiddleware.cartLength, 
+        cartItems: sessionMiddleware.cartItems,
+        finalPrice: sessionMiddleware.finalPrice,
         maxPage
     });
 };
@@ -86,8 +83,10 @@ module.exports.getCategory = async function(req, res){
         limit: parseInt(limit),
         items: (products.length)/limit,
         countItems: parseInt(count),
-        wishListLength,
-        cartLength
+        wishListLength: sessionMiddleware.wishListLength,
+        cartLength: sessionMiddleware.cartLength, 
+        cartItems: sessionMiddleware.cartItems,
+        finalPrice: sessionMiddleware.finalPrice
     });
 };
 
@@ -114,7 +113,11 @@ module.exports.getDetail = async function(req, res){
         product,
         wishListLength,
         cartLength,
-        relatedProducts
+        relatedProducts,
+        wishListLength: sessionMiddleware.wishListLength,
+        cartLength: sessionMiddleware.cartLength, 
+        cartItems: sessionMiddleware.cartItems,
+        finalPrice: sessionMiddleware.finalPrice
     })
 };
 
@@ -192,6 +195,10 @@ module.exports.search = async function(req, res){
     res.render('./products/index', {
         data: data.data,
         products,
-        paggination: false
+        paggination: false,
+        wishListLength: sessionMiddleware.wishListLength,
+        cartLength: sessionMiddleware.cartLength, 
+        cartItems: sessionMiddleware.cartItems,
+        finalPrice: sessionMiddleware.finalPrice
     })
 }

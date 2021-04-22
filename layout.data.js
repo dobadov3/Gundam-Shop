@@ -20,7 +20,7 @@ async function Data(){
     detail_tools = await DetailCategory.find({id_category: tools.id});
     detail_paints = await DetailCategory.find({id_category: paints.id});
     detail_other = await DetailCategory.find({id_category: other.id});
-
+    
     var newProducts = await Product.find();
 
     newProducts = newProducts.slice(newProducts.length - 11, newProducts.length - 1);

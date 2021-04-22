@@ -96,41 +96,33 @@ html
                         else 
                           span.value 0
                 ul.dropdown-menu
-                  li
-                    .cart-item.product-summary
-                      .row
-                        .col-xs-4
-                          .image
-                            a(href='detail.html')
-                              img(src='/assets/images/products/p4.jpg', alt='')
-                        .col-xs-7
-                          h3.name
-                            a(href='index8a95.html?page-detail') Simple Product
-                          .price $600.00
-                        .col-xs-1.action
-                          a(href='#')
-                            i.fa.fa-trash
-                  li.m-t-5
-                    .cart-item.product-summary
-                      .row
-                        .col-xs-4
-                          .image
-                            a(href='detail.html')
-                              img(src='/assets/images/products/p4.jpg', alt='')
-                        .col-xs-7
-                          h3.name
-                            a(href='index8a95.html?page-detail') Simple Product
-                          .price $600.00
-                        .col-xs-1.action
-                          a(href='#')
-                            i.fa.fa-trash
-                    // /.cart-item
+                  if (!cartItems)
+                    h4 Bạn chưa thêm gì vào giỏ hàng
+                  else
+                    each item in cartItems
+                      li
+                        .cart-item.product-summary
+                          .row
+                            .col-xs-4
+                              .image
+                                a(href='/products/detail/'+item.code)
+                                  img(src=item.image[0], alt='')
+                            .col-xs-7
+                              h3.name
+                                a(href='/products/detail/'+item.code)= item.name
+                              .price= item.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})   
+                            .col-xs-1.action
+                              a(href='#')
+                                i.fa.fa-trash
                     .clearfix
                     hr
                     .clearfix.cart-total
                       .pull-right
                         span.text Tạm tính :
-                        span.price $600.00
+                        if (finalPrice)
+                          span.price= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})   
+                        else
+                          span.price 0
                       .clearfix
                       a.btn.btn-upper.btn-primary.btn-block.m-t-20(href='checkout.html') Thanh toán
                     // /.cart-total

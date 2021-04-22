@@ -1,6 +1,7 @@
 var data = require('../layout.data');
 var Session = require('../models/session.model');
 var Product = require('../models/products.model');
+var sessionMiddleware = require('../middlewares/session.middleware');
 
 module.exports.get = async function(req, res){
     var sessionID = req.signedCookies.sessionId;
@@ -14,7 +15,7 @@ module.exports.get = async function(req, res){
         return cart.count
     });
 
-    var products = await Product.find({_id: {$in: productID}})
+    var products = await Product.find({_id: {$in: productID}});
 
     for (let i =0; i<products.length; i++){
         products[i].countCart = countCart[i];
@@ -23,18 +24,17 @@ module.exports.get = async function(req, res){
 
     var finalPrice=0;
 
-    var wishListLength = session.wishlist.length;
-    var cartLength = session.cart.length;
-
     products.forEach(product=>{
         finalPrice+=product.total
     })
-    
+
     res.render('./cart/index', {
         data: data.data,
         products,
         finalPrice,
-        wishListLength,
-        cartLength
+        wishListLength: sessionMiddleware.wishListLength,
+        cartLength: sessionMiddleware.cartLength, 
+        cartItems: sessionMiddleware.cartItems,
+        finalPrice: sessionMiddleware.finalPrice
     });
 }
