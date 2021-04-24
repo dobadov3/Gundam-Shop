@@ -3,19 +3,17 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var route = require('./routes/index.route');
 require('dotenv').config();
-var ids = require('short-id');
+
 mongoose.connect('mongodb://localhost/gundam', { useNewUrlParser: true, useUnifiedTopology: true });
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
   
 app.use(express.static('public'));
 app.use(cookieParser(process.env.SESSION_SECRET));
-
-var homeRoute = require('./routes/home.route');
-var productsRoute = require('./routes/products.route');
-var wishlistRoute = require('./routes/wishlist.route');
-var cartRoute = require('./routes/cart.route');
-var authenticationRoute = require('./routes/authentication.route');
 
 var sessionMiddleware = require('./middlewares/session.middleware')
 
@@ -28,12 +26,7 @@ app.get('/', (req, res) => {
     res.redirect('/home')
 });
 
+route(app);
 
-
-app.use('/home', homeRoute);
-app.use('/products', productsRoute);
-app.use('/wishlist', wishlistRoute);
-app.use('/cart', cartRoute);
-app.use('/authentication', authenticationRoute);
 
 app.listen(port);

@@ -57,12 +57,9 @@
                       | Th&agrave;nh ph&#x1ED1; 
                       span *
                     select.form-control.unicase-form-control.selectpicker
-                      option --Select options--
-                      option India
-                      option SriLanka
-                      option united kingdom
-                      option saudi arabia
-                      option united arab emirates
+                        option --Select Option--
+                        each city in listCity
+                          option(value=city.id)= city.name
                   .form-group
                     label.info-title.control-label
                       | Qu&#x1EAD;n/Huy&#x1EC7;n 

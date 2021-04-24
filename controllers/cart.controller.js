@@ -2,6 +2,8 @@ var data = require('../layout.data');
 var Session = require('../models/session.model');
 var Product = require('../models/products.model');
 var sessionMiddleware = require('../middlewares/session.middleware');
+const axios = require('axios');
+var listCity = [];
 
 module.exports.get = async function(req, res){
     var sessionID = req.signedCookies.sessionId;
@@ -28,6 +30,19 @@ module.exports.get = async function(req, res){
         finalPrice+=product.total
     })
 
+    await axios.get('https://thongtindoanhnghiep.co/api/city').then(response => {
+        response.data.LtsItem.map(c => {
+            var city = {
+                "id": c.ID,
+                "name": c.Title
+            }
+            listCity.push(city)
+        })
+        console.log(response.data)
+    }).catch(err => {
+        console.log(err)
+    })
+
     res.render('./cart/index', {
         data: data.data,
         products,
@@ -35,6 +50,7 @@ module.exports.get = async function(req, res){
         wishListLength: sessionMiddleware.wishListLength,
         cartLength: sessionMiddleware.cartLength, 
         cartItems: sessionMiddleware.cartItems,
-        finalPrice: sessionMiddleware.finalPrice
+        finalPrice: sessionMiddleware.finalPrice,
+        listCity
     });
 }
