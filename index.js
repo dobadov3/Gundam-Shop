@@ -11,16 +11,18 @@ mongoose.connect('mongodb://localhost/gundam', { useNewUrlParser: true, useUnifi
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-  
+
 app.use(express.static('public'));
 app.use(cookieParser(process.env.SESSION_SECRET));
 
-var sessionMiddleware = require('./middlewares/session.middleware')
+var sessionMiddleware = require('./middlewares/session.middleware');
+var authMiddleware = require('./middlewares/auth.middleware');
 
 app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(sessionMiddleware);
+app.use(authMiddleware);
 
 app.get('/', (req, res) => {
     res.redirect('/home')

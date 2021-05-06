@@ -8,7 +8,7 @@ html
     meta(name='author', content='')
     meta(name='keywords', content='MediaCenter, Template, eCommerce')
     meta(name='robots', content='all')
-    title Marazzo premium HTML5 &amp; CSS3 Template
+    title AATOYS
     // Bootstrap Core CSS
     link(rel='stylesheet', href='/assets/css/bootstrap.min.css')
     // Customizable CSS
@@ -43,9 +43,13 @@ html
                 li.header_cart.hidden-xs
                   a(href='/cart')
                     span My Cart
-                li.login
-                  a(href='/authentication')
-                    span Login
+                li.login  
+                  if (!checkLogin)
+                    a(href='/authentication')
+                      span Login
+                  else
+                    a(href='/authentication/logout')
+                      span Logout
             .clearfix
       // ============================================== TOP MENU : END ==============================================
       .main-header
@@ -124,7 +128,7 @@ html
                         else
                           span.price 0
                       .clearfix
-                      a.btn.btn-upper.btn-primary.btn-block.m-t-20(href='checkout.html') Thanh toán
+                      a.btn.btn-upper.btn-primary.btn-block.m-t-20(href='/cart') Thanh toán
                     // /.cart-total
                 // /.dropdown-menu
               // /.dropdown-cart
@@ -313,30 +317,6 @@ html
                 a(target='_blank', rel='nofollow', href='#', title='Twitter')
               li.googleplus.pull-left
                 a(target='_blank', rel='nofollow', href='#', title='GooglePlus')
-              li.rss.pull-left
-                a(target='_blank', rel='nofollow', href='#', title='RSS')
-              li.pintrest.pull-left
-                a(target='_blank', rel='nofollow', href='#', title='PInterest')
-              li.linkedin.pull-left
-                a(target='_blank', rel='nofollow', href='#', title='Linkedin')
-              li.youtube.pull-left
-                a(target='_blank', rel='nofollow', href='#', title='Youtube')
-          .col-xs-12.col-sm-4.no-padding.copyright
-            a(target='_blank', href='https://www.templateshub.net') Templates Hub
-          .col-xs-12.col-sm-4.no-padding
-            .clearfix.payment-methods
-              ul
-                li
-                  img(src='/assets/images/payments/1.png', alt='')
-                li
-                  img(src='/assets/images/payments/2.png', alt='')
-                li
-                  img(src='/assets/images/payments/3.png', alt='')
-                li
-                  img(src='/assets/images/payments/4.png', alt='')
-                li
-                  img(src='/assets/images/payments/5.png', alt='')
-            // /.payment-methods
     script(src='/assets/js/jquery-1.11.1.min.js')
     script(src='/assets/js/bootstrap.min.js')
     script(src='/assets/js/bootstrap-hover-dropdown.min.js')

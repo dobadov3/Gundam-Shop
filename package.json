@@ -1,32 +1,33 @@
 {
-  "name": "gundam-shop",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.js --inspect",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dobadov3/Gundam-Shop.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dobadov3/Gundam-Shop/issues"
-  },
-  "homepage": "https://github.com/dobadov3/Gundam-Shop#readme",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.12.2",
-    "nodemon": "^2.0.7",
-    "pug": "^3.0.2",
-    "short-id": "0.1.0-1",
-    "slick-carousel": "^1.8.1"
-  }
+    "name": "gundam-shop",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon --inspect index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dobadov3/Gundam-Shop.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dobadov3/Gundam-Shop/issues"
+    },
+    "homepage": "https://github.com/dobadov3/Gundam-Shop#readme",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "body-parser": "^1.19.0",
+        "cookie-parser": "^1.4.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "md5": "^2.3.0",
+        "mongoose": "^5.12.2",
+        "nodemon": "^2.0.7",
+        "pug": "^3.0.2",
+        "short-id": "0.1.0-1",
+        "slick-carousel": "^1.8.1"
+    }
 }
