@@ -1,6 +1,5 @@
 var data = require('../layout.data');
 var Product = require('../models/products.model');
-var Session = require('../models/session.model');
 
 module.exports.get = async function(req, res) {
     var products = await Product.find();
@@ -14,7 +13,6 @@ module.exports.get = async function(req, res) {
         data: data.data,
         checkLogin: res.locals.checkLogin,
         products: products.slice(8, 14),
-        wishListLength: res.locals.wishListLength,
         cartLength: res.locals.cartLength,
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice

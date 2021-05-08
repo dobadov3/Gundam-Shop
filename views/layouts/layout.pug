@@ -100,7 +100,7 @@ html
                         else 
                           span.value 0
                 ul.dropdown-menu
-                  if (!cartItems)
+                  if (cartItems.length == 0)
                     h4 Bạn chưa thêm gì vào giỏ hàng
                   else
                     each item in cartItems

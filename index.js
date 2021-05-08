@@ -5,9 +5,16 @@ const mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var route = require('./routes/index.route');
+var session = require('express-session')
 require('dotenv').config();
 
 mongoose.connect('mongodb://localhost/gundam', { useNewUrlParser: true, useUnifiedTopology: true });
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true,
+  }))
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -2,7 +2,8 @@ var data = require('../layout.data');
 var Product = require('../models/products.model');
 var Category = require('../models/category.model');
 var DetailCategory = require('../models/detail_category.model');
-var Session = require('../models/session.model');
+var Cart = require('../models/cart.model');
+var Wishlist = require('../models/wishlist.model');
 
 module.exports.get = function(req, res) {
 
@@ -18,6 +19,7 @@ module.exports.getByCategory = async function(req, res) {
     var cateID = req.params.cateID;
     var page = req.query.page || 1;
     var limit = 12;
+
 
     var totalProducts = await Product.find({ id_detail_category: cateID });
     var products = await Product.find({ id_detail_category: cateID })
@@ -42,7 +44,6 @@ module.exports.getByCategory = async function(req, res) {
         items: (products.length) / limit,
         countItems: parseInt(count),
         cateID,
-        wishListLength: res.locals.wishListLength,
         cartLength: res.locals.cartLength,
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice,
@@ -79,7 +80,6 @@ module.exports.getCategory = async function(req, res) {
         limit: parseInt(limit),
         items: (products.length) / limit,
         countItems: parseInt(count),
-        wishListLength: res.locals.wishListLength,
         cartLength: res.locals.cartLength,
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice
@@ -100,67 +100,32 @@ module.exports.getDetail = async function(req, res) {
         data: data.data,
         product,
         relatedProducts,
-        wishListLength: res.locals.wishListLength,
         cartLength: res.locals.cartLength,
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice
     })
 };
 
-function checkCart(cart, idProduct) {
-    var check = false;
-    cart.forEach(c => {
-        if (c.idProduct === idProduct) {
-            check = true;
-        }
-    });
-    return check;
-}
-
 module.exports.addToCart = async function(req, res) {
     var productID = req.params.productID;
-    var sessionID = req.signedCookies.sessionId;
-    var countProduct = 0;
-    var position = 0;
+    
+    var product = await Product.findOne({_id: productID});
+    product.priceSale = product.price - (product.price * product.sale) / 100;
 
-    var session = await Session.findOne({ sessionID: sessionID });
-
-
-    session.cart.forEach((c, index) => {
-        if (c.idProduct === productID) {
-            position = index;
-            countProduct = c.count + 1
-        }
-    });
-
-    var cart = { idProduct: productID, count: countProduct + 1 }
-
-    if (checkCart(session.cart, productID)) {
-        session.cart[position].count = countProduct
-    } else {
-        session.cart.push(cart);
-    }
-
-    session.markModified("cart");
-
-    await session.save((err, result) => {
-
-    });
+    Cart.add(product);
+    req.session.cart = Cart.getCart();
 
     res.redirect('back');
 };
 
 module.exports.addToWishList = async function(req, res) {
     var productID = req.params.productID;
-    var sessionID = req.signedCookies.sessionId;
+    
+    var product = await Product.findOne({_id: productID});
 
-    var session = await Session.findOne({ sessionID: sessionID });
+    Wishlist.add(product);
 
-    if (!checkCart(session.wishlist, productID)) {
-        session.wishlist.push(productID);
-    }
-
-    session.save();
+    req.session.wishList = Wishlist.getWishlist();
 
     res.redirect('back');
 };
@@ -180,7 +145,6 @@ module.exports.search = async function(req, res) {
         data: data.data,
         products,
         paggination: false,
-        wishListLength: res.locals.wishListLength,
         cartLength: res.locals.cartLength,
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice

@@ -16,8 +16,9 @@
               // /thead
               tbody
                 // Cart Item
-                each product in products
-                  include ./cart-item
+                if (products)
+                  each product in products
+                    include ./cart-item
               // /tbody
               tfoot
                 tr

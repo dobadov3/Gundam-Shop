@@ -1,23 +1,17 @@
 var data = require('../layout.data');
-var Session = require('../models/session.model');
-var Product = require('../models/products.model');
 var sessionMiddleware = require('../middlewares/session.middleware');
+var products = []
 
 module.exports.get = async function(req, res){
-  var sessionID = req.signedCookies.sessionId;
-  var session = await Session.findOne({sessionID: sessionID});
-
-  var wishListLength = session.wishlist.length;
-  var cartLength = session.cart.length;
-
-  var products = await Product.find({_id: {$in: session.wishlist}})
+  if (req.session.wishList){
+      products = req.session.wishList.products;
+  }
 
   res.render('./wishlist/index', {
       data: data.data, 
       products,
-      wishListLength: sessionMiddleware.wishListLength,
-      cartLength: sessionMiddleware.cartLength, 
-      cartItems: sessionMiddleware.cartItems,
-      finalPrice: sessionMiddleware.finalPrice
+      cartLength: res.locals.cartLength,
+      cartItems: res.locals.cartItems,
+      finalPrice: res.locals.finalPrice,
   });
 }
