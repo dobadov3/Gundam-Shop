@@ -1,0 +1,50 @@
+extends ../layouts/layout
+block contents
+  .row
+    .col-lg-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Product
+          button.btn.btn-inverse-success.btn-icon(type='button')
+            i.mdi.mdi-plus     
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
+                  |                             
+                  th Lo&#x1EA1;i
+                  |                             
+                  th Gi&aacute;
+                  |                             
+                  th T&igrave;nh tr&#x1EA1;ng
+                  |                             
+                  th
+                  |                             
+                  th
+              |                         
+              tbody
+                each product in products
+                  tr
+                    td= product.name
+                    |                             
+                    td= product.type
+                    |                             
+                    td= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                    |                             
+                    td
+                      if (product.count >= 10)
+                        label.badge.badge-success C&ograve;n h&agrave;ng
+                      if (product.count === 0)
+                        label.badge.badge-danger H&#x1EBF;t h&agrave;ng
+                      if (product.count > 0 && product.count < 10)
+                        label.badge.badge-warning S&#x1EAF;p h&#x1EBF;t
+                    |                             
+                    td
+                      button.btn.btn-inverse-primary.btn-icon(type='button')
+                        i.mdi.mdi-pencil
+                    |                             
+                    td
+                      button.btn.btn-inverse-danger.btn-icon(type='button')
+                        i.mdi.mdi-delete
+      
