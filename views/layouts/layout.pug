@@ -68,20 +68,8 @@ html
               // ============================================================= SEARCH AREA =============================================================
               .search-area
                 form(method="GET", action="/products/search")
-                  .control-group
-                    ul.categories-filter.animate-dropdown
-                      li.dropdown
-                        a.dropdown-toggle(data-toggle='dropdown', href='category.html')
-                          | Categories 
-                          b.caret
-                        ul.dropdown-menu(role='menu')
-                          li.menu-header Product
-                          li(role='presentation')
-                            a(role='menuitem', tabindex='-1', href='category.html') - Theo tên sản phẩm
-                          li(role='presentation')
-                            a(role='menuitem', tabindex='-1', href='category.html') - Theo loại sản phẩm
-                    input.search-field(placeholder='Tìm kiếm...', name="product")
-                    button.search-button(style="outline: none; border: none;")
+                  input.search-field(placeholder='Tìm kiếm...', name="product")
+                  button.search-button(style="outline: none; border: none;")
               // /.search-area
               // ============================================================= SEARCH AREA : END =============================================================
             // /.top-search-holder
@@ -109,11 +97,11 @@ html
                           .row
                             .col-xs-4
                               .image
-                                a(href='/products/detail/'+item.code)
+                                a(href='/products/detail/'+item._id)
                                   img(src=item.image[0], alt='')
                             .col-xs-7
                               h3.name
-                                a(href='/products/detail/'+item.code)= item.name
+                                a(href='/products/detail/'+item._id)= item.name
                               .price= item.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})   
                             .col-xs-1.action
                               a(href='#')
@@ -330,5 +318,5 @@ html
     script(src='/assets/js/wow.min.js')
     script(src='/assets/js/scripts.js')
     script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
-    script(src="https://unpkg.com/axios/dist/axios.min.js")
+    block script
 

@@ -25,8 +25,7 @@
                   td(colspan='7')
                     .shopping-cart-btn
                       span
-                        a.btn.btn-upper.btn-primary.outer-left-xs(href='#') Ti&#x1EBF;p t&#x1EE5;c mua h&agrave;ng
-                        a.btn.btn-upper.btn-primary.pull-right.outer-right-xs(href='#') C&#x1EAD;p nh&#x1EAD;t gi&#x1ECF; h&agrave;ng
+                        a.btn.btn-upper.btn-primary.outer-left-xs(href='/home') Tiếp tục mua hàng
             // /table
         // /.shopping-cart-table
         .col-md-4.col-sm-12.estimate-ship-tax
@@ -40,40 +39,34 @@
             tbody
               tr
                 td
-                  .form-group
-                    label.info-title.control-label
-                      | T&ecirc;n 
-                      span *
-                    input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập tên của bạn', value = name)
-                  .form-group
-                    label.info-title.control-label
-                      | S&#x1ED1; &dstrok;i&#x1EC7;n tho&#x1EA1;i 
-                      span *
-                    input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập số điện thoại', value = phone)
-                  .form-group
-                    label.info-title.control-label Email
-                    input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập email của bạn', value = email)
-                  .form-group
-                    label.info-title.control-label
-                      | Th&agrave;nh ph&#x1ED1; 
-                      span *
-                    select.form-control.unicase-form-control.selectpicker
-                        option --Select Option--
-                        each city in listCity
-                          option(value=city.id)= city.name
-                  .form-group
-                    label.info-title.control-label
-                      | Qu&#x1EAD;n/Huy&#x1EC7;n 
-                      span *
-                    select.form-control.unicase-form-control.selectpicker
-                      option --Select options--
-                      option TamilNadu
-                      option Kerala
-                      option Andhra Pradesh
-                      option Karnataka
-                      option Madhya Pradesh
-                  .pull-right
-                    button.btn-upper.btn.btn-primary(type='submit') X&aacute;c nh&#x1EAD;n
+                  form
+                    .form-group
+                      label.info-title.control-label
+                        | T&ecirc;n 
+                        span *
+                      input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập tên của bạn', value = name)
+                    .form-group
+                      label.info-title.control-label
+                        | S&#x1ED1; &dstrok;i&#x1EC7;n tho&#x1EA1;i 
+                        span *
+                      input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập số điện thoại', value = phone)
+                    .form-group
+                      label.info-title.control-label Email
+                      input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập email của bạn', value = email)
+                    .form-group
+                      label.info-title.control-label
+                        | Th&agrave;nh ph&#x1ED1; 
+                        span *
+                      select.form-control.unicase-form-control#select-city(onchange="onCityChange()")
+                          option --Select Option--
+                    .form-group
+                      label.info-title.control-label
+                        | Qu&#x1EAD;n/Huy&#x1EC7;n 
+                        span *
+                      select.form-control.unicase-form-control#select-district
+                          option --Select Option--
+                    .pull-right
+                      button.btn-upper.btn.btn-primary(type='submit') X&aacute;c nh&#x1EAD;n
         // /.estimate-ship-tax
         .col-md-4.col-sm-12.estimate-ship-tax
           table.table

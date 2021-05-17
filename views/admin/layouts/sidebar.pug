@@ -21,12 +21,18 @@ nav#sidebar.sidebar.sidebar-offcanvas
                     |                 
                     li.nav-item
                         a.nav-link(href='/admin/products') S&#x1EA3;n ph&#x1EA9;m
-        |           
-        li.nav-item
-            a.nav-link(href='/admin/users')
-                i.mdi.mdi-account.menu-icon
-                |               
-                span.menu-title T&agrave;i kho&#x1EA3;n
+        |
+        if (role === 'admin')           
+            li.nav-item
+                a.nav-link(href='/admin/users')
+                    i.mdi.mdi-account.menu-icon
+                    |               
+                    span.menu-title T&agrave;i kho&#x1EA3;n
+            li.nav-item
+                a.nav-link(href='/admin/roles')
+                    i(class="mdi mdi-file-tree menu-icon")
+                    |               
+                    span.menu-title Phân quyền
         |           
         li.nav-item
             a.nav-link(href='/admin/bills')

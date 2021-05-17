@@ -24,15 +24,16 @@ nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row
             li.nav-item.nav-profile.dropdown
                 a#profileDropdown.nav-link.dropdown-toggle(href='#' data-toggle='dropdown')
                     img(src='/assets/admin/images/faces/face5.jpg' alt='profile')
-                    |               
-                    span.nav-profile-name Duy Anh
+                    |
+                    if (account)           
+                        span.nav-profile-name= account.name
                 |             
                 .dropdown-menu.dropdown-menu-right.navbar-dropdown(aria-labelledby='profileDropdown')
                     a.dropdown-item
                         i.mdi.mdi-account-circle.text-primary
                         |                 Profile
                     |               
-                    a.dropdown-item
+                    a.dropdown-item(href="/admin/logout")
                         i.mdi.mdi-logout.text-primary
                         |                 Logout
         |         

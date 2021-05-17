@@ -8,7 +8,7 @@ router.get('/search', controller.search);
 
 router.get('/:cateID', controller.getByCategory);
 
-router.get('/detail/:code', controller.getDetail);
+router.get('/detail/:productID', controller.getDetail);
 
 router.get('/cate/:cateName', controller.getCategory);
 

@@ -87,8 +87,9 @@ module.exports.getCategory = async function(req, res) {
 };
 
 module.exports.getDetail = async function(req, res) {
-    var code = req.params.code;
-    var product = await Product.findOne({ code: code });
+    var id = req.params.productID;
+    
+    var product = await Product.findById(id);
 
     product.priceSale = product.price - (product.price * product.sale) / 100;
 

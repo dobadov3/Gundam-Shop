@@ -6,7 +6,7 @@
           .products
             .hot-deal-wrapper
               .image
-                  a(href='/products/detail/'+ product.code)
+                  a(href='/products/detail/'+ product._id)
                     img(src=product.image[0], alt='')
                     img.hover-image(src=product.image[1], alt='')
               if (product.sale > 0)

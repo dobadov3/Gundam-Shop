@@ -13,7 +13,7 @@ async function Data(){
     var gundam = await Category.findOne({name: "Gundam"});
     var tools = await Category.findOne({name: "Tools"});
     var paints = await Category.findOne({name: "Paints"});
-    var other = await Category.findOne({name: "Mô hình khác"});
+    var other = await Category.findOne({name: "Other"});
 
     detail_gundam = await DetailCategory.find({id_category: gundam.id});
     detail_tools = await DetailCategory.find({id_category: tools.id});
