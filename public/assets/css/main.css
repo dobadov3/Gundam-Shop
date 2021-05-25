@@ -7432,3 +7432,60 @@ a.other:hover{
 li.disabled{
   pointer-events: none;
 }
+
+.delivery{
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-body{
+  font-size: 18px;
+}
+
+.panel-body p{
+  font-weight: 600;
+}
+
+.form-check input{
+  margin-right: 10px;
+}
+
+.form-check label{
+  font-weight: 400;
+}
+
+
+.table-delivery tr{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.order{
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.order-detail{
+  background-color: white; 
+  padding: 10px 40px; 
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.btn-back{
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 0.25rem;
+  border: 0.5px solid #007bff;
+  color: #007bff;
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-back:hover{
+  color: white;
+  background-color: #007bff;
+}

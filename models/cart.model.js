@@ -27,4 +27,8 @@ module.exports = class Cart{
     static getCart(){
         return cart;    
     };
+
+    static removeCart(){
+        cart = null;
+    }
 };

@@ -9,7 +9,8 @@ var productSchema = new mongoose.Schema({
     image: Array,
     sale: Number,
     weight: Number,
-    quantity: Number
+    quantity: Number,
+    code: String
 });
 
 var Product = mongoose.model('Product', productSchema, 'products');

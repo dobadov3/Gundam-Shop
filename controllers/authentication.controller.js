@@ -56,6 +56,12 @@ module.exports.postSignUp = async function(req, res) {
     var password = req.body.passwordSignUp;
     var confirmPass = req.body.confirmPassword;
     var errorSignUp = "";
+    var newUser = new Account();
+    var delivery_address = {
+        name: name,
+        phone: phone,
+        address: ""
+    }
 
     var user = await Account.findOne({ email: email });
     var role = await Role.findOne({name: "customer"})
@@ -81,13 +87,13 @@ module.exports.postSignUp = async function(req, res) {
         return;
     }
 
-    var newUser = new Account();
 
     newUser.email = email;
     newUser.name = name;
     newUser.password = md5(password);
     newUser.phone = phone;
     newUser.id_role = role._id
+    newUser.delivery_address.push(delivery_address);
 
     Account.create(newUser);
 

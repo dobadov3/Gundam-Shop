@@ -4,7 +4,9 @@ var Product = require('../models/products.model');
 var Account = require('../models/account.model')
 var Role = require('../models/role.model');
 var md5 = require('md5');
-
+var Order = require('../models/order.model');
+var DeliveryMethod = require('../models/delivery_method.model');
+var PaymentMethod = require('../models/payment_method.model');
 
 //Home
 module.exports.get = async function(req, res){
@@ -158,7 +160,6 @@ module.exports.getEditCate = async function(req, res){
     var cateID = req.params.cateID;
 
     var category = await Category.findById(cateID);
-
     res.render('./admin/category/editCategory', {
         category,
         account: res.locals.account
@@ -319,6 +320,42 @@ module.exports.deleteRole = async function(req, res){
     res.redirect('back')
 }
 
+//Orders
+module.exports.getOrders = async function(req, res){
+    var orders = await Order.find().sort({
+        'date': -1,
+        'status': 1,
+        'payment_method': 1,
+        'payment_status': 1
+    });
+
+    for(let i=0; i<orders.length;i++){
+        deliveryID = orders[i].delivery_method;
+        paymentID = orders[i].payment_method;
+
+        var delivery = await DeliveryMethod.findById(deliveryID)
+        var payment = await PaymentMethod.findById(paymentID)
+        orders[i].delivery = delivery.content;
+        orders[i].payment = payment.content;
+        orders[i].deliveryName = delivery.name;
+        orders[i].paymentName = payment.name;
+    }
+
+    res.render('./admin/orders/index', {
+        orders
+    })
+}
+
+module.exports.getOrder = async function(req, res){
+    var delivery = await DeliveryMethod.find();
+    var payment = await PaymentMethod.find();
+    var order = await Order.findById(req.params.orderID)
+    res.render('./admin/orders/editOrder',{
+        delivery,
+        payment,
+        order
+    })
+}
 
 
 

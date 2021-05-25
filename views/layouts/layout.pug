@@ -26,6 +26,7 @@ html
     link(href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel='stylesheet', type='text/css')
     link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800', rel='stylesheet', type='text/css')
     link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+    link(href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" rel="stylesheet")
   body.cnt-home
     header.header-style-1
       // ============================================== TOP MENU ==============================================
@@ -88,7 +89,7 @@ html
                         else 
                           span.value 0
                 ul.dropdown-menu
-                  if (cartItems.length == 0)
+                  if (cartItems.length === 0)
                     h4 Bạn chưa thêm gì vào giỏ hàng
                   else
                     each item in cartItems
@@ -102,7 +103,7 @@ html
                             .col-xs-7
                               h3.name
                                 a(href='/products/detail/'+item._id)= item.name
-                              .price= item.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})   
+                              .price= item.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})   
                             .col-xs-1.action
                               a(href='#')
                                 i.fa.fa-trash
@@ -135,59 +136,8 @@ html
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-            .nav-bg-class
-              #mc-horizontal-menu-collapse.navbar-collapse.collapse
-                .nav-outer
-                  ul.nav.navbar-nav
-                    li.active.dropdown
-                      a(href='/home') Home
-                    li.dropdown
-                      a.dropdown-toggle(href='#', data-hover='dropdown', data-toggle='dropdown')= data[0][0].name
-                      ul.dropdown-menu.pages
-                        li
-                          .yamm-content
-                            .row
-                              .col-xs-12.col-menu
-                                ul.links
-                                  each gundam in data[1]
-                                    li
-                                      a(href='/products/'+ gundam._id)= gundam.name
-                    li.dropdown
-                      a.dropdown-toggle(href='#', data-hover='dropdown', data-toggle='dropdown')= data[0][1].name
-                      ul.dropdown-menu.pages
-                        li
-                          .yamm-content
-                            .row
-                              .col-xs-12.col-menu
-                                ul.links
-                                  each gundam in data[2]
-                                    li
-                                      a(href='/products/'+ gundam._id)= gundam.name
-                    li.dropdown
-                      a.dropdown-toggle(href='#', data-hover='dropdown', data-toggle='dropdown')= data[0][2].name
-                      ul.dropdown-menu.pages
-                        li
-                          .yamm-content
-                            .row
-                              .col-xs-12.col-menu
-                                ul.links
-                                  each gundam in data[3]
-                                    li
-                                      a(href='/products/'+ gundam._id)= gundam.name
-                    li.dropdown.hidden-sm
-                      a(href='category.html')= data[0][3].name
-                    li.dropdown
-                      a.dropdown-toggle(href='#', data-hover='dropdown', data-toggle='dropdown')= data[0][4].name
-                      ul.dropdown-menu.pages
-                        li
-                          .yamm-content
-                            .row
-                              .col-xs-12.col-menu
-                                ul.links
-                                  each gundam in data[4]
-                                    li
-                                      a(href='/products/'+ gundam._id)= gundam.name
-                  .clearfix
+            .nav-bg-class#nav-bg-id
+              
       // ============================================== NAVBAR : END ==============================================
     main
       block contents
@@ -318,5 +268,6 @@ html
     script(src='/assets/js/wow.min.js')
     script(src='/assets/js/scripts.js')
     script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+    script(src='/assets/js/navbar.js')
     block script
 

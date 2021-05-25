@@ -1,0 +1,55 @@
+extends ../layouts/layout
+block contents
+  .row
+    .col-lg-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Đơn hàng  
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th Mã đơn hàng                
+                  th Ngày đặt hàng                   
+                  th Phương thức vận chuyển                 
+                  th Phương thức thanh toán                  
+                  th Trạng thái thanh toán              
+                  th Trạng thái đơn hàng
+                  th Tổng cộng       
+              tbody
+                each order in orders 
+                  tr 
+                    td
+                      a(href="/admin/orders/"+order._id )= order.code
+                    td= order.date
+                    td= order.delivery
+                    if (order.paymentName === "momo")
+                      td
+                        label.badge.badge-danger.momo= order.payment
+                    if (order.paymentName === "bank")
+                      td
+                        label.badge.badge-primary= order.payment
+                    if (order.paymentName === "cash")
+                      td
+                        label.badge.badge-success= order.payment
+                    if (order.payment_status === "Chưa thanh toán")
+                      td
+                        label.badge.badge-danger= order.payment_status
+                    if (order.payment_status === "Đã thanh toán")
+                      td
+                        label.badge.badge-success= order.payment_status
+                    if (order.status === "Chờ xác nhận")
+                      td
+                        label.badge.badge-info= order.status
+                    if (order.status === "Đang giao hàng")
+                      td
+                        label.badge.badge-warning= order.status
+                    if (order.status === "Hoàn thành")
+                      td
+                        label.badge.badge-success= order.status
+                    if (order.status === "Đã hủy")
+                      td
+                        label.badge.badge-danger= order.status
+                    td= order.totalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                
+  

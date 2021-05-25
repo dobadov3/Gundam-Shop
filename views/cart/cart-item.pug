@@ -25,6 +25,6 @@ tr
                 i.icon.fa.fa-sort-desc
             input(type='text', value=product.quantity)
     td.cart-product-sub-total
-        span.cart-sub-total-price= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+        span.cart-sub-total-price= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
     td.cart-product-grand-total
-        span.cart-grand-total-price= (product.price*product.quantity).toLocaleString('vi', {style : 'currency', currency : 'VND'})
+        span.cart-grand-total-price= (product.priceSale*product.quantity).toLocaleString('vi', {style : 'currency', currency : 'VND'})

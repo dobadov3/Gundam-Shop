@@ -11,7 +11,8 @@ module.exports.get = async function(req, res) {
             res.redirect('/admin')
         }
     }
-
+    
+    console.log(req.session.cart)
 
     var products = await Product.find();
     var sessionId = req.signedCookies.sessionId;

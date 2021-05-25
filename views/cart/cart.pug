@@ -28,81 +28,82 @@
                         a.btn.btn-upper.btn-primary.outer-left-xs(href='/home') Tiếp tục mua hàng
             // /table
         // /.shopping-cart-table
-        .col-md-4.col-sm-12.estimate-ship-tax
-          table.table
-            thead
-              tr
-                th
-                  span.estimate-title Th&ocirc;ng tin giao h&agrave;ng
-                  p Nh&#x1EAD;p th&ocirc;ng tin giao h&agrave;ng c&#x1EE7;a b&#x1EA1;n &#x1EDF; &dstrok;&acirc;y.
-            // /thead
-            tbody
-              tr
-                td
-                  form
+        form(method="GET", action="/checkout")
+          .col-md-4.col-sm-12.estimate-ship-tax
+            table.table
+              thead
+                tr
+                  th
+                    span.estimate-title Thông tin giao hàng
+                    p Nhập thông tin giao hàng của bạn ở đây.
+              // /thead
+              tbody
+                tr
+                  td
+                    table.table.table-delivery 
+                      tbody 
+                        each d in delivery_address
+                          -var index = delivery_address.indexOf(d)
+                          -var address = d.address.address 
+                          -var district = d.address.district 
+                          -var city = d.address.city
+                          tr 
+                            td
+                              .form-check
+                                if (index === 0)
+                                  input.form-check-input(type='radio', name='delivery_address' value=index checked)
+                                else 
+                                  input.form-check-input(type='radio', name='delivery_address' value=index)
+                            td
+                              .delivery-address 
+                                strong= "Họ tên: " + d.name
+                                br
+                                strong= "Số điện thoại: " + d.phone
+                                br
+                                strong= "Địa chỉ: " + address + " " + district + " " + city
+                                 br
+                            if (index === 0)
+                              td 
+                                p= "(Địa chỉ mặc định)"
+                            else 
+                              td
+                    
+          // /.estimate-ship-tax
+          .col-md-4.col-sm-12.estimate-ship-tax
+            table.table
+              thead
+                tr
+                  th
+                    span.estimate-title Mã giảm giá
+                    p Nhập mã giảm giá ở đây nếu có.
+              tbody
+                tr
+                  td
                     .form-group
-                      label.info-title.control-label
-                        | T&ecirc;n 
-                        span *
-                      input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập tên của bạn', value = name)
-                    .form-group
-                      label.info-title.control-label
-                        | S&#x1ED1; &dstrok;i&#x1EC7;n tho&#x1EA1;i 
-                        span *
-                      input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập số điện thoại', value = phone)
-                    .form-group
-                      label.info-title.control-label Email
-                      input.form-control.form-control.unicase-form-control.text-input(type='text', placeholder='Nhập email của bạn', value = email)
-                    .form-group
-                      label.info-title.control-label
-                        | Th&agrave;nh ph&#x1ED1; 
-                        span *
-                      select.form-control.unicase-form-control#select-city(onchange="onCityChange()")
-                          option --Select Option--
-                    .form-group
-                      label.info-title.control-label
-                        | Qu&#x1EAD;n/Huy&#x1EC7;n 
-                        span *
-                      select.form-control.unicase-form-control#select-district
-                          option --Select Option--
-                    .pull-right
-                      button.btn-upper.btn.btn-primary(type='submit') X&aacute;c nh&#x1EAD;n
-        // /.estimate-ship-tax
-        .col-md-4.col-sm-12.estimate-ship-tax
-          table.table
-            thead
-              tr
-                th
-                  span.estimate-title M&atilde; gi&#x1EA3;m gi&aacute;
-                  p Nh&#x1EAD;p m&atilde; gi&#x1EA3;m gi&aacute; &#x1EDF; &dstrok;&acirc;y n&#x1EBF;u c&oacute;.
-            tbody
-              tr
-                td
-                  .form-group
-                    input.form-control.unicase-form-control.text-input(type='text', placeholder='Mã giảm giá')
-                  .clearfix.pull-right
-                    button.btn-upper.btn.btn-primary(type='submit') &Aacute;p d&#x1EE5;ng m&atilde; gi&#x1EA3;m
-            // /tbody
-          // /table
-        // /.estimate-ship-tax
-        .col-md-4.col-sm-12.cart-shopping-total
-          table.table
-            thead
-              tr
-                th
-                  .cart-sub-total
-                    | T&#x1EA1;m t&iacute;nh
-                    span.inner-left-md= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-                  .cart-grand-total
-                    | T&#x1ED5;ng c&#x1ED9;ng
-                    span.inner-left-md= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
-            // /thead
-            tbody
-              tr
-                td
-                  .cart-checkout-btn.pull-right
-                    button.btn.btn-primary.checkout-btn(type='submit') Thanh to&aacute;n
-            // /tbody
-          // /table
-        // /.cart-shopping-total
-      // /.shopping-cart
+                      input.form-control.unicase-form-control.text-input(type='text', placeholder='Mã giảm giá')
+                    .clearfix.pull-right
+                      button.btn-upper.btn.btn-primary(type='button') Áp dụng mã giảm
+              // /tbody
+            // /table
+          // /.estimate-ship-tax
+          .col-md-4.col-sm-12.cart-shopping-total
+            table.table
+              thead
+                tr
+                  th
+                    .cart-sub-total
+                      | T&#x1EA1;m t&iacute;nh
+                      span.inner-left-md= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                    .cart-grand-total
+                      | T&#x1ED5;ng c&#x1ED9;ng
+                      span.inner-left-md= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+              // /thead
+              tbody
+                tr
+                  td
+                    .cart-checkout-btn.pull-right
+                      button.btn.btn-primary.checkout-btn(type='submit') Thanh to&aacute;n
+              // /tbody
+            // /table
+          // /.cart-shopping-total
+        // /.shopping-cart

@@ -1,0 +1,17 @@
+extends ../layouts/layout 
+block contents 
+    -var delivery_address = order.delivery_address.address
+    -var address = delivery_address.address + " " + delivery_address.district + " " + delivery_address.city
+    h1.text-center Cảm ơn quý khách đã mua hàng
+    .order
+        .order-detail
+            p= "Mã đơn hàng: " + order.code
+            p= "Ngày mua hàng: " + order.date
+            p= "Tên người nhận: " + order.delivery_address.name
+            p= "Địa chỉ giao hàng: " + address
+            p= "Số điện thoại: " + order.delivery_address.phone
+            p= "Phương thức giao hàng: " + order.dm
+            p= "Phương thức thanh toán: " + order.pm
+            p= "Tổng số tiền phải thanh toán: " + order.totalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+        a.btn-back(href="/home")
+            i(class="fal fa-angle-double-left")  &nbsp;Tiếp tục mua hàng 

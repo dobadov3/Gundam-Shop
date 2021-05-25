@@ -2,9 +2,12 @@ extends ../layouts/layout
 block contents 
     #top-banner-and-menu.body-content.outer-top-vs
         .container
+            .row(style="margin-bottom: 30px;")
+                .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                    include ../layouts/compornents/slider
             .row
                 .col-xs-12.col-sm-12.col-md-3.sidebar.visible-lg.visible-md.visible-sm
-                    include ../layouts/compornents/side-categories
+                    //- include ../layouts/compornents/side-categories
                     include ../layouts/compornents/hot-deal
                     -var title = "Special Offer"
                     include ../layouts/compornents/special-offer
@@ -12,7 +15,6 @@ block contents
                     include ../layouts/compornents/special-offer
                     include ../layouts/compornents/member-description
                 .col-xs-12.col-sm-12.col-md-9.homebanner-holder
-                    include ../layouts/compornents/slider
                     -var title= "Sản phẩm mới"
                     include ../layouts/compornents/feature-products
                         block products

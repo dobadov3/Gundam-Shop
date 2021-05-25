@@ -56,3 +56,7 @@ router.get('/roles/edit/:roleID', controller.getEditRole);
 router.post('/roles/edit/:roleID', controller.postEditRole);
 router.get('/roles/delete/:roleID', controller.deleteRole);
 module.exports = router;
+
+//Orders
+router.get('/orders', controller.getOrders);
+router.get('/orders/:orderID', controller.getOrder);
