@@ -21910,3 +21910,17 @@ dl li {
   background-color: #a50064;
 }
 /*# sourceMappingURL=maps/style.css.map */
+.bestsellerimg{
+  width: 250px;
+  height: 250px;
+  max-width: fit-content;
+  max-height: fit-content;
+  display:block;
+  text-align: center;
+}
+.bestseller{
+  text-align: center;
+}
+.bestsellertext{
+  font-size: large;
+}
