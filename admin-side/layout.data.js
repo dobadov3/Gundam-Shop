@@ -1,3 +1,4 @@
+const { default: axios } = require('axios');
 var Category = require('./models/category.model');
 var DetailCategory = require('./models/detail_category.model');
 var Product = require('./models/products.model');

@@ -1,21 +1,10 @@
-const id=[]
 axios.get('http://localhost:3001/api/orders').then(response=>{
-    //response.data.forEach(c=>{
-        //c.products.forEach(p=>{
-           // id.push(p._id)  
-            //console.log(id)     
-       // })
-    // })
-    //const sale=foo(id)[0]
-    //const count=foo(id)[1]
     for(let i=0;i<response.data.length;i++)
     {
         for(let j=0;j<response.data[i].products.length;j++)
         id.push(response.data[i].products[j]._id) 
     }
-    console.log(foo(id))
     var toplist = foo(id)
-    console.log(toplist[0][0])
     axios.get('http://localhost:3001/api/products').then(response=>{
         for(let i=0;i<toplist[0].length;i++)
         {
