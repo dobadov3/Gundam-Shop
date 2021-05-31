@@ -11,8 +11,6 @@ block contents
                     include ../layouts/compornents/hot-deal
                     -var title = "Special Offer"
                     include ../layouts/compornents/special-offer
-                    -var title = "Special Deals"
-                    include ../layouts/compornents/special-offer
                     include ../layouts/compornents/member-description
                 .col-xs-12.col-sm-12.col-md-9.homebanner-holder
                     -var title= "Sản phẩm mới"
@@ -31,5 +29,7 @@ block contents
                     include ../layouts/compornents/feature-products
                         block products
                             if (data)
-                                each product in data[6]
+                                each product in data[7]
                                     include ../layouts/compornents/product
+block script
+    script(src='/assets/js/bestseller.js')

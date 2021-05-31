@@ -3,7 +3,7 @@ var Account = require('../models/account.model');
 var DeliveryMethod = require('../models/delivery_method.model');
 var PaymentMethod = require('../models/payment_method.model');
 var Cart = require('../models/cart.model');
-var data = require('../layout.data');
+var data = require('../layout.data')
 const shortid = require('short-id');
 
 module.exports.get = function(req, res){

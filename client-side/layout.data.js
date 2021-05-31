@@ -1,13 +1,12 @@
 var Category = require('./models/category.model');
 var DetailCategory = require('./models/detail_category.model');
 var Product = require('./models/products.model');
-
+const {default:axios} = require('axios')
 var category;
 var detail_gundam;
 var detail_tools;
 var detail_paints;
 var detail_other;
-
 async function Data(){
     category = await Category.find();
     var gundam = await Category.findOne({name: "Gundam"});
@@ -29,15 +28,11 @@ async function Data(){
     var saleProducts = await Product.find();
 
     var specialProducts = await Product.find().limit(3);
-
+    
+    
     newProducts.forEach(product => {
         product.priceSale = product.price - (product.price*product.sale)/100;
     });
-
-    bestSeller.forEach(product => {
-        product.priceSale = product.price - (product.price*product.sale)/100;
-    });
-
     saleProducts.forEach(product => {
         product.priceSale = product.price - (product.price*product.sale)/100;
     });
@@ -50,6 +45,6 @@ async function Data(){
 
     module.exports.data = data
 }
-
 Data()
+
 

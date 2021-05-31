@@ -1,4 +1,4 @@
-var data = require('../layout.data');
+var data = require('../layout.data')
 var Account = require('../models/account.model');
 var Role = require('../models/role.model');
 var md5 = require('md5');
@@ -34,16 +34,6 @@ module.exports.postLogin = async function(req, res) {
         });
         return;
     }
-    
-    if (role.name === "admin" || role.name === "staff"){
-        res.render("./authentication/index", {
-            error: "This account can't be used on this page!!",
-            data: data.data,
-            values: req.body,
-        });
-        return;
-    }
-
     res.cookie('userID', user.id, {
         signed: true
     });
@@ -69,7 +59,6 @@ module.exports.postSignUp = async function(req, res) {
     };
 
     var user = await Account.findOne({ email: req.body.email });
-    var role = await Role.findOne({name: "customer"})
 
     if (user) {
         errorSignUp = "Account already exist!";
@@ -93,7 +82,6 @@ module.exports.postSignUp = async function(req, res) {
     }
 
     newUser.password = md5(password);
-    newUser.id_role = role._id
     newUser.delivery_address.push(delivery_address);
 
     Account.create(newUser);
