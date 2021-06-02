@@ -1,5 +1,6 @@
 const Order = require('../models/order.model');
-
+const DeliveryMethod = require('../models/delivery_method.model')
+const PaymentMethod = require('../models/payment_method.model')
 module.exports.get = async function (req, res) {
     var orders = await Order.find().sort({
         date: -1,

@@ -1,4 +1,4 @@
-var data = require('../layout.data');
+var data = require('../layout.data')
 var sessionMiddleware = require('../middlewares/session.middleware');
 const Account = require('../models/account.model')
 
