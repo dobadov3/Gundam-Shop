@@ -11,7 +11,6 @@ module.exports.get = async function(req, res){
         {
             productslist.push(order[i].products[j]);
         }
-        console.log("productlist:"+productslist)
     }
     for(let i=0;i<productslist.length;i++)
     {

@@ -19,7 +19,6 @@ module.exports.get = async function(req, res) {
     });
 
     var products = await Product.find();
-
     res.render('./home/index', {
         data: data.data,
         checkLogin: res.locals.checkLogin,

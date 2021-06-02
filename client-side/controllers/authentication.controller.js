@@ -1,4 +1,4 @@
-var data = require('../layout.data')
+var data = require('../layout.data');
 var Account = require('../models/account.model');
 var Role = require('../models/role.model');
 var md5 = require('md5');
@@ -16,7 +16,6 @@ module.exports.postLogin = async function(req, res) {
     console.log(req.body)
     var user = await Account.findOne({ email: email });
     var role = await Role.findOne({_id: user.id_role});
-
     if (!user) {
         res.render('./authentication/index', {
             error: "Account doesn't exits!",
@@ -39,6 +38,7 @@ module.exports.postLogin = async function(req, res) {
     });
 
     res.redirect('/home');
+    console.log(res.cookie)
 };
 
 module.exports.logout = function(req, res) {
@@ -88,3 +88,4 @@ module.exports.postSignUp = async function(req, res) {
 
     res.redirect('back');
 }
+
