@@ -71,8 +71,8 @@ block contents
                                                         span.label Tình trạng :
                                                 .pull-left
                                                     .stock-box
-                                                        if (product.status)
-                                                            span.value Còn hàng
+                                                        if (product.count > 0)
+                                                            span.text-success Còn hàng
                                                         else
                                                             span.value Hết hàng
                                         // /.row

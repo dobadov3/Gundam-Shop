@@ -18,9 +18,9 @@ block contents
                         form.register-form.outer-top-xs(role='form', method="POST", action="/authentication/login")
                             .form-group
                                 label.info-title(for='exampleInputEmail1')
-                                    | Email Address 
+                                    | Email or Username
                                     span *
-                                input#exampleInputEmail1.form-control.unicase-form-control.text-input(type='email',name="email", required, value= values ? values.email : "")
+                                input#exampleInputEmail1.form-control.unicase-form-control.text-input(type='text',name="email", required, value= values ? values.email : "")
                             .form-group
                                 label.info-title(for='exampleInputPassword1')
                                     | Password 
@@ -44,6 +44,11 @@ block contents
                                     | Email Address 
                                     span *
                                 input#exampleInputEmail2.form-control.unicase-form-control.text-input(type='email', name="emailSignUp", required, value= values ? values.emailSignUp : "")
+                            .form-group
+                                label.info-title(for='exampleInputEmail1')
+                                    | Username 
+                                    span *
+                                input#exampleInputEmail1.form-control.unicase-form-control.text-input(type='text', name="username", required, value= values ? values.username : "")
                             .form-group
                                 label.info-title(for='exampleInputEmail1')
                                     | Name 

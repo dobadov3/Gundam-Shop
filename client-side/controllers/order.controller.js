@@ -14,9 +14,9 @@ module.exports.post = async function(req, res){
     req.body.products = res.locals.cartItems;
     req.body.payment_status = "Chưa thanh toán";
     req.body.status = "Chờ xác nhận";
-    let today = new Date().toLocaleDateString()
-    req.body.date = today
-    req.body.totalPrice = res.locals.finalPrice
+    var deliveryMethod = await DeliveryMethod.findById(req.body.delivery_method);
+    var paymentMethod = await PaymentMethod.findById(req.body.payment_method);
+    req.body.totalPrice = res.locals.finalPrice + deliveryMethod.cost
     
     var currentUser = await Account.findOne({ _id: req.signedCookies.userID });
     var address = currentUser.delivery_address[req.body.address];
@@ -25,8 +25,6 @@ module.exports.post = async function(req, res){
     var order = new Order(req.body);
     Order.create(order);
 
-    var deliveryMethod = await DeliveryMethod.findById(req.body.delivery_method);
-    var paymentMethod = await PaymentMethod.findById(req.body.payment_method);
 
     order.dm = deliveryMethod.content
     order.pm = paymentMethod.content
@@ -37,8 +35,17 @@ module.exports.post = async function(req, res){
     res.locals.finalPrice = 0;
     Cart.removeCart();
 
+
+    setDateCreate(order);
     res.render('./checkout/success', {
         data: data.data,
         order
     });
 }
+
+var setDateCreate = function (order) {
+    var m = order.date.getMonth() + 1;
+    var d = order.date.getDate();
+    var y = order.date.getFullYear();
+    order.date_create = d + "/" + m + "/" + y;
+};

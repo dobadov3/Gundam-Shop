@@ -16,5 +16,7 @@ router.get('/add-to-cart/:productID', controller.addToCart);
 
 router.get('/add-to-wishlist/:productID', controller.addToWishList);
 
+router.get("/:cateID/:sort", controller.getSort);
+
 
 module.exports = router;

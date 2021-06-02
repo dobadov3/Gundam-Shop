@@ -6,7 +6,6 @@ var showInput = function(){
     var textCmnd = document.getElementById("text-cmnd");
     var textGender = document.getElementById("text-gender");
     var textJob = document.getElementById("text-job");
-    var textRelationship = document.getElementById("text-relationship");
     var btnEdit = document.getElementById("btn_edit");
 
     var Email = document.getElementById("email")
@@ -17,7 +16,6 @@ var showInput = function(){
     var Gender1 = document.getElementById("gender1");
     var Gender2 = document.getElementById("gender2");
     var Job = document.getElementById("job");
-    var Relationship = document.getElementById("relationship");
     var GroupBtn = document.getElementById("group-btn");
 
     textEmail.classList.add("d-none");
@@ -27,7 +25,6 @@ var showInput = function(){
     textCmnd.classList.add("d-none");
     textGender.classList.add("d-none");
     textJob.classList.add("d-none");
-    textRelationship.classList.add("d-none");
     btnEdit.classList.add("d-none");
 
     Email.classList.remove("hidden");
@@ -38,6 +35,5 @@ var showInput = function(){
     Gender1.classList.remove("d-none");
     Gender2.classList.remove("d-none");
     Job.classList.remove("hidden");
-    Relationship.classList.remove("hidden");
     GroupBtn.classList.remove("d-none");
 }

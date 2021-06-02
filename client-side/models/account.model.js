@@ -11,6 +11,9 @@ var accountSchema = new mongoose.Schema({
     wishList: Array,
     username: String,
     date_create: { type: Date, default: new Date() },
+    cmnd: String,
+    job: String,
+    gender: String
 });
 accountSchema.plugin(mongooseDateFormat);
 

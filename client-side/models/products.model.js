@@ -9,11 +9,10 @@ var productSchema = new mongoose.Schema({
     image: Array,
     sale: Number,
     weight: Number,
-    quantity: Number
+    quantity: Number,
+    priceSale: Number,
 });
 
 var Product = mongoose.model('Product', productSchema, 'products');
-
-Product.prototype.priceSale = Product.price - (Product.price * Product.sale) / 100;
 
 module.exports = Product;

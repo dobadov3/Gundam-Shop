@@ -1,5 +1,7 @@
 const Account = require('../models/account.model');
 const Order = require('../models/order.model');
+const DeliveryMethod = require('../models/delivery_method.model');
+const md5 = require('md5');
 
 module.exports.getProfile = async function(req, res){
     res.render('./account/profile', {
@@ -11,13 +13,127 @@ module.exports.getChangePass = async function(req, res){
     res.render('./account/password')
 }
 
+module.exports.postChangePass = async function(req, res){
+    var currentAccount = await Account.findById(res.locals.currentAccount._id);
+    var old_pass = md5(req.body.old_pass)
+    var new_pass = md5(req.body.new_pass)
+
+    if(req.body.confirm_newPass !== req.body.new_pass){
+        res.render("./account/password", {
+            error: "Mật khẩu xác nhận không đúng!"
+        });
+        return
+    }
+
+    if (old_pass !== currentAccount.password) {
+        res.render("./account/password", {
+            error: "Mật khẩu cũ không đúng!",
+        });
+        return;
+    }
+    console.log(currentAccount.password);
+    currentAccount.password = new_pass;
+    currentAccount.save();
+    console.log(currentAccount.password);
+
+    res.redirect('back')
+}
+
 module.exports.getHistory = async function (req, res) {
-    var orders = await Order.find({id_account: res.locals.currentAccount._id});
-    res.render("./account/history", {
-        currentAccount: res.locals.currentAccount,
-        orders
-    });
+    var {order_id} = req.query;
+    var {from_date} = req.query;
+    var {to_date} = req.query;
+
+    console.log(from_date, to_date)
+    
+    if (!order_id && !from_date && !to_date){
+        var orders = await Order.find({id_account: res.locals.currentAccount._id});
+        orders.forEach(item => {
+            setDateCreate(item)
+        })
+        res.render("./account/history", {
+            currentAccount: res.locals.currentAccount,
+            orders
+        });
+    }else if (order_id && !from_date && !to_date) {
+        var orders = await Order.find({
+            id_account: res.locals.currentAccount._id,
+            code: order_id,
+        });
+        orders.forEach((item) => {
+            setDateCreate(item);
+        });
+        res.render("./account/history", {
+            currentAccount: res.locals.currentAccount,
+            orders,
+        });
+    }else if (!order_id && from_date && to_date){
+        console.log(new Date(from_date), new Date(to_date));
+
+        var orders = await Order.find({
+            date: {
+                $gte: new Date(from_date),
+                $lt: new Date(to_date)
+            },
+        });
+        orders.forEach((item) => {
+            setDateCreate(item);
+        });
+        res.render("./account/history", {
+            currentAccount: res.locals.currentAccount,
+            orders,
+        });
+    }else if (order_id && from_date && to_date) {
+        var orders = await Order.find({
+            id_account: res.locals.currentAccount._id,
+            code: order_id,
+        });
+        orders.forEach((item) => {
+            setDateCreate(item);
+        });
+        res.render("./account/history", {
+            currentAccount: res.locals.currentAccount,
+            orders,
+        });
+    }
 };
 
+module.exports.getDetailHistory = async function(req, res){
+    var orders = await Order.findById(req.params.orderID);
+    var delevery_method = await DeliveryMethod.findById(orders.delivery_method);
+
+    orders.ship_cost = delevery_method.cost;
+    orders.temp = 0;
+
+    orders.products.forEach(product => {
+        orders.temp += product.priceSale;
+    })
+
+    res.render("./account/detail-history", {
+        currentAccount: res.locals.currentAccount,
+        orders,
+    });
+}
+
+module.exports.postProfile = async function(req, res){
+    var currentAccount = await Account.findById(res.locals.currentAccount._id);
+    currentAccount.email = req.body.email;
+    currentAccount.username = req.body.username;
+    currentAccount.name = req.body.name;
+    currentAccount.phone = req.body.phone;
+    currentAccount.cmnd = req.body.cmnd;
+    currentAccount.gender = req.body.gender;
+    currentAccount.job = req.body.job;
+    currentAccount.save();
+
+    res.redirect('back');
+}
+
+var setDateCreate = function (order) {
+    var m = order.date.getMonth() + 1;
+    var d = order.date.getDate();
+    var y = order.date.getFullYear();
+    order.date_create = d + "/" + m + "/" + y;
+};
 
 

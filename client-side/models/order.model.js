@@ -9,7 +9,10 @@ var orderSchema = new mongoose.Schema({
     products: Array,
     paymentMethod: String,
     status: String, 
-    date: String,
+    date: {
+        type: Date,
+        default: new Date()
+    },
     totalPrice: Number,
     code: String,
     delivery: String,

@@ -2,6 +2,7 @@ var data = require('../layout.data');
 var Account = require('../models/account.model');
 var Role = require('../models/role.model');
 var md5 = require('md5');
+const e = require('express');
 
 module.exports.get = async function(req, res) {
 
@@ -13,41 +14,46 @@ module.exports.get = async function(req, res) {
 module.exports.postLogin = async function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    console.log(req.body)
     var user = await Account.findOne({ email: email });
-    var role = await Role.findOne({_id: user.id_role});
+    var userByUserName = await Account.findOne({username: email});
 
-    if (!user) {
-        res.render('./authentication/index', {
-            error: "Account doesn't exits!",
-            data: data.data,
-            values: req.body
-        });
-        return;
-    }
-
-    if (md5(password) !== user.password) {
-        res.render('./authentication/index', {
-            error: "Wrong password!",
-            data: data.data,
-            values: req.body
-        });
-        return;
-    }
-    
-    if (role.name === "admin" || role.name === "staff"){
+    if(!user && !userByUserName){
         res.render("./authentication/index", {
-            error: "This account can't be used on this page!!",
+            error: "Account doesn't exits!",
             data: data.data,
             values: req.body,
         });
         return;
+    }else{
+        if(user){
+            if (md5(password) !== user.password) {
+                res.render("./authentication/index", {
+                    error: "Wrong password!",
+                    data: data.data,
+                    values: req.body,
+                });
+                return;
+            }
+    
+            res.cookie("userID", user.id, {
+                signed: true,
+            });
+        }else{
+            if (md5(password) !== userByUserName.password) {
+                res.render("./authentication/index", {
+                    error: "Wrong password!",
+                    data: data.data,
+                    values: req.body,
+                });
+                return;
+            }
+    
+            res.cookie("userID", userByUserName.id, {
+                signed: true,
+            });
+        }
     }
-
-    res.cookie('userID', user.id, {
-        signed: true
-    });
-
+ 
     res.redirect('/home');
 };
 
@@ -69,7 +75,6 @@ module.exports.postSignUp = async function(req, res) {
     };
 
     var user = await Account.findOne({ email: req.body.email });
-    var role = await Role.findOne({name: "customer"})
 
     if (user) {
         errorSignUp = "Account already exist!";
@@ -93,7 +98,6 @@ module.exports.postSignUp = async function(req, res) {
     }
 
     newUser.password = md5(password);
-    newUser.id_role = role._id
     newUser.delivery_address.push(delivery_address);
 
     Account.create(newUser);

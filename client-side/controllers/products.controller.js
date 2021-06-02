@@ -37,20 +37,80 @@ module.exports.getByCategory = async function(req, res) {
 
     var count = await (await Product.find({ id_detail_category: cateID })).length;
 
-    res.render('./products/index', {
+    res.render("./products/index", {
         data: data.data,
         products: products,
         page: parseInt(page),
         limit: parseInt(limit),
-        items: (products.length) / limit,
+        items: products.length / limit,
         countItems: parseInt(count),
         cateID,
         cartLength: res.locals.cartLength,
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice,
-        maxPage
+        maxPage,
+        cateID
     });
 };
+
+module.exports.getSort = async function(req, res){
+    var cateID = req.params.cateID;
+    var page = req.query.page || 1;
+    var limit = 12;
+
+    var totalProducts = await Product.find({ id_detail_category: cateID });
+    var products;
+
+    switch(req.params.sort){
+        case "sortLowestFirst":
+            products = await Product.find({ id_detail_category: cateID })
+                .skip(page * limit - limit)
+                .limit(limit)
+                .sort({price: 1});
+            break;
+        case "sortHighestFirst":
+            products = await Product.find({ id_detail_category: cateID })
+                .skip(page * limit - limit)
+                .limit(limit)
+                .sort({ price: -1 });
+            break;
+        case "sortByName":
+            products = await Product.find({ id_detail_category: cateID })
+                .skip(page * limit - limit)
+                .limit(limit)
+                .sort({ name: -1 });
+            break;
+        default:
+            break;
+    }
+
+    AdjustProductsPriceSale(products);
+
+    var maxPage = Math.floor(totalProducts.length / limit);
+
+    if (totalProducts.length % limit !== 0) {
+        ++maxPage;
+    }
+
+    var count = await (
+        await Product.find({ id_detail_category: cateID })
+    ).length;
+
+    res.render("./products/index", {
+        data: data.data,
+        products: products,
+        page: parseInt(page),
+        limit: parseInt(limit),
+        items: products.length / limit,
+        countItems: parseInt(count),
+        cateID,
+        cartLength: res.locals.cartLength,
+        cartItems: res.locals.cartItems,
+        finalPrice: res.locals.finalPrice,
+        maxPage,
+        cateID,
+    });
+}
 
 module.exports.getCategory = async function(req, res) {
     var page = req.query.page || 1;

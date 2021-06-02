@@ -6,7 +6,7 @@ block contents
     .order
         .order-detail
             p= "Mã đơn hàng: " + order.code
-            p= "Ngày mua hàng: " + order.date
+            p= "Ngày mua hàng: " + order.date_create
             p= "Tên người nhận: " + order.delivery_address.name
             p= "Địa chỉ giao hàng: " + address
             p= "Số điện thoại: " + order.delivery_address.phone
