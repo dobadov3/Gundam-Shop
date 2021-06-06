@@ -1,8 +1,7 @@
-var data = require('../layout.data');
+var data = require('../layout.data')
 var Account = require('../models/account.model');
 var Role = require('../models/role.model');
 var md5 = require('md5');
-const e = require('express');
 
 module.exports.get = async function(req, res) {
 

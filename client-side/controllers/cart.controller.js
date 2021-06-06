@@ -1,4 +1,4 @@
-var data = require('../layout.data');
+var data = require('../layout.data')
 var Product = require('../models/products.model');
 var Account = require('../models/account.model');
 const axios = require('axios');

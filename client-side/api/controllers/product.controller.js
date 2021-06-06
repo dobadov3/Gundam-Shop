@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const Product = require('../../models/products.model');
 
 module.exports.get = async function(req, res){
@@ -52,3 +53,11 @@ var AdjustProductsPriceSale = function (products) {
             product.price - (product.price * product.sale) / 100;
     });
 };
+=======
+var Product = require('../../models/products.model');
+
+module.exports.get = async function(req, res){
+    var product = await Product.find();
+    res.json(product);
+}
+>>>>>>> 8454d0f6685e1dafa12d994246f12b8489ee5adf

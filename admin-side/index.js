@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var route = require('./routes/index.route');
 var session = require('express-session')
+var apiOrderRoute = require('./api/routes/order.route')
+var productRoute = require('./api/routes/product.route')
 var cors = require('cors')
 require('dotenv').config();
 var sessionMiddleware = require('./middlewares/session.middleware');
@@ -38,7 +40,8 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.set('view engine', 'pug');
 app.set('views', './views');
-
+app.use('/api/orders',apiOrderRoute)
+app.use('/api/products',productRoute)
 route(app);
 
 // app.use(authMiddleware);

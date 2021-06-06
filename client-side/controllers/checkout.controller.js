@@ -1,4 +1,4 @@
-var data = require('../layout.data');
+var data = require('../layout.data')
 var Account = require('../models/account.model');
 var DeliveryMethod = require('../models/delivery_method.model');
 var PaymentMethod = require('../models/payment_method.model');
