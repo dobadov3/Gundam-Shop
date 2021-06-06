@@ -8,16 +8,13 @@ module.exports.get = async function (req, res) {
     var accounts = await Account.find();
     var roles = await Role.find();
     var admins = await Admin.find().sort({id_role: 1});
-    for (let i = 0; i < accounts.length; i++) {
-        accounts[i].role = "customer";
-    }
-
+     for (let i = 0; i < accounts.length; i++) {
+         accounts[i].role = "customer";
+     }
     for(let i = 0; i<admins.length;i++){
         var role = await Role.findById(admins[i].id_role);
-
         admins[i].role = role.name;
     }
-    
     res.render("./admin/users/index", {
         account: res.locals.admin,
         accounts,

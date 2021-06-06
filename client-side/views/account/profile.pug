@@ -8,9 +8,7 @@ block content
             label.col-form-label Email đăng nhập:
             .text.info_detail#text-email= currentAccount.email
             input(type="text" value=currentAccount.email id="email" class="form-control info_edit form-info hidden" readonly="" name="email")
-            span(class="span_info")
-                a(href="#" id="btn_edit" onclick="showInput()")
-                    i(class="fas fa-edit") Cập Nhật
+            
         .form-group
             label.col-form-label Username:
             .text.info_detail#text-username= currentAccount.username

@@ -1,19 +1,45 @@
 extends ../layouts/layout
 block contents
   .row
-    .col-lg-8.grid-margin.stretch-card
+    .col-lg-4.grid-margin.stretch-card
       .card
-        .card-body
-          h4.card-title Product  
-          canvas#myChart
+        .card-body      
+          i.mdi.mdi-cash-multiple
+          h4.card-title Tổng doanh thu 
+          hr
+          h4#totalmoney          
     .col-lg-4.grid-margin.stretch-card
       .card
         .card-body
+          i.mdi.mdi-format-list-bulleted
+          h4.card-title Đơn hàng 
+          hr
+          h4#totalorder
+    .col-lg-4.grid-margin.stretch-card
+      .card
+        .card-body
+          i.mdi.mdi-shopping
+          h4.card-title Đã bán  
+          hr
+          h4#saleammount 
+  .row
+    .col-lg-8.grid-margin.stretch-card
+      .card
+        .card-body
+          i.mdi.mdi-chart-line
+          h4.card-title Doanh thu theo tháng
+          hr 
+          canvas#myChart       
+    .col-lg-4.grid-margin.stretch-card
+      .card
+        .card-body
+          i.mdi.mdi-star
           h4.card-title Top Sellers
+          hr
           .row.justify-content-center        
             .col-lg-6.col-md-4.col
               p(style='color:gold').bestsellerplacement.bestseller.bestsellertext 1st
-              img.bestseller.bestsellerimg#bestsellergold(src="")  
+              img.bestseller.bestsellerimg#bestseller1(src="")  
               p#bestsellername1.bestseller.bestsellertext 1st
               br
               p#bestsellercount1.bestseller.bestsellertext
@@ -21,20 +47,26 @@ block contents
           .row 
             .col-lg-6.col-md-6
               p(style='color:silver').bestsellerplacement.bestseller.bestsellertext 2nd 
-              img.bestseller.bestsellerimg#bestsellersilver(src="")  
+              img.bestseller.bestsellerimg#bestseller2(src="")  
               p#bestsellername2.bestseller.bestsellertext 2nd   
               br
               p#bestsellercount2.bestseller.bestsellertext   
             .col-lg-6.col-md-6
               p(style='color:brown').bestsellerplacement.bestseller.bestsellertext 3rd
-              img.bestseller.bestsellerimg#bestsellerbronze(src="")
+              img.bestseller.bestsellerimg#bestseller3(src="")
               p#bestsellername3.bestseller.bestsellertext 3rd
               br
               br
               p#bestsellercount3.bestseller.bestsellertext
-
+  .row
+    .col-lg-8.grid-margin.stretch-card
+      .card
+        .card-body
+          i.mdi.mdi-chart-bar
+          h4.card-title Số sản phẩm từng loại
+          hr 
+          canvas#myChart2       
             
                 
 block script 
-    script(src="/assets/admin/js/chart.js") 
     script(src="/assets/admin/js/bestseller.js")

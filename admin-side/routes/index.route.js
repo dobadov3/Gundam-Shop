@@ -7,7 +7,7 @@ const productsRoute = require('./products.route');
 const rolesRoute = require('./roles.route');
 const ordersRoute = require('./orders.route');
 const billsRoute = require('./bill.route');
-
+const profileRoute = require('./profile.route');
 //api
 const categoryAPI = require('../api/routes/category.route');
 const categoryDetailAPI = require('../api/routes/category-detail.route');
@@ -23,7 +23,7 @@ var route = function(app){
     app.use("/roles", rolesRoute);
     app.use("/orders", ordersRoute);
     app.use("/bills", billsRoute);
-    
+    app.use("/profile",profileRoute)
     //api
     app.use("/api", categoryAPI);
     app.use("/api", categoryDetailAPI);

@@ -21923,4 +21923,15 @@ dl li {
 }
 .bestsellertext{
   font-size: large;
+} 
+.invisible 
+{visibility: hidden}
+#profileimg{
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+#text-role{
+  text-transform: uppercase;
+  margin-left: 125px;
 }

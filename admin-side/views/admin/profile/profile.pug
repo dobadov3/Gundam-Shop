@@ -1,0 +1,49 @@
+extends ../layouts/layout
+block contents
+    .col-12
+       .card 
+            .card-body
+              .row
+                .col-md-4#containerimg
+                    h4.card-title Profile
+                    img#profileimg(src="https://scontent-hkt1-2.xx.fbcdn.net/v/t1.6435-9/67330367_1187456364769884_4171326607866200064_n.jpg?_nc_cat=107&ccb=1-3&_nc_sid=730e14&_nc_ohc=7sktYtbix24AX8j1H6t&_nc_ht=scontent-hkt1-2.xx&oh=e4bbfe7d43789c6df119a490f83155a5&oe=60E3F6A5")
+                    .text.info_detail#text-role=role
+                .col-md-8        
+                    span(class="span_info")
+                            a(href="#" id="btn_edit" onclick="showInput()")
+                                .btn-icon-text
+                                    i.mdi.mdi-tooltip-edit Cập Nhật
+                    hr
+                    form(method="POST" action="/profile") 
+                        p.card-description Personal info
+                        hr
+                        .row
+                            .col-md-3 
+                                .form-group
+                                    label.col-form-label Username:
+                                    .text.info_detail#text-username= admin.username
+                                    input(type="text" value=admin.username id="username" class="form-control info_edit form-info invisible" readonly="" name="username")
+                                .form-group
+                                    label.col-form-label Họ và tên:
+                                    .text.info_detail#text-name=admin.name
+                                    input(type="text" id="name" value=admin.name class="form-control info_edit form-info invisible" name="name")
+                            .col-md-6
+                                .form-group
+                                    label.col-form-label Số điện thoại:
+                                    .text.info_detail#text-phone= admin.phone
+                                    input(type="text" id="phone" value=admin.phone class="form-control info_edit form-info invisible" name="phone")
+                                .form-group
+                                    label.col-form-label Địa chỉ email:
+                                    .text.info_detail#text-email=admin.email
+                                    input(type="text" value=admin.email id="email" class="form-control info_edit form-info invisible" readonly="" name="email") 
+                               
+                            .col-md-6   
+                                .form-group
+                                    a(href="/profile/change-password") Đổi mật khẩu
+                            .col-md-6 
+                                .form-group#group-btn.d-none
+                                    label.col-form-label 
+                                    button.btn.btn-primary(type="submit" style="margin-right: 10px;") Cập nhật
+                                    button.btn.btn-danger(type="cancel") Hủy 
+block script 
+    script(src="/assets/admin/js/account.js")
