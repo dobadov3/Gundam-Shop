@@ -14,7 +14,7 @@
         .rating.rateit-small
         .description
         .product-price
-          span.price= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+          span.price= product.priceSale
           if (product.sale > 0)
             span.price-before-discount= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
         // /.product-price

@@ -1,0 +1,39 @@
+extends ../layouts/layout
+block contents
+    .col-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title= 'Bill' 
+          table.table.table-hover
+            thead
+                tr
+                    th Hình ảnh               
+                    th Tên sản phẩm       
+                    th Số lượng
+                    th Giá          
+            tbody
+                each product in bill.products 
+                    tr
+                        th 
+                            img(src=product.image[0], alt="" width=100)               
+                        th= product.name       
+                        th= product.quantity
+                        th= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})     
+
+    .col-3.grid-margin.stretch-card
+        .card
+            .card-body 
+                h3.card-title Tổng hóa đơn
+                hr
+                .mb-4
+                    span Tổng giá sản phẩm
+                    strong.float-right= (bill.totalPrice - bill.shippingCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})    
+                .mb-4
+                    span Phí vận chuyển
+                    strong.float-right= bill.shippingCost.toLocaleString('vi', {style : 'currency', currency : 'VND'})    
+                
+                hr
+                .mb-4
+                    span Tổng cộng
+                    strong.float-right= bill.totalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})    
+                

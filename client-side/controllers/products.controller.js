@@ -23,11 +23,6 @@ module.exports.getByCategory = async function(req, res) {
 
 
     var totalProducts = await Product.find({ id_detail_category: cateID });
-    var products = await Product.find({ id_detail_category: cateID })
-        .skip((page * limit) - limit)
-        .limit(limit);
-
-    AdjustProductsPriceSale(products);
 
     var maxPage = Math.floor(totalProducts.length / limit)
 
@@ -39,17 +34,14 @@ module.exports.getByCategory = async function(req, res) {
 
     res.render("./products/index", {
         data: data.data,
-        products: products,
         page: parseInt(page),
         limit: parseInt(limit),
-        items: products.length / limit,
         countItems: parseInt(count),
         cateID,
         cartLength: res.locals.cartLength,
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice,
         maxPage,
-        cateID
     });
 };
 
@@ -116,7 +108,6 @@ module.exports.getCategory = async function(req, res) {
     var page = req.query.page || 1;
     var cateName = req.params.cateName;
     var limit = 8;
-    var sessionId = req.signedCookies.sessionId;
 
     var category = await Category.findOne({ name: cateName });
 
@@ -184,8 +175,6 @@ module.exports.addToWishList = async function(req, res) {
     var productID = req.params.productID;
     var currentAccount = await Account.findById(res.locals.currentAccount._id);
 
-    console.log(currentAccount.wishList);
-
     if (!req.signedCookies.userID) {
         res.redirect("/authentication");
         return;
@@ -199,26 +188,25 @@ module.exports.addToWishList = async function(req, res) {
     currentAccount.markModified('wishList')
     await currentAccount.save();
 
-    console.log(currentAccount.wishList);
-
     res.redirect('back');
 };
 
 module.exports.search = async function(req, res) {
-    var productName = req.query.product.toLowerCase();
+    var productName = req.query.product;
+    var limit = 12;
 
-    var results = await Product.find();
+    var totalProducts = await Product.find({ name: {$regex: productName} });
 
-    var products = results.filter(product => {
-        return product.name.toLowerCase().indexOf(productName) !== -1;
-    });
+    var maxPage = Math.floor(totalProducts.length / limit);
 
-    AdjustProductsPriceSale(products)
+    if (totalProducts.length % limit !== 0) {
+        ++maxPage;
+    }
 
-    res.render('./products/index', {
+    res.render('./products/search', {
         data: data.data,
-        products,
-        paggination: false,
+        productName,
+        maxPage,
         cartLength: res.locals.cartLength,
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice

@@ -1,9 +1,9 @@
 tr
     td.romove-item
-        a.icon(href='#', title='cancel')
+        a.icon(href=`/cart/remove/${product._id}`, title='remove')
             i.fal.fa-trash-alt
     td.cart-image
-        a.entry-thumbnail(href='/products/detail/'+product.code)
+        a.entry-thumbnail(href='/products/detail/'+product._id)
             img(src=product.image[0], alt='')
     td.cart-product-name-info(colspan='2')
         h4.cart-product-description

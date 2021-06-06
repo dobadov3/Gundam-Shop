@@ -1,17 +1,13 @@
-var Account = require('../models/account.model');
+var Admin = require('../models/admin.model');
 var Role = require('../models/role.model');
 
 module.exports = async function(req, res, next){
-    res.setHeader("Content-Type", "text/html");
-    if (!req.signedCookies.userID) {
-        res.redirect('/authentication')
-        res.end();
-    }else{
-        var account = await Account.findById(req.signedCookies.userID);
-        var role = await Role.findById(account.id_role)
-        res.locals.role = 'admin'
-        res.locals.account = account;
-        next()
+    if (req.signedCookies.adminID) {
+        var admin = await Admin.findById(req.signedCookies.adminID);
+        var role = await Role.findById(admin.id_role)
+        res.locals.role = role.name
+        res.locals.admin = admin;
     }
     
+    next()
 }

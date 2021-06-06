@@ -16,6 +16,7 @@ var productAPI = require('../api/routes/product.route')
 var bestsellerAPI = require('../api/routes/bestseller.route')
 var saleAPI = require('../api/routes/saleproduct.route')
 var newApi = require('../api/routes/newproduct.route')
+var searchApi = require('../api/routes/search.route')
 
 var route = function(app){
     app.use('/home', homeRoute);
@@ -37,6 +38,7 @@ var route = function(app){
     app.use('/api/bestseller',bestsellerAPI)
     app.use('/api/sale',saleAPI)
     app.use('/api/new',newApi)
+    app.use("/api/search", searchApi);
 }
 
 module.exports = route;

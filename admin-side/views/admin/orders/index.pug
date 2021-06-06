@@ -20,8 +20,8 @@ block contents
                 each order in orders 
                   tr 
                     td
-                      a(href="/admin/orders/"+order._id )= order.code
-                    td= order.date
+                      a(href="/orders/edit/"+order._id )= order.code
+                    td= order.date_create
                     td= order.delivery
                     if (order.paymentName === "momo")
                       td

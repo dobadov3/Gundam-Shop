@@ -61,7 +61,7 @@ block contents
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                       span(aria-hidden='true') &times;
                   .modal-body
-                    form(method="POST" action="/category-detail/create/"+detail.id)
+                    form(method="POST" action="/detail-category/create/"+detail.id)
                       .form-group
                         label.col-form-label(for=detail.name+'-product') Tên loại chi tiết:
                         input.form-control(type='text' id=detail.name+'-product' name="detailName")

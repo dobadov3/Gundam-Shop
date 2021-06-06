@@ -10,11 +10,8 @@ block contents
                         p Hello, Welcome to your account.
                         .social-sign-in.outer-top-xs
                             a.facebook-sign-in(href='#')
-                                i.fa.fa-facebook
+                                i.fab.fa-facebook-f
                                 |  Sign In with Facebook
-                            a.twitter-sign-in(href='#')
-                                i.fa.fa-twitter
-                                |  Sign In with Twitter
                         form.register-form.outer-top-xs(role='form', method="POST", action="/authentication/login")
                             .form-group
                                 label.info-title(for='exampleInputEmail1')
@@ -30,7 +27,7 @@ block contents
                                 label
                                     input(type='checkbox', name='optionsRadios', value='option2', style="margin: 0")
                                     |          Remember me!
-                                a.forgot-password.pull-right(href='#') Forgot your Password?
+                                a.forgot-password.pull-right(href='/authentication/forgot-pass') Forgot your Password?
                             p(style="color: red;")= error || ""
                             button.btn-upper.btn.btn-primary.checkout-page-button(type='submit') Login
                         // Sign-in

@@ -13,7 +13,11 @@ var accountSchema = new mongoose.Schema({
     date_create: { type: Date, default: new Date() },
     cmnd: String,
     job: String,
-    gender: String
+    gender: String,
+    resetLink: {
+        type: String,
+        default: ""
+    }
 });
 accountSchema.plugin(mongooseDateFormat);
 

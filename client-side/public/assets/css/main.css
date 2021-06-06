@@ -1,5 +1,5 @@
 /*
-Theme Name: Marazzo
+Theme Name: t
 Author: ThemesGround
 Description:  Marazzo HTML Template
 Version: 1.4
@@ -9408,4 +9408,15 @@ a.btn-back-history{
 
 li.prev{
     margin: 0 20px
+}
+
+i.icon-success{
+    font-size: 100px;
+}
+
+.div-success{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

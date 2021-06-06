@@ -2,10 +2,12 @@ var express = require("express");
 var router = express.Router();
 var controller = require("../controllers/roles.controller");
 
-router.get("/", controller.get);
-router.get("/", controller.getEdit);
-router.get("/", controller.delete);
-router.post("/", controller.postCreate);
-router.post("/", controller.postEdit);
+const authMiddleware = require("../middlewares/auth.middleware");
+
+router.get("/", authMiddleware.auth, controller.get);
+router.get("/", authMiddleware.auth, controller.getEdit);
+router.get("/", authMiddleware.auth, controller.delete);
+router.post("/", authMiddleware.auth, controller.postCreate);
+router.post("/", authMiddleware.auth, controller.postEdit);
 
 module.exports = router;

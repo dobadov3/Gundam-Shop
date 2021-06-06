@@ -3,27 +3,29 @@ const Order = require("../../models/order.model");
 
 module.exports.get = async function (req, res) {
     var account = res.locals.currentAccount;
-    var orders = await Order.find({
-        id_account: account._id,
-    });
-    var totalOrder = orders.length;
-    var totalOrderValue = 0;
-
-    for (let i = 0; i < orders.length; i++) {
-        totalOrderValue += orders[i].totalPrice;
+    if(account){
+        var orders = await Order.find({
+            id_account: account._id,
+        });
+        var totalOrder = orders.length;
+        var totalOrderValue = 0;
+    
+        for (let i = 0; i < orders.length; i++) {
+            totalOrderValue += orders[i].totalPrice;
+        }
+    
+        setDateCreate(account);
+    
+        var api = {
+            username: account.username,
+            email: account.email,
+            date: account.date,
+            totalOrder,
+            totalOrderValue,
+        };
+    
+        res.json(api);
     }
-
-    setDateCreate(account);
-
-    var api = {
-        username: account.username,
-        email: account.email,
-        date: account.date,
-        totalOrder,
-        totalOrderValue,
-    };
-
-    res.json(api);
 };
 
 var setDateCreate = function (currentAccount) {

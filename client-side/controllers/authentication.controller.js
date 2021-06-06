@@ -2,6 +2,9 @@ var data = require('../layout.data')
 var Account = require('../models/account.model');
 var Role = require('../models/role.model');
 var md5 = require('md5');
+var jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+var smtpTransport = require("nodemailer-smtp-transport");
 
 module.exports.get = async function(req, res) {
 
@@ -102,4 +105,100 @@ module.exports.postSignUp = async function(req, res) {
     Account.create(newUser);
 
     res.redirect('back');
+}
+
+module.exports.getForgot = async function(req, res){
+    res.render('./authentication/forgot-pass')
+}
+
+module.exports.postForgot = async function(req, res){
+    Account.findOne({email: req.body.email}, (err, account) => {
+        if(err || !account){
+            res.render("./authentication/forgot-pass", {
+                error: "Account doesn't exist!!",
+                values: req.body.email,
+            });
+            return;
+        }
+
+        var token = jwt.sign({ _id: account._id }, process.env.RESET_PASSWORD_KEY, {expiresIn: '20m'});
+
+        account.resetLink = token;
+        account.save()
+
+        sendEmail(res, req.body.email, token)
+    })
+    console.log("POST Forgotpass")
+}
+
+module.exports.getResetPass = async function(req, res){
+    const {resetLink} = req.params
+    res.render("./authentication/reset-pass", {
+        resetLink
+    });
+}
+
+module.exports.resetPass = async function(req, res){
+    const { newPass, confirmPass, resetLink } = req.body;
+    if (resetLink){
+        jwt.verify(resetLink, process.env.RESET_PASSWORD_KEY, (error, decodedData) => {
+            if (error){
+                res.render("./authentication/reset-pass", {
+                    error: "Mã đặt lại mật khẩu đã hết hạn",
+                });
+                return;
+            }
+
+            Account.findOne({resetLink}, (err, account) => {
+                if (err || !account){
+                    res.render("./authentication/reset-pass", {
+                        error: "Tài khoản không tồn tại",
+                    });
+                    return;
+                }
+                if (newPass === confirmPass){
+                    account.password = md5(newPass);
+                    account.resetLink = "";
+                    account.save();
+                    res.redirect('/authentication');
+                }else{
+                    res.render("./authentication/reset-pass", {
+                        error: "Mật khẩu xác nhận không đúng",
+                        resetLink,
+                    });
+                }
+            })
+        })
+    }
+}
+
+async function sendEmail(res, email, token) {
+    var transporter = nodemailer.createTransport(
+        smtpTransport({
+            service: "gmail",
+            host: "smtp.gmail.com",
+            auth: {
+                user: "dobadov3@gmail.com",
+                pass: "0944609933",
+            },
+        })
+    );
+
+    var mailOptions = {
+        from: "gundamshop@gmail.com",
+        to: email,
+        subject: "[AATOYS] Email reset password",
+        html: `<h1>ĐÂY LÀ EMAIL KHÔI PHỤC MẬT KHẨU</h1><br/><p>Nhấn vào link dưới đây để khôi phục lại mật khẩu của bạn</p><a href="${process.env.CLIENT_URL}/authentication/reset-pass/${token}">Click this link</a>`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            res.render("./authentication/forgot-pass", {
+                error,
+                values: email,
+            });
+        } else {
+            res.render("./authentication/success");
+        }
+    });
 }

@@ -23,7 +23,7 @@ module.exports.get = async function (req, res) {
         var myCateObj = {
             id: category[i]._id,
             name: category[i].name,
-            countItems: detailCate.length,
+            countItems: detailCate.length
         };
         var myDetailObj = {
             id: category[i]._id,

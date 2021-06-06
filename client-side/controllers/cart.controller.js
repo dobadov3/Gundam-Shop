@@ -5,7 +5,9 @@ const axios = require('axios');
 var listCity = [];
 
 module.exports.get = async function(req, res) {
-    var currentUser = await Account.findOne({ _id: req.signedCookies.userID });
+    var currentUser = await Account.findOne({
+        _id: req.signedCookies.userID,
+    });
     var delivery_address = []
     var products = []
     if (req.session.cart){
@@ -28,4 +30,18 @@ module.exports.get = async function(req, res) {
 
 module.exports.removeCart = async function(req, res) {
     var productID = req.params.productID;
+
+    var product = await Product.findById(productID);
+
+    var products = [...req.session.cart.products];
+
+    req.session.cart.products.forEach(item => {
+        if (product._id.equals(item._id)){
+            var index = req.session.cart.products.indexOf(item);
+            products.splice(index, 1);
+            req.session.cart.products = products;
+        }
+    });
+
+    res.redirect('back')
 }

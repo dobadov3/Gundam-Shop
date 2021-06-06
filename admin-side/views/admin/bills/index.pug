@@ -1,0 +1,25 @@
+extends ../layouts/layout
+block contents
+  .row
+    .col-lg-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Hóa đơn  
+          .table-responsive
+            table.table.table-hover
+                thead
+                    tr
+                        th Mã hóa đơn                
+                        th Ngày lập hóa đơn       
+                        th Tổng cộng       
+                tbody
+                    each bill in bills
+                        tr 
+                            td
+                                a(href=`/bills/edit/${bill._id}` style="text-transform: uppercase;")= bill.code
+                            td= bill.date_create
+                            td= bill.totalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+
+                    
+                
+  

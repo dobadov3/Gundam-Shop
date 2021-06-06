@@ -122,6 +122,116 @@ var listItem = function(product){
                 </div>`;
 }
 
+var newProducts = function(product){
+    return `
+    <div class="item item-carousel" style="margin-top: 50px;">
+        <div class="products">
+            <div class="product">
+                <div class="product-image">
+                    <div class="image">
+                        <a href="/products/detail/${product._id}">
+                            <img src="${product.image[0]}" alt="" />
+                            <img class="hover-image" src="${product.image[1]}" alt="" />
+                        </a>
+                    </div>
+                    <div class="tag new"><span>new</span></div>
+                </div><!-- /.product-image-->
+                <div class="product-info text-left">
+                    <h3 class="name"><a href="detail.html">${product.name}</a></h3>
+                    <div class="rating rateit-small"></div>
+                    <div class="description"></div>
+                    <div class="product-price">
+                        <span class="price">${product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+                        <span class="price-before-discount">${product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+                    </div><!-- /.product-price-->
+                </div><!-- /.product-info-->
+                <div class="cart clearfix animate-effect">
+                    <div class="action">
+                        <ul class="list-unstyled">
+                            <li class="add-cart-button btn-group"><a class="btn btn-primary icon" href="/products/add-to-cart/${product._id}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li class="lnk wishlist"><a class="add-to-cart" data-toggle="tooltip" href="/products/add-to-wishlist/${product._id}" title="Wishlist"><i class="icon fa fa-heart"></i></a></li>
+                        </ul>
+                    </div><!-- /.action-->
+                </div><!-- /.cart-->
+            </div><!-- /.product-->
+        </div><!-- /.products-->
+    </div>
+    `;
+}
+
+var saleProducts = function(product){
+    return `
+    <div class="item item-carousel" style="margin-top: 50px;">
+        <div class="products">
+            <div class="product">
+                <div class="product-image">
+                    <div class="image">
+                        <a href="/products/detail/${product._id}">
+                            <img src="${product.image[0]}" alt="" />
+                            <img class="hover-image" src="${product.image[1]}" alt="" />
+                        </a>
+                    </div>
+                    <div class="tag sale"><span>sale</span></div>
+                </div><!-- /.product-image-->
+                <div class="product-info text-left">
+                    <h3 class="name"><a href="detail.html">${product.name}</a></h3>
+                    <div class="rating rateit-small"></div>
+                    <div class="description"></div>
+                    <div class="product-price">
+                        <span class="price">${product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+                        <span class="price-before-discount">${product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+                    </div><!-- /.product-price-->
+                </div><!-- /.product-info-->
+                <div class="cart clearfix animate-effect">
+                    <div class="action">
+                        <ul class="list-unstyled">
+                            <li class="add-cart-button btn-group"><a class="btn btn-primary icon" href="/products/add-to-cart/${product._id}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li class="lnk wishlist"><a class="add-to-cart" data-toggle="tooltip" href="/products/add-to-wishlist/${product._id}" title="Wishlist"><i class="icon fa fa-heart"></i></a></li>
+                        </ul>
+                    </div><!-- /.action-->
+                </div><!-- /.cart-->
+            </div><!-- /.product-->
+        </div><!-- /.products-->
+    </div>
+    `;
+}
+
+var bestSeller = function(product){
+    return `
+    <div class="item item-carousel" style="margin-top: 50px;">
+        <div class="products">
+            <div class="product">
+                <div class="product-image">
+                    <div class="image">
+                        <a href="/products/detail/${product._id}">
+                            <img src="${product.image[0]}" alt="" />
+                            <img class="hover-image" src="${product.image[1]}" alt="" />
+                        </a>
+                    </div>
+                </div><!-- /.product-image-->
+                <div class="product-info text-left">
+                    <h3 class="name"><a href="detail.html">${product.name}</a></h3>
+                    <div class="rating rateit-small"></div>
+                    <div class="description"></div>
+                    <div class="product-price">
+                        <span class="price">${product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+                        <span class="price-before-discount">${product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+                    </div><!-- /.product-price-->
+                </div><!-- /.product-info-->
+                <div class="cart clearfix animate-effect">
+                    <div class="action">
+                        <ul class="list-unstyled">
+                            <li class="add-cart-button btn-group"><a class="btn btn-primary icon" href="/products/add-to-cart/${product._id}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li class="lnk wishlist"><a class="add-to-cart" data-toggle="tooltip" href="/products/add-to-wishlist/${product._id}" title="Wishlist"><i class="icon fa fa-heart"></i></a></li>
+                        </ul>
+                    </div><!-- /.action-->
+                </div><!-- /.cart-->
+            </div><!-- /.product-->
+        </div><!-- /.products-->
+    </div>
+    `;
+}
+
 var loadProducts = function(cateID, page){
     var textInnerGrid = "";
     var textInnerList = "";
@@ -156,10 +266,6 @@ var sortProducts = function (cateID, page, sort) {
         });
 };
 
-var prev = document.getElementById("li-prev");
-var next = document.getElementById("li-next");
-
-
 
 var nextPage = function(cateID, page, sort){
     console.log(page)
@@ -184,4 +290,30 @@ var adjustDisable = function(prev, next, page, maxPage){
         next.classList.remove("disabled");
     }
 }
+
+var sortSearchProduct = function (productName, page, sort) {
+    var textInnerGrid = "";
+    var textInnerList = "";
+    const gridProduct = document.getElementById("grid-product");
+    const listProduct = document.getElementById("list-product");
+    axios.get(`http://localhost:3000/api/search/${productName}/${page}/${sort}`).then((res) => {
+        res.data.forEach((product) => {
+            textInnerGrid += gridItem(product);
+            textInnerList += listItem(product);
+        });
+        gridProduct.innerHTML = textInnerGrid;
+        listProduct.innerHTML = textInnerList;
+    });
+};
+
+var nextSearchPage = function (productName, page, sort) {
+    console.log(page);
+    sortSearchProduct(productName, page, sort);
+};
+
+var prevSearchPage = function (productName, page, sort) {
+    console.log(page);
+    sortSearchProduct(productName, page, sort);
+};
+
 

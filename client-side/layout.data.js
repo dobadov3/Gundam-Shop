@@ -40,6 +40,11 @@ async function Data(){
     specialProducts.forEach(product => {
         product.priceSale = product.price - (product.price*product.sale)/100;
     });
+    
+    bestSeller.forEach((product) => {
+        product.priceSale =
+            product.price - (product.price * product.sale) / 100;
+    });
 
     var data = [category, detail_gundam, detail_tools, detail_paints, detail_other, newProducts, bestSeller, saleProducts, specialProducts]
 

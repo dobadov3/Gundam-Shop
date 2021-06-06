@@ -1,6 +1,6 @@
 extends ../layouts/layout
 block contents
-  -var address = delivery.address.address + " " + delivery.address.district + " " + delivery.address.city
+  -var address = delivery
     .body-content(style="margin-top: 30px")
       .container
         .checkout-box
@@ -59,9 +59,9 @@ block contents
                       #collapseThree.panel-collapse.collapse
                         .panel-body
                           p Tên:  
-                            span= delivery.name
+                            span= currentAccount.name
                           p Số điện thoại:  
-                            span= delivery.phone
+                            span= currentAccount.phone
                           p Địa chỉ:  
                             span= address
                     
@@ -96,7 +96,7 @@ block contents
                         strong#finalPrice(style="float: right;")= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})  
                       hr
                       input(type="text" value=currentUser._id name="id_account" style="display: none")
-                      input(type="text" value=index name="address" style="display: none")
+                      input(type="text" value=address name="address" style="display: none")
                       div.w-100(style="text-align: right")
                         button.btn.btn-primary(type="submit") Đặt mua 
                       

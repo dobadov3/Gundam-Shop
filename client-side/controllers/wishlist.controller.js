@@ -22,3 +22,20 @@ module.exports.get = async function(req, res){
       finalPrice: res.locals.finalPrice,
   });
 }
+
+module.exports.remove = async function(req, res){
+  var productID = req.params.productID;
+  var account = await Account.findById(res.locals.currentAccount._id);
+  var wishList = [...account.wishList];
+  account.wishList.forEach((item) => {
+      if (item._id.equals(productID)) {
+          var index = account.wishList.indexOf(item);
+          wishList.splice(index, 1)
+          account.wishList = wishList;
+          account.markModified('wishList');
+          account.save();
+      }
+  });
+  
+  res.redirect('back')
+}

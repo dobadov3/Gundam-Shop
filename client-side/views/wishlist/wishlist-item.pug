@@ -3,7 +3,7 @@ tr
         img(src=product.image[0], alt='imga')
     td.col-md-7.col-sm-6.col-xs-6
         .product-name
-            a(href='#')= product.name
+            a(href=`/products/detail/${product._id}`)= product.name
         .rating
             i.fa.fa-star.rate
             i.fa.fa-star.rate
@@ -16,5 +16,5 @@ tr
     td.col-md-2
         a.btn-upper.btn.btn-primary(href='/products/add-to-cart/'+product._id) Giỏ hàng
     td.col-md-1.close-btn
-        a(href='#')
+        a(href=`/wishlist/remove/${product._id}`)
             i.fa.fa-times

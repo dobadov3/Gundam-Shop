@@ -6,6 +6,7 @@ const category_detailRoute = require('./category_detail.route');
 const productsRoute = require('./products.route');
 const rolesRoute = require('./roles.route');
 const ordersRoute = require('./orders.route');
+const billsRoute = require('./bill.route');
 
 //api
 const categoryAPI = require('../api/routes/category.route');
@@ -21,11 +22,12 @@ var route = function(app){
     app.use("/products", productsRoute);
     app.use("/roles", rolesRoute);
     app.use("/orders", ordersRoute);
-
+    app.use("/bills", billsRoute);
+    
     //api
     app.use("/api", categoryAPI);
     app.use("/api", categoryDetailAPI);
-    app.use("/api", citiesAPI);
+    app.use("/api", citiesAPI)
 }
 
 

@@ -109,6 +109,8 @@ module.exports.getDetailHistory = async function(req, res){
         orders.temp += product.priceSale;
     })
 
+    setDateCreate(orders)
+
     res.render("./account/detail-history", {
         currentAccount: res.locals.currentAccount,
         orders,
@@ -127,6 +129,27 @@ module.exports.postProfile = async function(req, res){
     currentAccount.save();
 
     res.redirect('back');
+}
+
+module.exports.postAddNewAddress = async function(req, res){
+    if (!res.locals.currentAccount){
+        res.redirect("/authentication");
+        return
+    }
+    const {name, phone, district, address, city} = req.body
+    var currentAccount = await Account.findById(res.locals.currentAccount._id);
+    
+    var obj = {
+        name: name,
+        phone: phone,
+        address: `${address} ${district} ${city}`
+    }
+
+    currentAccount.delivery_address.push(obj);
+    currentAccount.markModified("delivery_address");
+    currentAccount.save();
+
+    res.redirect('back')
 }
 
 var setDateCreate = function (order) {
