@@ -1,5 +1,6 @@
 var data = require('../layout.data')
 var sessionMiddleware = require('../middlewares/session.middleware');
+var wishlist = require('../models/wishlist.model');
 const Account = require('../models/account.model')
 
 module.exports.get = async function(req, res){
@@ -36,6 +37,6 @@ module.exports.remove = async function(req, res){
           account.save();
       }
   });
-  
+  wishlist.remove();;
   res.redirect('back')
 }

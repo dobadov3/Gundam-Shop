@@ -5,7 +5,10 @@ var accountSchema = new mongoose.Schema({
     email: String,
     password: String,
     name: String,
-    phone: String,
+    phone: {
+        type: String, 
+        default: ""
+    },
     id_role: String,
     delivery_address: Array,
     wishList: Array,
@@ -17,9 +20,14 @@ var accountSchema = new mongoose.Schema({
     resetLink: {
         type: String,
         default: ""
+    },
+    type: {
+        type: String, 
+        default: "normal"
     }
 });
 accountSchema.plugin(mongooseDateFormat);
+
 
 var Account = mongoose.model('Account', accountSchema, 'account');
 

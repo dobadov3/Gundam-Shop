@@ -1,10 +1,12 @@
 var data = require('../layout.data')
 var Product = require('../models/products.model');
 var Account = require('../models/account.model');
+var Cart = require('../models/cart.model')
 const axios = require('axios');
 var listCity = [];
 
 module.exports.get = async function(req, res) {
+    console.log(res.locals.finalPrice, req.session.cart);
     var currentUser = await Account.findOne({
         _id: req.signedCookies.userID,
     });
@@ -40,8 +42,12 @@ module.exports.removeCart = async function(req, res) {
             var index = req.session.cart.products.indexOf(item);
             products.splice(index, 1);
             req.session.cart.products = products;
+            req.session.cart.totalPrice -= item.priceSale;
         }
     });
 
+    res.locals.finalPrice = 0;
+
+    Cart.removeCart();
     res.redirect('back')
 }

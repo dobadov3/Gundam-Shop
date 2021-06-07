@@ -5,9 +5,9 @@ var md5 = require('md5');
 var jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport");
+const passport = require("passport");
 
 module.exports.get = async function(req, res) {
-
     res.render('./authentication/index', {
         data: data.data
     });
@@ -16,8 +16,14 @@ module.exports.get = async function(req, res) {
 module.exports.postLogin = async function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    var user = await Account.findOne({ email: email });
-    var userByUserName = await Account.findOne({username: email});
+    var user = await Account.findOne({ 
+        email: email, type: "normal" 
+    });
+
+    var userByUserName = await Account.findOne({
+        username: email,
+        type: "normal"
+    });
 
     if(!user && !userByUserName){
         res.render("./authentication/index", {
@@ -202,3 +208,14 @@ async function sendEmail(res, email, token) {
         }
     });
 }
+
+passport.serializeUser(async(user, done) => {
+    // console.log("user", user);
+
+    done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+    console.log("obj", obj);
+    return done(null, obj);
+});

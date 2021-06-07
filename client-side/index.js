@@ -8,8 +8,13 @@ var route = require('./routes/index.route');
 var session = require('express-session')
 var cors = require('cors')
 require('dotenv').config();
+const passport = require('passport')
+const facebookStrategy = require('passport-facebook').Strategy
 
 app.use(cors())
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 mongoose.connect('mongodb://localhost/gundam', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -34,7 +39,26 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 
 var sessionMiddleware = require('./middlewares/session.middleware');
 var authMiddleware = require('./middlewares/auth.middleware');
-const Product = require('./models/products.model');
+
+passport.use(
+    new facebookStrategy(
+        {
+            clientID: "620204319372521",
+            clientSecret: "e5916e9ade27bddad23de89ac9676699",
+            callbackURL: "http://localhost:3000/authentication/facebook/callback",
+            profileFields: ["id", "displayName", "name", "gender", "email", "picture.tpye(large)"],
+        },
+        function (token, refreshToken, profile, done) {
+          process.nextTick(function () {
+              // console.log(token, refreshToken, profile, done);
+
+
+
+              return done(null, profile);
+          });
+        }
+    )
+);
 
 
 app.set('view engine', 'pug');
@@ -42,6 +66,7 @@ app.set('views', './views');
 
 app.use(sessionMiddleware);
 app.use(authMiddleware);
+
 
 app.get('/', (req, res) => {
     res.redirect('/home')

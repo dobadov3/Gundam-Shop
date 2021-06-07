@@ -82,7 +82,6 @@ var setDateCreate = function (order) {
 var settingBill = async function(newStatus, oldStatus, order){
     var delivery_method = await DeliveryMethod.findById(order.delivery_method);
     order.shippingCost = delivery_method.cost;
-    console.log(order.shippingCost);
     if (oldStatus === 'Chờ xác nhận'){
             if (newStatus === 'Đang giao hàng'){
                 var bill = new Bill({
@@ -97,17 +96,34 @@ var settingBill = async function(newStatus, oldStatus, order){
                 return
             }else if (newStatus === 'Đã hủy'){
                 return;
-            }
-        }else if (oldStatus === 'Đang giao hàng'){
-            if (newStatus === 'Đã hủy'){
-                await Bill.findOneAndDelete({
-                    order_id: order._id
-                })
-            }else if (newStatus === 'Hoàn thành'){
+            }else if (newStatus === "Hoàn thành"){
+                var bill = new Bill({
+                    order_id: order._id,
+                    date: new Date(),
+                    products: order.products,
+                    shippingCost: order.shippingCost,
+                    totalPrice: order.totalPrice,
+                    code: shortid.generate(),
+                });
                 order.payment_status = "Đã thanh toán";
                 order.markModified("payment_status");
                 await order.save();
+                Bill.create(bill);
+                return;
             }
+        return;
+    }else if (oldStatus === 'Đang giao hàng'){
+        if (newStatus === 'Đã hủy'){
+            await Bill.findOneAndDelete({
+                order_id: order._id
+            })
+            return;
+        }else if (newStatus === 'Hoàn thành'){
+            order.payment_status = "Đã thanh toán";
+            order.markModified("payment_status");
+            await order.save();
+            return;
         }
+    }
 }
 

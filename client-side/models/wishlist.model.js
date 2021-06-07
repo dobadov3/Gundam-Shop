@@ -21,4 +21,8 @@ module.exports = class Wishlist{
     static getWishlist(){
         return wishlist;    
     };
+
+    static remove(){
+        wishlist = null;
+    }
 };

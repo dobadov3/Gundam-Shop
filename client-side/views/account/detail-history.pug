@@ -9,6 +9,7 @@ block content
             th Tên sản phẩm
             th Số lượng
             th Giá
+            th
         each product in orders.products
             tr 
                 td 
@@ -16,6 +17,28 @@ block content
                 td= product.name
                 td= product.quantity
                 td= product.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                td 
+                    button.btn.btn-primary(type='button', data-toggle='modal', data-target=`#modal${product._id}`) &Dstrok;&aacute;nh gi&aacute;
+                    .modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true' id=`modal${product._id}`)
+                        .modal-dialog
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal')
+                                        span(aria-hidden='true') &times;
+                                        span.sr-only Close
+                                    h4#exampleModalLabel.modal-title Thêm đánh giá sản phẩm
+                                .modal-body
+                                    form(role='form' method="POST" action=`/account/history/detail/${product._id}/rating`)
+                                        .form-group
+                                            label.control-label(for='message-text') Message:
+                                            textarea#message-text.form-control(name="message" required)
+                                        .form-group
+                                            label.control-label(for=`rating-${product._id}`) Point:
+                                            input(type="hidden" class="rating" id=`rating-${product._id}` name="point" required)
+                                        .modal-footer
+                                            button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                            button.btn.btn-primary(type='submit') Send message
+
     .row.order-info-bottom 
         .col-lg-6
             .order-info 

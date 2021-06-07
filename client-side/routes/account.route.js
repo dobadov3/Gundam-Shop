@@ -10,5 +10,6 @@ router.get("/history/detail/:orderID", controller.getDetailHistory);
 router.post("/", controller.postProfile);
 router.post("/change-password", controller.postChangePass);
 router.post("/add-new-address", controller.postAddNewAddress);
+router.post("/history/detail/:productID/rating", controller.postRating);
 
 module.exports = router;

@@ -11,7 +11,7 @@
       .product-info.text-left
         h3.name
           a(href='/products/detail/'+product.code)= product.name
-        .rating.rateit-small
+        input(type="hidden" readonly class="rating" value=product.rating_point ? product.rating_point : 0)
         .description
         .product-price
           span.price= product.priceSale

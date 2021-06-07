@@ -149,6 +149,13 @@ module.exports.getDetail = async function(req, res) {
 
     AdjustProductsPriceSale(relatedProducts)
 
+    for (let index = 0; index < product.rating.length; index++) {
+        var account = await Account.findById(product.rating[index].account_id)
+
+        product.rating[index].nameCus = account ? account.name : "Unknow";
+        setDateCreate(product.rating[index])
+    }
+
     res.render('./products/detail_products', {
         data: data.data,
         product,
@@ -157,6 +164,13 @@ module.exports.getDetail = async function(req, res) {
         cartItems: res.locals.cartItems,
         finalPrice: res.locals.finalPrice
     })
+};
+
+var setDateCreate = function (order) {
+    var m = order.date.getMonth() + 1;
+    var d = order.date.getDate();
+    var y = order.date.getFullYear();
+    order.date_create = d + "/" + m + "/" + y;
 };
 
 module.exports.addToCart = async function(req, res) {

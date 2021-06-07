@@ -2,6 +2,7 @@ const Account = require('../models/account.model');
 const Order = require('../models/order.model');
 const DeliveryMethod = require('../models/delivery_method.model');
 const md5 = require('md5');
+const Product = require('../models/products.model');
 
 module.exports.getProfile = async function(req, res){
     res.render('./account/profile', {
@@ -126,6 +127,20 @@ module.exports.postProfile = async function(req, res){
     currentAccount.cmnd = req.body.cmnd;
     currentAccount.gender = req.body.gender;
     currentAccount.job = req.body.job;
+    console.log(currentAccount.delivery_address)
+    if (currentAccount.delivery_address.length !== 0){
+        currentAccount.delivery_address[0].phone = req.body.phone;
+        currentAccount.delivery_address[0].name = req.body.name;
+    }else{
+        var obj = {
+            name: req.body.name,
+            phone: req.body.phone,
+            address: ""
+        };
+
+        currentAccount.delivery_address.push(obj);
+    }
+    currentAccount.markModified("delivery_address");
     currentAccount.save();
 
     res.redirect('back');
@@ -159,4 +174,33 @@ var setDateCreate = function (order) {
     order.date_create = d + "/" + m + "/" + y;
 };
 
+module.exports.postRating = async function(req,res){
+    var obj = {
+        account_id: res.locals.currentAccount._id,
+        message: req.body.message,
+        point: parseInt(req.body.point),
+        date: new Date()
+    };
+
+    var product = await Product.findById(req.params.productID);
+    product.rating.push(obj);
+
+    if (product.rating_point){
+        var totalPoint = 0;
+
+        product.rating.forEach(item => {
+            totalPoint += item.point
+        })
+
+        product.rating_point = Math.round(totalPoint/product.rating.length)
+
+    }else{
+        product.rating_point = obj.point;
+    }
+
+    product.markModified('rating')
+    product.save();
+
+    res.redirect('back')
+}
 
