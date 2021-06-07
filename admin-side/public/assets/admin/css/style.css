@@ -21935,3 +21935,7 @@ dl li {
   text-transform: uppercase;
   margin-left: 125px;
 }
+
+strong.card-title{
+  font-style: normal;
+}

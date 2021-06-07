@@ -1,6 +1,7 @@
 const Order = require('../models/order.model')
 const Admin = require('../models/admin.model')
 const Role = require('../models/role.model')
+const md5 = require('md5')
 module.exports.get = async function (req, res) {
     res.render("./admin/profile/profile", {
         admin: res.locals.admin,
@@ -22,13 +23,13 @@ module.exports.postChangePass = async function(req, res){
         });
         return
     }
-    if (old_pass !== admin.password) {
+    if (md5(old_pass) !== admin.password) {
         res.render("./admin/profile/password", {
             error: "Mật khẩu cũ không đúng!",
         });
         return;
     }
-    admin.password = new_pass;
+    admin.password = md5(new_pass);
     admin.save();
 
     res.redirect('back')

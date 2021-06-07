@@ -27,7 +27,12 @@ module.exports.get = async function(req, res) {
 };
 
 var facebook = async function(req, res){
+    if (!req.session.passport){
+        return
+    }
+
     var user = req.session.passport.user;
+
     if (user){
         var account = await Account.findOne({
             email: user._json.email,
@@ -44,10 +49,15 @@ var facebook = async function(req, res){
             });
 
             Account.create(newAccount);
-        }else{
-            res.cookie("userID", account.id, {
+            res.cookie("userID", newAccount._id, {
                 signed: true,
             });
+            res.locals.checkLogin = true;
+        }else{
+            res.cookie("userID", account._id, {
+                signed: true,
+            });
+            res.locals.checkLogin = true;
         }
     }
 }

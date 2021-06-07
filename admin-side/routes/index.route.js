@@ -12,6 +12,7 @@ const profileRoute = require('./profile.route');
 const categoryAPI = require('../api/routes/category.route');
 const categoryDetailAPI = require('../api/routes/category-detail.route');
 const citiesAPI = require('../api/routes/cities.route');
+const adminAPI = require('../api/routes/admin.route');
 
 var route = function(app){
     app.use("/", homeRoute);
@@ -28,6 +29,7 @@ var route = function(app){
     app.use("/api", categoryAPI);
     app.use("/api", categoryDetailAPI);
     app.use("/api", citiesAPI)
+    app.use("/api", adminAPI);
 }
 
 

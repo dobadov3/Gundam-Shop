@@ -107,21 +107,21 @@ var settingBill = async function(newStatus, oldStatus, order){
                 });
                 order.payment_status = "Đã thanh toán";
                 order.markModified("payment_status");
-                await order.save();
+                order.save();
                 Bill.create(bill);
                 return;
             }
         return;
     }else if (oldStatus === 'Đang giao hàng'){
         if (newStatus === 'Đã hủy'){
-            await Bill.findOneAndDelete({
+            Bill.findOneAndDelete({
                 order_id: order._id
             })
             return;
         }else if (newStatus === 'Hoàn thành'){
             order.payment_status = "Đã thanh toán";
             order.markModified("payment_status");
-            await order.save();
+            order.save();
             return;
         }
     }

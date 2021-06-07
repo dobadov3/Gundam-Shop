@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 const mongooseDateFormat = require("mongoose-date-format");
+const { ObjectID } = require("mongodb");
+
 
 var accountSchema = new mongoose.Schema({
     email: String,
@@ -26,7 +28,6 @@ var accountSchema = new mongoose.Schema({
         default: "normal"
     }
 });
-accountSchema.plugin(mongooseDateFormat);
 
 
 var Account = mongoose.model('Account', accountSchema, 'account');

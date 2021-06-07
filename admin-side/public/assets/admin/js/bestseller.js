@@ -87,7 +87,7 @@ axios.get('http://localhost:3001/api/orders').then(response=>{
     //bestseller
     
     document.getElementById("saleammount").innerHTML=id.length+" sản phẩm"
-    document.getElementById("totalmoney").innerHTML=totalMoney+" VNĐ"
+    document.getElementById("totalmoney").innerHTML=totalMoney.toLocaleString('vi', {style : 'currency', currency : 'VND'})
     document.getElementById("totalorder").innerHTML=totalOrder+" đơn hàng"
     var toplist = foo(id)
     axios.get('http://localhost:3001/api/products').then(response=>{

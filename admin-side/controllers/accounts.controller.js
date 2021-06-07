@@ -66,3 +66,36 @@ module.exports.postEdit = async function (req, res) {
     await account.save();
     res.redirect("back");
 };
+
+module.exports.getChangePass = async function(req, res){
+    var acc = await Account.findById(req.params.accountID);
+
+    if (!acc){
+        acc = await Admin.findById(req.params.accountID)
+    }
+
+    res.render('./admin/users/change-pass', {
+        acc
+    });
+}
+
+module.exports.postChangePass = async function(req, res){
+    var {accountID} = req.params;
+    var {newPass} = req.body
+
+    var acc = await Account.findById(accountID);
+
+    if (!acc) {
+        acc = await Admin.findById(accountID);
+    }
+
+    if (acc.password === newPass){
+        res.redirect("back");
+        return;
+    }
+
+    acc.password = md5(newPass);
+    acc.save();
+
+    res.redirect('/accounts');
+}

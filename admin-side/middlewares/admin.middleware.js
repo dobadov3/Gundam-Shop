@@ -7,6 +7,7 @@ module.exports = async function(req, res, next){
         var role = await Role.findById(admin.id_role)
         res.locals.role = role.name
         res.locals.admin = admin;
+        res.locals.name = admin.name
     }
     
     next()

@@ -46,25 +46,26 @@ block contents
                                                     .side-text
                                                         strong Thông tin cá nhân
                                                         span Quản lý thông tin cá nhân
-                                a.side-link(href="/account/history")
-                                    if (page === "history")
-                                        .side-item.active
-                                            .row
-                                                .col-lg-2.icon-bottom-side 
-                                                    i(class="fas fa-shopping-cart icon-cart")
-                                                .col-lg-10 
-                                                    .side-text
-                                                        strong Lịch sử mua hàng
-                                                        span Thông tin sản phẩm đã mua
-                                    else
-                                        .side-item
-                                            .row
-                                                .col-lg-2.icon-bottom-side 
-                                                    i(class="fas fa-shopping-cart icon-cart")
-                                                .col-lg-10 
-                                                    .side-text
-                                                        strong Lịch sử mua hàng
-                                                        span Thông tin sản phẩm đã mua
+                                if (currentAccount.type !== 'facebook')
+                                    a.side-link(href="/account/history")
+                                        if (page === "history")
+                                            .side-item.active
+                                                .row
+                                                    .col-lg-2.icon-bottom-side 
+                                                        i(class="fas fa-shopping-cart icon-cart")
+                                                    .col-lg-10 
+                                                        .side-text
+                                                            strong Lịch sử mua hàng
+                                                            span Thông tin sản phẩm đã mua
+                                        else
+                                            .side-item
+                                                .row
+                                                    .col-lg-2.icon-bottom-side 
+                                                        i(class="fas fa-shopping-cart icon-cart")
+                                                    .col-lg-10 
+                                                        .side-text
+                                                            strong Lịch sử mua hàng
+                                                            span Thông tin sản phẩm đã mua
                                 a.side-link(href="/account/change-password")
                                     if (page === "password")
                                         .side-item.active

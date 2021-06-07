@@ -1,0 +1,14 @@
+extends ../layouts/layout
+block contents
+    .col-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Edit User
+          form.forms-sample(method="POST", action=`/accounts/edit/${acc._id}/change-pass`)
+            .form-group
+              label(for='exampleInputName1') Password
+              |             
+              input#exampleInputName1.form-control(type='password', placeholder='New password' name="newPass" value=acc.password)
+            button.btn.btn-primary.mr-2(type='submit') Submit
+            |           
+            button.btn.btn-light Cancel

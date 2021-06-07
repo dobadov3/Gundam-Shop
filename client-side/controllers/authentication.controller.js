@@ -67,6 +67,14 @@ module.exports.postLogin = async function(req, res) {
 
 module.exports.logout = function(req, res) {
     res.clearCookie("userID");
+    req.session.destroy((err) => {
+        if (err) {
+            return;
+        }
+
+        req.logout();
+    });
+    
     res.redirect('/home');
 }
 

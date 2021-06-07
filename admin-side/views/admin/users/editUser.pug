@@ -30,6 +30,8 @@ block contents
                       option(value=role._id selected)= role.name 
                     else
                       option(value=role._id)= role.name 
+            .form-group
+              a(href=`/accounts/edit/${acc._id}/change-pass`) Đổi mật khẩu
             button.btn.btn-primary.mr-2(type='submit') Submit
             |           
             button.btn.btn-light Cancel
