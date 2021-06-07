@@ -15,7 +15,7 @@ block contents
                   button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') &times;
                 .modal-body
-                  form(action="/admin/roles/create" method="POST")
+                  form(action="/roles/create" method="POST")
                     .form-group
                       label.col-form-label(for='role-name') Tên phân quyền:
                       input.form-control(type='text' id='role-name' name="name")
@@ -36,43 +36,32 @@ block contents
                             td= (roles.indexOf(role) + 1)
                             td= role.name
                             td
-                                a(href="roles/edit/"+role._id) 
+                                a(href="/roles/edit/"+role._id) 
                                     button.btn.btn-inverse-primary.btn-icon(type='button')
                                         i.mdi.mdi-pencil
-                                a(href="roles/delete/"+role._id) 
+                                a(href="/roles/delete/"+role._id) 
                                     button.btn.btn-inverse-danger.btn-icon(type='button')
                                         i.mdi.mdi-delete
                     else if (role.name === "staff")
-                        tr.table-warning
-                            td= (roles.indexOf(role) + 1)
-                            td= role.name
-                            td
-                                a(href="roles/edit/"+role._id) 
-                                    button.btn.btn-inverse-primary.btn-icon(type='button')
-                                        i.mdi.mdi-pencil
-                                a(href="roles/delete/"+role._id) 
-                                    button.btn.btn-inverse-danger.btn-icon(type='button')
-                                        i.mdi.mdi-delete
-                    else if (role.name === "customer")
-                        tr.table-success
-                            td= (roles.indexOf(role) + 1)
-                            td= role.name
-                            td
-                                a(href="roles/edit/"+role._id) 
-                                    button.btn.btn-inverse-primary.btn-icon(type='button')
-                                        i.mdi.mdi-pencil
-                                a(href="roles/delete/"+role._id) 
-                                    button.btn.btn-inverse-danger.btn-icon(type='button')
-                                        i.mdi.mdi-delete
+                      tr.table-warning
+                          td= (roles.indexOf(role) + 1)
+                          td= role.name
+                          td
+                              a(href="/roles/edit/"+role._id) 
+                                  button.btn.btn-inverse-primary.btn-icon(type='button')
+                                      i.mdi.mdi-pencil
+                              a(href="/roles/delete/"+role._id) 
+                                  button.btn.btn-inverse-danger.btn-icon(type='button')
+                                      i.mdi.mdi-delete
                     else
-                        tr.table-danger
-                            td= (roles.indexOf(role) + 1)
-                            td= role.name
-                            td
-                                a(href="roles/edit/"+role._id) 
-                                    button.btn.btn-inverse-primary.btn-icon(type='button')
-                                        i.mdi.mdi-pencil
-                                a(href="roles/delete/"+role._id) 
-                                    button.btn.btn-inverse-danger.btn-icon(type='button')
-                                        i.mdi.mdi-delete
+                      tr.table-danger
+                          td= (roles.indexOf(role) + 1)
+                          td= role.name
+                          td
+                              a(href="/roles/edit/"+role._id) 
+                                  button.btn.btn-inverse-primary.btn-icon(type='button')
+                                      i.mdi.mdi-pencil
+                              a(href="/roles/delete/"+role._id) 
+                                  button.btn.btn-inverse-danger.btn-icon(type='button')
+                                      i.mdi.mdi-delete
                     

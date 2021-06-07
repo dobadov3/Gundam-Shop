@@ -32,6 +32,12 @@ module.exports.postCreate = async function (req, res) {
 
 module.exports.delete = async function (req, res) {
     var accountID = req.params.accountID;
+    var account = await Account.findById(accountID);
+    if (!account){
+        await Admin.findByIdAndDelete(accountID);
+        res.redirect('back')
+        return;
+    }
     await Account.findByIdAndDelete(accountID);
     res.redirect("back");
 };

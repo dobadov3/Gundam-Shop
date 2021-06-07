@@ -90,7 +90,7 @@ module.exports.postSignUp = async function(req, res) {
         address: "",
     };
 
-    var user = await Account.findOne({ email: req.body.email });
+    var user = await Account.findOne({ email: req.body.email, type: 'normal' });
 
     if (user) {
         errorSignUp = "Account already exist!";
@@ -126,7 +126,7 @@ module.exports.getForgot = async function(req, res){
 }
 
 module.exports.postForgot = async function(req, res){
-    Account.findOne({email: req.body.email}, (err, account) => {
+    Account.findOne({email: req.body.email, type: 'normal'}, (err, account) => {
         if(err || !account){
             res.render("./authentication/forgot-pass", {
                 error: "Account doesn't exist!!",

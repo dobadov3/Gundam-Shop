@@ -127,19 +127,12 @@ module.exports.postProfile = async function(req, res){
     currentAccount.cmnd = req.body.cmnd;
     currentAccount.gender = req.body.gender;
     currentAccount.job = req.body.job;
-    console.log(currentAccount.delivery_address)
-    if (currentAccount.delivery_address.length !== 0){
-        currentAccount.delivery_address[0].phone = req.body.phone;
-        currentAccount.delivery_address[0].name = req.body.name;
-    }else{
-        var obj = {
-            name: req.body.name,
-            phone: req.body.phone,
-            address: ""
-        };
 
-        currentAccount.delivery_address.push(obj);
+
+    if (currentAccount.delivery_address[0].phone === ''){
+        currentAccount.delivery_address[0].phone = req.body.phone;
     }
+
     currentAccount.markModified("delivery_address");
     currentAccount.save();
 

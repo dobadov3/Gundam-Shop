@@ -4,7 +4,7 @@ block contents
       .card
         .card-body
           h4.card-title= 'Edit ' + editRole.name
-          form.forms-sample(method="POST", action="/admin/roles/edit/" + editRole.id)
+          form.forms-sample(method="POST", action="/roles/edit/" + editRole.id)
             .form-group
               label(for='exampleInputName1') Tên quyền
               input#exampleInputName1.form-control(type='text', placeholder='Tên quyền' name="name" value=editRole.name)

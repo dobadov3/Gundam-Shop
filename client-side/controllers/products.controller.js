@@ -186,13 +186,14 @@ module.exports.addToCart = async function(req, res) {
 };
 
 module.exports.addToWishList = async function(req, res) {
-    var productID = req.params.productID;
-    var currentAccount = await Account.findById(res.locals.currentAccount._id);
-
     if (!req.signedCookies.userID) {
         res.redirect("/authentication");
         return;
     }
+    
+    var productID = req.params.productID;
+    var currentAccount = await Account.findById(res.locals.currentAccount._id);
+
     
     var product = await Product.findOne({_id: productID});
 

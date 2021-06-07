@@ -49,5 +49,5 @@ module.exports.postEdit = async function (req, res) {
 
     await detailCate.save();
 
-    res.redirect("/admin/category");
+    res.redirect("/category");
 };

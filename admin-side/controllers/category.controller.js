@@ -68,7 +68,7 @@ module.exports.postEdit = async function (req, res) {
 
     await Category.findOneAndUpdate({ _id: cateID }, { $set: { name: name } });
 
-    res.redirect("/admin/category");
+    res.redirect("/category");
 };
 
 module.exports.delete = async function (req, res) {

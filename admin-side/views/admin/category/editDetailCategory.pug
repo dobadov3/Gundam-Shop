@@ -4,7 +4,7 @@ block contents
       .card
         .card-body
           h4.card-title= 'Edit ' + detailCate.name
-          form.forms-sample(method="POST", action="/admin/detail-category/edit/" + detailCate.id)
+          form.forms-sample(method="POST", action="/detail-category/edit/" + detailCate.id)
             .form-group
               label(for='exampleInputName1') Tên loại 
               input#exampleInputName1.form-control(type='text', placeholder='Category Name' name="detailCateName" value=detailCate.name)

@@ -40,6 +40,12 @@ var facebook = async function(req, res){
         })
 
         if (!account){
+            var obj = {
+                name: user._json.name,
+                phone: '',
+                address: '',
+            }
+
             var newAccount = new Account({
                 username: user.id,
                 name: user._json.name,
@@ -47,6 +53,8 @@ var facebook = async function(req, res){
                 password: md5(shortId.generate()),
                 type: 'facebook'
             });
+
+            newAccount.delivery_address.push(obj)
 
             Account.create(newAccount);
             res.cookie("userID", newAccount._id, {
