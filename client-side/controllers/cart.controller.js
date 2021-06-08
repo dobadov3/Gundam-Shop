@@ -6,7 +6,6 @@ const axios = require('axios');
 var listCity = [];
 
 module.exports.get = async function(req, res) {
-    console.log(res.locals.finalPrice, req.session.cart);
     var currentUser = await Account.findOne({
         _id: req.signedCookies.userID,
     });
