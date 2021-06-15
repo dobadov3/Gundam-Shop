@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 
 var productSchema = new mongoose.Schema({
     id_detail_category: String,
-    name: String,
+    name: {
+        type: String,
+        lowercase: true
+    },
     price: Number,
     count: Number,
     description: Array,

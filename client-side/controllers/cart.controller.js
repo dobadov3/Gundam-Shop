@@ -47,6 +47,7 @@ module.exports.removeCart = async function(req, res) {
 
     res.locals.finalPrice = 0;
 
-    Cart.removeCart();
+    Cart.removeCartById(productID);
+
     res.redirect('back')
 }

@@ -20,6 +20,7 @@ html
     link(rel='stylesheet', href='/assets/css/animate.min.css')
     link(rel='stylesheet', href='/assets/css/rateit.css')
     link(rel='stylesheet', href='/assets/css/bootstrap-select.min.css')
+    link(rel='stylesheet', href='/assets/css/nouislider.min.css')
     // Icons/Glyphs
     link(rel='stylesheet', href='/assets/css/font-awesome.css')
     // Fonts
@@ -107,7 +108,7 @@ html
                                 a(href='/products/detail/'+item._id)= item.name
                               .price= item.priceSale.toLocaleString('vi', {style : 'currency', currency : 'VND'})   
                             .col-xs-1.action
-                              a(href='#')
+                              a(href=`/cart/remove/${item._id}`)
                                 i.fa.fa-trash
                     .clearfix
                     hr
@@ -274,6 +275,8 @@ html
     script(src='/assets/js/navbar.js')
     script(src="/assets/js/current-user.js") 
     script(src="/assets/js/bootstrap-rating.js") 
+    script(src="/assets/js/nouislider.min.js") 
+    script(src="/assets/js/wNumb.min.js") 
     
     block script
 

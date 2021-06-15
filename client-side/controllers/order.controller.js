@@ -19,7 +19,8 @@ module.exports.post = async function(req, res){
     req.body.status = "Chờ xác nhận";
     var deliveryMethod = await DeliveryMethod.findById(req.body.delivery_method);
     var paymentMethod = await PaymentMethod.findById(req.body.payment_method);
-    req.body.totalPrice = res.locals.finalPrice + deliveryMethod.cost
+    req.body.totalPrice = parseInt(req.body.totalPrice) + deliveryMethod.cost;
+    console.log(req.body)
     
     var currentUser = await Account.findOne({ _id: req.signedCookies.userID });
     var address = {

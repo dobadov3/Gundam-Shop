@@ -86,7 +86,8 @@ block contents
                       hr
                       div 
                         strong Tạm tính:
-                        strong(style="float: right;")= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})  
+                        strong(style="float: right;")= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+
                       div 
                         strong Phí vận chuyển:
                         strong#shipping_cost(style="float: right;")= delivery_method[0].cost.toLocaleString('vi', {style : 'currency', currency : 'VND'})
@@ -97,10 +98,13 @@ block contents
                       hr
                       input(type="text" value=currentUser._id name="id_account" style="display: none")
                       input(type="text" value=address name="address" style="display: none")
+                      input(type="text" value=finalPrice name="totalPrice" style="display: none")
+
                       div.w-100(style="text-align: right")
                         button.btn.btn-primary(type="submit") Đặt mua 
                       
                 // checkout-progress-sidebar
+  
 block script 
   script.
     var finalPrice = document.getElementById('finalPrice');

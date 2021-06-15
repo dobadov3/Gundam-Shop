@@ -98,15 +98,15 @@
               thead
                 tr
                   th
-                    span.estimate-title Mã giảm giá
+                    span.estimate-title() Mã giảm giá
                     p Nhập mã giảm giá ở đây nếu có.
               tbody
                 tr
                   td
                     .form-group
-                      input.form-control.unicase-form-control.text-input(type='text', placeholder='Mã giảm giá')
+                      input.form-control.unicase-form-control.text-input#input-discount(type='text', placeholder='Mã giảm giá' onkeyup="inputDiscount()" name="discount")
                     .clearfix.pull-right
-                      button.btn-upper.btn.btn-primary(type='button') Áp dụng mã giảm
+                      button.btn-upper.btn.btn-primary#btn-apply(type='button' onclick="clickBtnDiscount()") Áp dụng mã giảm
               // /tbody
             // /table
           // /.estimate-ship-tax
@@ -117,15 +117,16 @@
                   th
                     .cart-sub-total
                       | T&#x1EA1;m t&iacute;nh
-                      span.inner-left-md= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                      span.inner-left-md#text-temp= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
                     .cart-grand-total
                       | T&#x1ED5;ng c&#x1ED9;ng
-                      span.inner-left-md= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                      span.inner-left-md#text-final= finalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})
               // /thead
               tbody
                 tr
                   td
                     .cart-checkout-btn.pull-right
+                      input#input-finalPrice(type="hidden" name="finalPrice" value=finalPrice)
                       button.btn.btn-primary.checkout-btn(type='submit') Thanh to&aacute;n
         
         #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')

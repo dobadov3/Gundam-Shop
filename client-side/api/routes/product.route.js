@@ -4,5 +4,6 @@ var controller = require('../controllers/product.controller');
 
 router.get('/:cateID/:page', controller.get);
 router.get('/:cateID/:page/:sort', controller.sort);
+router.get('/:cateID/:page/:min/:max/:sort', controller.sortInRange);
 
 module.exports = router;

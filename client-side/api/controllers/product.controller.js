@@ -61,3 +61,50 @@ var AdjustProductsPriceSale = function (products) {
             product.price - (product.price * product.sale) / 100;
     });
 };
+
+module.exports.sortInRange = async function(req, res){
+    var cateID = req.params.cateID;
+    var max = req.params.max
+    var min = req.params.min
+    var page = req.params.page;
+    var limit = 12;
+
+    var products;
+    
+    switch (req.params.sort) {
+        case "sortLowestFirst":
+            products = await Product.find({ 
+                id_detail_category: cateID,
+                price: {$gt: min, $lt: max} 
+            })
+                .skip(page * limit - limit)
+                .limit(limit)
+                .sort({ price: 1 });
+            break;
+        case "sortHighestFirst":
+            products = await Product.find({ 
+                id_detail_category: cateID,
+                price: {$gt: min, $lt: max} 
+            })
+                .skip(page * limit - limit)
+                .limit(limit)
+                .sort({ price: -1 });
+            break;
+        case "sortByName":
+            products = await Product.find({ 
+                id_detail_category: cateID,
+                price: {$gt: min, $lt: max} 
+            })
+                .skip(page * limit - limit)
+                .limit(limit)
+                .sort({ name: -1 });
+            break;
+        default:
+            break;
+    }
+
+
+    AdjustProductsPriceSale(products);
+
+    res.json(products);
+}

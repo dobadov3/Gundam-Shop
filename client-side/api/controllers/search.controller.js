@@ -14,26 +14,26 @@ module.exports.get = async function (req, res) {
 };
 
 module.exports.sort = async function (req, res) {
-    var productName = req.params.productName;
+    var productName = req.params.productName.toLowerCase();
     var page = req.params.page;
     var limit = 12;
     var products;
 
     switch (req.params.sort) {
         case "sortLowestFirst":
-            products = await Product.find({ name: {$regex: productName} })
+            products = await Product.find({ name: { '$regex': productName, $options: 'i' } })
                 .skip(page * limit - limit)
                 .limit(limit)
                 .sort({ price: 1 });
             break;
         case "sortHighestFirst":
-            products = await Product.find({ name: {$regex: productName} })
+            products = await Product.find({ name: {'$regex': productName, $options: 'i'} })
                 .skip(page * limit - limit)
                 .limit(limit)
                 .sort({ price: -1 });
             break;
         case "sortByName":
-            products = await Product.find({ name: {$regex: productName} })
+            products = await Product.find({ name: {'$regex': productName, $options: 'i'} })
                 .skip(page * limit - limit)
                 .limit(limit)
                 .sort({ name: -1 });

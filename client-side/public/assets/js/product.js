@@ -18,7 +18,7 @@ var gridItem = function(product){
                         </div>
                         <!-- /.product-image-->
                         <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">${
+                            <h3 class="name"><a href="/products/detail/${product._id}">${
                                 product.name
                             }</a></h3>
                             <div class="rating rateit-small">
@@ -249,13 +249,13 @@ var loadProducts = function(cateID, page){
         });
 }
 
-var sortProducts = function (cateID, page, sort) {
+var sortProducts = function (cateID, page, sort, min, max) {
     var textInnerGrid = "";
     var textInnerList = "";
     const gridProduct = document.getElementById("grid-product");
     const listProduct = document.getElementById("list-product");
     axios
-        .get(`http://localhost:3000/api/products/${cateID}/${page}/${sort}`)
+        .get(`http://localhost:3000/api/products/${cateID}/${page}/${min}/${max}/${sort}`)
         .then((res) => {
             res.data.forEach((product) => {
                 textInnerGrid += gridItem(product);
@@ -267,14 +267,12 @@ var sortProducts = function (cateID, page, sort) {
 };
 
 
-var nextPage = function(cateID, page, sort){
-    console.log(page)
-    sortProducts(cateID, page, sort);
+var nextPage = function(cateID, page, sort, min, max){
+    sortProducts(cateID, page, sort, min, max);
 }
 
-var prevPage = function (cateID, page, sort) {
-    console.log(page);
-    sortProducts(cateID, page, sort);
+var prevPage = function (cateID, page, sort, min, max) {
+    sortProducts(cateID, page, sort, min, max);
 };
 
 var adjustDisable = function(prev, next, page, maxPage){
@@ -315,5 +313,6 @@ var prevSearchPage = function (productName, page, sort) {
     console.log(page);
     sortSearchProduct(productName, page, sort);
 };
+
 
 

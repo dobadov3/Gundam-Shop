@@ -91,30 +91,50 @@ block contents
 block script 
     script(src="/assets/js/product.js") 
     script(src="/assets/js/sort.js") 
+    script(src="/assets/js/slider.js") 
     script.
+        var value = slider.noUiSlider.get();
+        var min = parseFloat(value[0]);
+        var max = parseFloat(value[1]);
         var cateID = !{JSON.stringify(cateID)}
         var page = !{JSON.stringify(page)}
         var maxPage = !{JSON.stringify(maxPage)}
         var selectSort = document.getElementById("select-sort");
-        sortProducts(cateID, page, selectSort.value)
         var prev = document.getElementById("li-prev");
         var next = document.getElementById("li-next");
+        sortProducts(cateID, page, selectSort.value, min, max)
         next.addEventListener('click', () => {
-        page = page + 1;
-        adjustDisable(prev, next, page, maxPage)
-        nextPage(cateID, page, selectSort.value)
+            var value = slider.noUiSlider.get();
+            var min = parseFloat(value[0]);
+            var max = parseFloat(value[1]);
+            page = page + 1;
+            adjustDisable(prev, next, page, maxPage)
+            nextPage(cateID, page, selectSort.value, min, max)
         });
         prev.addEventListener('click', () => {
-        page = page - 1;
-        adjustDisable(prev, next, page, maxPage)
-        prevPage(cateID, page, selectSort.value)
+            var value = slider.noUiSlider.get();
+            var min = parseFloat(value[0]);
+            var max = parseFloat(value[1]);
+            page = page - 1;
+            adjustDisable(prev, next, page, maxPage)
+            prevPage(cateID, page, selectSort.value, min, max)
         });
         selectSort.addEventListener('change', () => {
-        sortProducts(cateID, page, selectSort.value)
+            var value = slider.noUiSlider.get();
+            var min = parseFloat(value[0]);
+            var max = parseFloat(value[1]);
+            sortProducts(cateID, page, selectSort.value, min, max)
         })
         if(page === 1){
         prev.classList.add('disabled')
         }
+        document.getElementById("btn-slider").addEventListener("click", function () {
+            var value = slider.noUiSlider.get();
+            var min = parseFloat(value[0]);
+            var max = parseFloat(value[1]);
+            sortProducts(cateID, page, selectSort.value, min, max)
+        });
+        
 
 
 

@@ -1,6 +1,7 @@
 var data = require('../layout.data')
 var Account = require('../models/account.model');
 var DeliveryMethod = require('../models/delivery_method.model');
+const Discount = require('../models/discount.model');
 var PaymentMethod = require('../models/payment_method.model');
 
 module.exports.get = async function(req, res){
@@ -8,6 +9,7 @@ module.exports.get = async function(req, res){
         res.redirect('/authentication');
         return;
     }
+
     if(req.query.delivery_address){
         var index = req.query.delivery_address;
         var currentUser = await Account.findOne({ _id: req.signedCookies.userID });
@@ -16,12 +18,13 @@ module.exports.get = async function(req, res){
         var delivery_address = currentUser.delivery_address[index];
         var delivery = delivery_address.address;
     
-        res.render('./checkout/index', {
+        res.render("./checkout/index", {
             delivery,
             index,
             currentUser,
             delivery_method,
-            payment_method
+            payment_method,
+            finalPrice: req.query.finalPrice,
         });
     }else{
         var currentUser = await Account.findOne({
@@ -35,7 +38,8 @@ module.exports.get = async function(req, res){
             delivery,
             delivery_method,
             payment_method,
-            currentUser
+            currentUser,
+            finalPrice: req.query.finalPrice,
         });
     }
 }

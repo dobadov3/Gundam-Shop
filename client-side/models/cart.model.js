@@ -31,4 +31,15 @@ module.exports = class Cart{
     static removeCart(){
         cart = null;
     }
+
+    static removeCartById(id){
+        var item = cart.products.filter((item) => {
+            return item._id.equals(id)
+        })
+        
+        var index = cart.products.indexOf(item[0]);
+
+        cart.totalPrice -= item[0].priceSale;
+        cart.products.splice(index, 1)
+    }
 };
