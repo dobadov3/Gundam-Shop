@@ -23,6 +23,5 @@ var showInput = function(){
     Username.classList.remove("invisible");
     Name.classList.remove("invisible");
     Phone.classList.remove("invisible");
-    Password.classList.remove("invisible");
     GroupBtn.classList.remove("d-none");
 }

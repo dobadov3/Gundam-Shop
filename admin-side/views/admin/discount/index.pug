@@ -1,0 +1,56 @@
+extends ../layouts/layout
+block contents
+  .row
+    .col-lg-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Mã giảm giá 
+          button.btn.btn-inverse-success.btn-icon(type="button" data-toggle="modal" data-target="#createCategory")
+            i.mdi.mdi-plus
+          #createCategory.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+              .modal-content
+                .modal-header
+                  h5#exampleModalLabel.modal-title New discount
+                  button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                  form(method="POST" action="/discounts/create")
+                    .form-group
+                      label.col-form-label(for='recipient-name') Ngày hết hạn:
+                      input#recipient-name.form-control(type='date' name="expire")
+                    .form-group
+                      label.col-form-label(for='recipient-name') Giá trị (%):
+                      input#recipient-name.form-control(type='number' name="multiply")
+                    .modal-footer
+                      button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                      button.btn.btn-primary(type='sumit') Submit      
+          .table-responsive
+            table.table.table-hover
+                thead
+                    tr
+                        th Mã giảm giá               
+                        th Ngày tạo mã              
+                        th Ngày hết hạn      
+                        th Giá trị        
+                        th         
+                        th      
+                tbody
+                    each discount in discounts
+                        tr 
+                            td= discount.code
+                            td= discount.date
+                            td= discount.date_expire
+                            td= discount.multiply + '%'
+                            td 
+                              a(href="/discounts/edit/"+discount._id)
+                                button.btn.btn-inverse-primary.btn-icon(type='button')
+                                  i.mdi.mdi-pencil
+                            td
+                              a(href="/discounts/delete/"+discount._id)
+                                button.btn.btn-inverse-danger.btn-icon(type='button')
+                                  i.mdi.mdi-delete
+
+                    
+                
+  

@@ -1,0 +1,30 @@
+extends ../layouts/layout
+block contents 
+    .col-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title= 'Edit Discount' 
+          form.forms-sample(method="POST", action="/discounts/edit/" + discount._id)
+            .form-group
+              label(for='exampleInputName1') Mã giảm giá
+              input#exampleInputName1.form-control(type='text', placeholder='Tên quyền' name="code" value=discount.code disabled)
+            .form-group
+              label(for='exampleInputName1') Ngày tạo
+              input#exampleInputName1.form-control(type='text', placeholder='Tên quyền' name="date_create" value=discount.date disabled)
+            .form-group
+              label(for='exampleInputName1') Ngày hết hạn
+              .d-flex.align-items-center
+                input#text-expire.form-control.w-25(type='text', placeholder='Tên quyền' value=discount.date_expire disabled)
+                input#date-expire.form-control.w-25.d-none(type='date', placeholder='Tên quyền' value=discount.date_expire name="expire" disabled)
+                a.ml-3(href="#" onclick="showDateExpire()")
+                    i.mdi.mdi-tooltip-edit#btn-edit-expire Cập nhật
+            .form-group
+              label(for='exampleInputName1') Giá trị
+              input#exampleInputName1.form-control(type='number', placeholder='Tên quyền' name="multiply" value=discount.multiply)
+            
+            button(type="submit" class="btn btn-primary mr-2") Submit
+            button(class="btn btn-light") Cancel   
+block script 
+    script(src="/assets/admin/js/discount.js")   
+          
+             
