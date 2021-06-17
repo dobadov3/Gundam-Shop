@@ -4,7 +4,39 @@ block contents
       .card
         .card-body
           h4.card-title= 'Edit '
-          if (order.status !== "Hoàn thành")
+          if (order.status === "Hoàn thành" || order.status === "Đã hủy")
+            form.forms-sample(method="POST", action="/orders/edit/"+order._id )
+                .form-group
+                    label(for="date") Ngày đặt hàng:&nbsp; 
+                    lablel= order.date_create
+                .form-group
+                    label(for="name") Tên người nhận:&nbsp;
+                    label= order.delivery_address.name
+                .form-group
+                    label(for="phone") Số điện thoại:&nbsp;
+                    label= order.delivery_address.phone
+                .form-group
+                    label(for="address") Địa chỉ giao hàng:&nbsp;
+                    label= order.delivery_address.address
+                .form-group
+                    label(for="exampleSelectGender") Phương thức vận chuyển:&nbsp; 
+                    each d in delivery 
+                        if (d._id.equals(order.delivery_method))
+                            label= d.content
+                .form-group
+                    label(for="exampleSelectGender") Phương thức thanh toán:&nbsp;
+                    each p in payment 
+                        if (p._id.equals(order.payment_method))
+                            label= p.content
+                .form-group
+                    label(for="payment_status") Trạng thái thanh toán:&nbsp;
+                    label= order.payment_status
+                .form-group
+                    label(for="exampleSelectGender") Trạng thái đơn hàng:&nbsp;
+                    label= order.status
+                button(type="submit" class="btn btn-primary mr-2" disabled) Submit
+                button(class="btn btn-light" disabled) Cancel                     
+          else
             form.forms-sample(method="POST", action="/orders/edit/"+order._id )
                 .form-group
                     label(for="date") Ngày đặt hàng
@@ -69,36 +101,4 @@ block contents
                                 option(value="Hoàn thành") Hoàn thành
                                 option(value="Đã hủy" selected) Đã hủy
                 button(type="submit" class="btn btn-primary mr-2") Submit
-                button(class="btn btn-light") Cancel     
-          else
-            form.forms-sample(method="POST", action="/orders/edit/"+order._id )
-                .form-group
-                    label(for="date") Ngày đặt hàng:&nbsp; 
-                    lablel= order.date_create
-                .form-group
-                    label(for="name") Tên người nhận:&nbsp;
-                    label= order.delivery_address.name
-                .form-group
-                    label(for="phone") Số điện thoại:&nbsp;
-                    label= order.delivery_address.phone
-                .form-group
-                    label(for="address") Địa chỉ giao hàng:&nbsp;
-                    label= order.delivery_address.address
-                .form-group
-                    label(for="exampleSelectGender") Phương thức vận chuyển:&nbsp; 
-                    each d in delivery 
-                        if (d._id.equals(order.delivery_method))
-                            label= d.content
-                .form-group
-                    label(for="exampleSelectGender") Phương thức thanh toán:&nbsp;
-                    each p in payment 
-                        if (p._id.equals(order.payment_method))
-                            label= p.content
-                .form-group
-                    label(for="payment_status") Trạng thái thanh toán:&nbsp;
-                    label= order.payment_status
-                .form-group
-                    label(for="exampleSelectGender") Trạng thái đơn hàng:&nbsp;
-                    label= order.status
-                button(type="submit" class="btn btn-primary mr-2" disabled) Submit
-                button(class="btn btn-light" disabled) Cancel     
+                button(class="btn btn-light") Cancel

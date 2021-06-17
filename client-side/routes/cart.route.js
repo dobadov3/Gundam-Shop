@@ -6,5 +6,6 @@ var router = express.Router();
 router.get('/', controller.get);
 
 router.get('/remove/:productID', controller.removeCart);
+router.post('/update-cart', controller.UpdateCart);
 
 module.exports = router;

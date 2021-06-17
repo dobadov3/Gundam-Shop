@@ -8,7 +8,7 @@ var shortid = require('short-id');
 module.exports.get = async function (req, res) {
     var orders = await Order.find().sort({
         date: -1,
-        status: 1,
+        status: -1,
         payment_method: 1,
         payment_status: 1,
     });
@@ -26,10 +26,6 @@ module.exports.get = async function (req, res) {
 
         setDateCreate(orders[i]);
     }
-
-    orders = orders.filter(order => {
-        return order.status === "Chờ xác nhận" || order.status === "Đang giao hàng" || order.status === "Hoàn thành";
-    });
 
     res.render("./admin/orders/index", {
         orders,

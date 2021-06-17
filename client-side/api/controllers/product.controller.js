@@ -5,7 +5,7 @@ module.exports.get = async function(req, res){
     var page = req.params.page;
     var limit = 12;
 
-    var products = await Product.find({ id_detail_category: cateID })
+    var products = await Product.find({ id_detail_category: cateID, count: {$gt: 0} })
         .skip(page * limit - limit)
         .limit(limit);
 
@@ -29,19 +29,19 @@ module.exports.sort = async function(req, res){
 
         switch (req.params.sort) {
             case "sortLowestFirst":
-                products = await Product.find({ id_detail_category: cateID })
+                products = await Product.find({ id_detail_category: cateID, count: {$gt: 0} })
                     .skip(page * limit - limit)
                     .limit(limit)
                     .sort({ price: 1 });
                 break;
             case "sortHighestFirst":
-                products = await Product.find({ id_detail_category: cateID })
+                products = await Product.find({ id_detail_category: cateID, count: {$gt: 0} })
                     .skip(page * limit - limit)
                     .limit(limit)
                     .sort({ price: -1 });
                 break;
             case "sortByName":
-                products = await Product.find({ id_detail_category: cateID })
+                products = await Product.find({ id_detail_category: cateID, count: {$gt: 0} })
                     .skip(page * limit - limit)
                     .limit(limit)
                     .sort({ name: -1 });
@@ -75,7 +75,7 @@ module.exports.sortInRange = async function(req, res){
         case "sortLowestFirst":
             products = await Product.find({ 
                 id_detail_category: cateID,
-                price: {$gt: min, $lt: max} 
+                price: {$gt: min, $lt: max} , count: {$gt: 0}
             })
                 .skip(page * limit - limit)
                 .limit(limit)
@@ -84,7 +84,7 @@ module.exports.sortInRange = async function(req, res){
         case "sortHighestFirst":
             products = await Product.find({ 
                 id_detail_category: cateID,
-                price: {$gt: min, $lt: max} 
+                price: {$gt: min, $lt: max} , count: {$gt: 0}
             })
                 .skip(page * limit - limit)
                 .limit(limit)
@@ -93,7 +93,7 @@ module.exports.sortInRange = async function(req, res){
         case "sortByName":
             products = await Product.find({ 
                 id_detail_category: cateID,
-                price: {$gt: min, $lt: max} 
+                price: {$gt: min, $lt: max} , count: {$gt: 0}
             })
                 .skip(page * limit - limit)
                 .limit(limit)

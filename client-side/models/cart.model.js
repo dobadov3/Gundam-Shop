@@ -5,7 +5,6 @@ module.exports = class Cart{
         if (cart){ //cart is not null
             const index = cart.products.findIndex(p => {return p._id.equals( product._id)});
             
-            console.log('Index:', index)
             if (index >= 0){ //exist in cart already
                 var existingProduct = cart.products[index];
                 existingProduct.quantity += 1;
@@ -33,13 +32,19 @@ module.exports = class Cart{
     }
 
     static removeCartById(id){
+        var totalPrice = 0;
         var item = cart.products.filter((item) => {
             return item._id.equals(id)
         })
         
         var index = cart.products.indexOf(item[0]);
-
-        cart.totalPrice -= item[0].priceSale;
         cart.products.splice(index, 1)
+
+        cart.products.forEach(item => {
+            totalPrice += item.priceSale * item.quantity
+        })
+
+        cart.totalPrice = totalPrice
+        
     }
 };

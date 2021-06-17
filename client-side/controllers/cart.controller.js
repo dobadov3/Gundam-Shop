@@ -41,13 +41,36 @@ module.exports.removeCart = async function(req, res) {
             var index = req.session.cart.products.indexOf(item);
             products.splice(index, 1);
             req.session.cart.products = products;
-            req.session.cart.totalPrice -= item.priceSale;
+            req.session.cart.totalPrice -= item.priceSale * item.quantity;
         }
     });
 
     res.locals.finalPrice = 0;
 
     Cart.removeCartById(productID);
+
+    res.redirect('back')
+}
+
+module.exports.UpdateCart = async function(req, res){
+    var totalPrice = 0;
+
+    if (typeof req.body.item !== Object){
+        res.locals.cartItems[0].quantity = parseInt(req.body.item) 
+    }
+
+    for (let i = 0; i < res.locals.cartItems.length; i++) {
+        res.locals.cartItems[i].quantity = parseInt(req.body.item[i])    
+        Cart.getCart().products[i].quantity = parseInt(req.body.item[i])   
+    }
+    
+    res.locals.cartItems.forEach(item => {
+        totalPrice += item.priceSale * item.quantity
+    })
+    
+    Cart.getCart().totalPrice = totalPrice
+    
+    req.session.cart.totalPrice = totalPrice
 
     res.redirect('back')
 }

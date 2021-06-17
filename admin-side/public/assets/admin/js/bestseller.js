@@ -12,9 +12,9 @@ axios.get('http://localhost:3001/api/orders').then(response=>{
         for(let j=0;j<response.data[i].products.length;j++)
         {
             id.push(response.data[i].products[j]._id)
-            totalMoney =totalMoney+ response.data[i].products[j].priceSale
             totalOrder = response.data.length
         }
+        totalMoney += response.data[i].totalPrice
     }
   //chart
   

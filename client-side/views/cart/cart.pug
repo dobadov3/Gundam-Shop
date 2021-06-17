@@ -14,18 +14,24 @@
                   th.cart-sub-total.item T&#x1EA1;m t&iacute;nh
                   th.cart-total.last-item T&#x1ED5;ng c&#x1ED9;ng
               // /thead
-              tbody
-                // Cart Item
-                if (products)
-                  each product in products
-                    include ./cart-item
-              // /tbody
-              tfoot
-                tr
-                  td(colspan='7')
-                    .shopping-cart-btn
-                      span
-                        a.btn.btn-upper.btn-primary.outer-left-xs(href='/home') Tiếp tục mua hàng
+              form(action="/cart/update-cart" method="POST") 
+                tbody
+                  // Cart Item
+                  if (products)
+                    each product in products
+                      -var index = products.indexOf(product)
+                      include ./cart-item
+                // /tbody
+                tfoot
+                  tr
+                    td(colspan='6')
+                      .shopping-cart-btn
+                        span
+                          a.btn.btn-upper.btn-primary.outer-left-xs(href='/home') Tiếp tục mua hàng
+                    td()
+                      .pull-right
+                        span
+                          button.btn.btn-upper.btn-primary.outer-left-xs(type="submit") Cập nhật giỏ hàng
             // /table
         // /.shopping-cart-table
         form(method="GET", action="/checkout")

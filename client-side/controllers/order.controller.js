@@ -8,6 +8,7 @@ const shortid = require('short-id');
 var jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport");
+const Product = require('../models/products.model');
 
 module.exports.get = function(req, res){
 
@@ -21,6 +22,12 @@ module.exports.post = async function(req, res){
     var paymentMethod = await PaymentMethod.findById(req.body.payment_method);
     req.body.totalPrice = parseInt(req.body.totalPrice) + deliveryMethod.cost;
     console.log(req.body)
+
+    for (let i = 0; i < res.locals.cartItems.length; i++) {
+        var product = await Product.findById(res.locals.cartItems[i]._id);
+        product.count -= res.locals.cartItems[i].quantity;
+        product.save();
+    }
     
     var currentUser = await Account.findOne({ _id: req.signedCookies.userID });
     var address = {

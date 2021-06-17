@@ -72,6 +72,7 @@ module.exports.getHistory = async function (req, res) {
         console.log(new Date(from_date), new Date(to_date));
 
         var orders = await Order.find({
+            id_account: res.locals.currentAccount._id,
             date: {
                 $gte: new Date(from_date),
                 $lt: new Date(to_date)

@@ -46,7 +46,7 @@ var gridItem = function(product){
                         <div class="cart clearfix animate-effect">
                             <div class="action">
                             <ul class="list-unstyled">
-                                <li class="add-cart-button btn-group"><a class="btn btn-primary icon" href="/products/add-to-cart/${
+                                <li class="add-cart-button btn-group"><a class="btn btn-primary" href="/products/add-to-cart/${
                                     product._id
                                 }"><i class="fa fa-shopping-cart"></i></a></li>
                                 <li class="lnk wishlist"><a class="add-to-cart" href="/products/add-to-wishlist/${
@@ -75,7 +75,7 @@ var listItem = function(product){
                         <!-- /.col-->
                         <div class="col col-sm-9 col-lg-9">
                         <div class="product-info">
-                            <h3 class="name"><a href="/products/detail/${product._id}">${product.name}</a></h3>
+                            <h3 class="name"><a href="/products/detail/${product._id}" class="">${product.name}</a></h3>
                             <div class="rateit-small">
                             <div class="product-price">
                                 <span class="price">${product.priceSale.toLocaleString(

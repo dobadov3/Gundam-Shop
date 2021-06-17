@@ -1,7 +1,7 @@
 var Product = require('../../models/products.model');
 var Order = require('../../models/order.model')
 module.exports.get = async function(req, res){
-    var order = await Order.find();
+    var order = await Order.find({status: {$in: ["Chờ xác nhận", "Đang giao Hàng", "Hoàn Thành"]}});
     var productslist =[];
     var idlist =[]
     var a = [], b = [], prev;

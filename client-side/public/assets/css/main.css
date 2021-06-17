@@ -9463,3 +9463,8 @@ i.icon-success{
         transform: translateX(-100%);
     }
 }
+
+a.disabled{
+    pointer-events: none;
+    color: #ccc;
+}
